@@ -37,11 +37,13 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'bootstrap', '~> 4.1.3'
+gem 'carrierwave'
 gem 'devise'
 gem 'devise-bootstrap-views'
+gem 'mini_magick'
 gem 'recaptcha'
-gem 'twitter-bootstrap-rails'
 gem 'therubyracer'
+gem 'twitter-bootstrap-rails'
 
 gem 'haml'
 

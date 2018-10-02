@@ -39,7 +39,9 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bootstrap', '~> 4.1.3'
 gem 'devise'
 gem 'devise-bootstrap-views'
+gem 'recaptcha'
 gem 'twitter-bootstrap-rails'
+gem 'therubyracer'
 
 gem 'haml'
 

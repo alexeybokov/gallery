@@ -1,17 +1,53 @@
-!!!
-%html
-  %head
-    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    %title Gallery
-    = csrf_meta_tags
-    = csp_meta_tag
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
-    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
-  %body
-    %h1
-      Categories
-      %ul
-        - @categories.each do |category|
-          = category.title
-          = link_to "Details", categories_path
-    = yield
+%h2 Categories
+#myBtnContainer
+  %button.btn.active{:onclick => "filterSelection('all')"} Show all
+  - @categories.each do |category|
+    %button.btn={:onclick => "filterSelection('nature')"}; category.title
+/ Gallery Grid
+.row
+  .column.nature
+    .content
+      %img{:alt => "Mountains", :src => "/w3images/mountains.jpg", :style => "width:100%"}/
+      %h4 Mountains
+      %p Lorem ipsum dolor..
+  .column.nature
+    .content
+      %img{:alt => "Lights", :src => "/w3images/lights.jpg", :style => "width:100%"}/
+      %h4 Lights
+      %p Lorem ipsum dolor..
+  .column.nature
+    .content
+      %img{:alt => "Nature", :src => "/w3images/nature.jpg", :style => "width:100%"}/
+      %h4 Forest
+      %p Lorem ipsum dolor..
+  .column.cars
+    .content
+      %img{:alt => "Car", :src => "/cars/1.jpeg", :style => "width:100%"}/
+      %h4 Retro
+      %p Lorem ipsum dolor..
+  .column.cars
+    .content
+      %img{:alt => "Car", :src => "/w3images/cars2.jpg", :style => "width:100%"}/
+      %h4 Fast
+      %p Lorem ipsum dolor..
+  .column.cars
+    .content
+      %img{:alt => "Car", :src => "/w3images/cars3.jpg", :style => "width:100%"}/
+      %h4 Classic
+      %p Lorem ipsum dolor..
+  .column.people
+    .content
+      %img{:alt => "People", :src => "/w3images/people1.jpg", :style => "width:100%"}/
+      %h4 Girl
+      %p Lorem ipsum dolor..
+  .column.people
+    .content
+      %img{:alt => "People", :src => "/w3images/people2.jpg", :style => "width:100%"}/
+      %h4 Man
+      %p Lorem ipsum dolor..
+  .column.people
+    .content
+      %img{:alt => "People", :src => "/w3images/people3.jpg", :style => "width:100%"}/
+      %h4 Woman
+      %p Lorem ipsum dolor..
+  / END GRID

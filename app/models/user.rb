@@ -5,6 +5,8 @@ class User < ApplicationRecord
          :rememberable, :validatable, :omniauthable, omniauth_providers: [:facebook]
 
   has_many :comments
+  has_many :images
+
   validates :email, presence: true, format: { with: /.+@.+\..+/i }
 
   def self.new_with_session(params, session)

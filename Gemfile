@@ -43,6 +43,7 @@ gem 'devise-bootstrap-views'
 gem 'mini_magick'
 gem 'omniauth-facebook'
 gem 'recaptcha'
+gem 'simple_form'
 gem 'therubyracer'
 gem 'twitter-bootstrap-rails'
 

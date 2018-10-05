@@ -35,7 +35,7 @@ class CommentsController < ApplicationController
 
   def find_image
     @image = Image.find(params[:image_id])
-    end
+  end
 
   def find_comment
     @comment = @image.comments.find(params[:id])

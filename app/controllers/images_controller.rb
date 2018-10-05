@@ -18,11 +18,13 @@ class ImagesController < ApplicationController
 
   def create
     @image = Image.new(image_params)
-    if @image.save
-      redirect_to @image
-    else
-      render 'new'
-    end
+    @image.save!
+    # if @image.save
+    #   redirect_to root_path
+    # else
+    #   render 'new'
+    # end
+    redirect_to root_path
   end
 
   def edit

@@ -6,8 +6,8 @@
 </p>
 
 <p>
-  <strong>User:</strong>
-  <%#= @user.email %>
+  <strong>Image:</strong>
+  <%#= image_tag (@image.picture.thumb.url, alt: 'Image')# if @image.picture? %>
 
 </p>
 

@@ -1,8 +1,7 @@
-# frozen_string_literal: true
-
 class ImagesController < ApplicationController
-  before_action :set_image, only: %i[show edit update destroy]
-  before_action :authenticate_user!, except: %i[index show]
+  def new
+    @image = Image.new
+  end
 
   def index
     @images = Image.all.order('created_at DESC')
@@ -12,23 +11,28 @@ class ImagesController < ApplicationController
     @comments = Comment.where(image_id: @image).order('created_at DESC')
   end
 
-  def new
-    @image = Image.new
-  end
-
   def create
     @image = Image.new(image_params)
-    @image.save!
-    # if @image.save
-    #   redirect_to root_path
-    # else
-    #   render 'new'
-    # end
-    redirect_to root_path
+
+    if @image.save
+      flash[:notice] = 'Image Uploaded'
+      redirect_to root_path
+    else
+      render 'new'
+    end
   end
 
   def edit
     @image = Image.find(params[:id])
+  end
+
+  def destroy
+    @image = Image.find(params[:id])
+    @image.destroy
+
+    flash[:notice] = 'Image removed'
+
+    redirect_to images_path
   end
 
   private
@@ -38,6 +42,7 @@ class ImagesController < ApplicationController
   end
 
   def image_params
-    params.require(:image).permit(:name, :picture)
+    params.require(:image).permit(:name, :category_id, :picture)
   end
 end
+

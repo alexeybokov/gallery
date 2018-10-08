@@ -1,0 +1,13 @@
+- content_for :page_title,  "Index"
+.section
+  %h2 All Images
+  .container
+  - if @images.exists?
+    - @images.each_slice(4) do |image|
+      .row
+        - image.each do |image|
+          = link_to(image_tag(image.picture.thumb.url, alt: 'image'), image.picture.url, target: '_blank')
+          -#- image.comments.count
+          -#comments
+  - else
+    %p There are no images

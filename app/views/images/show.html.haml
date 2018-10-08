@@ -1,0 +1,9 @@
+%p#notice= notice
+-#%p
+-#  %strong Name:
+-#  = @image.image_name
+-#%p
+  %strong Image:
+= render 'comments/comment'
+= link_to 'Edit', edit_image_path(@image)
+= link_to  'Back', images_path

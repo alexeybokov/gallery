@@ -4,17 +4,17 @@ class CategoriesController < ApplicationController
   end
 
   def new
-    @categories = Category.new
+    @category = Category.new
   end
 
   def create
-    @categories = Category.new(categories_params)
-    @categories.save!
-    # if @categories.save
-    redirect_to categories_path
-    # else
-    #   render 'new'
-    # end
+    @category = Category.new(categories_params)
+
+    if @category.save
+      redirect_to categories_path
+    else
+      render 'new'
+    end
   end
 
   private

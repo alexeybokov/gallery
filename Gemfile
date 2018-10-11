@@ -35,14 +35,17 @@ gem 'jbuilder', '~> 2.5'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
-
+gem 'record_tag_helper'
 gem 'bootstrap', '~> 4.1.3'
 gem 'carrierwave'
 gem 'devise'
 gem 'devise-bootstrap-views'
+gem 'file_validators'
+gem 'kaminari'
 gem 'mini_magick'
 gem 'omniauth-facebook'
 gem 'recaptcha'
+gem 'rspec'
 gem 'simple_form'
 gem 'therubyracer'
 gem 'twitter-bootstrap-rails'

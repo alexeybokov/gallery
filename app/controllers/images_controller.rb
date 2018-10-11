@@ -1,4 +1,8 @@
+# frozen_string_literal: true
+
 class ImagesController < ApplicationController
+  before_action :set_image, only: :show
+
   def new
     @image = Image.new
   end
@@ -18,6 +22,7 @@ class ImagesController < ApplicationController
       flash[:notice] = 'Image Uploaded'
       redirect_to root_path
     else
+      flash[:notice] = 'Image not save'
       render 'new'
     end
   end
@@ -35,6 +40,15 @@ class ImagesController < ApplicationController
     redirect_to images_path
   end
 
+  def vote
+    if !current_user.liked? @image
+      @image.liked_by current_user
+    elsif
+      current_user.liked? @image
+      @image.unliked_by current_user
+    end
+  end
+
   private
 
   def set_image
@@ -45,4 +59,3 @@ class ImagesController < ApplicationController
     params.require(:image).permit(:name, :category_id, :picture)
   end
 end
-

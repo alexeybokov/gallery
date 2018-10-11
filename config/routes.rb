@@ -1,10 +1,16 @@
-Rails.application.routes.draw do
+# frozen_string_literal: true
 
-  devise_for :users, controllers: {:omniauth_callbacks => "users/omniauth_callbacks"}
+Rails.application.routes.draw do
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :images do
     resources :comments
   end
+
   resources :categories
-  root to: "dashboard#index"
+
+  root to: 'dashboard#index'
+
+  match 'heart', to: 'hearts#heart', via: :post
+  match 'unheart', to: 'hearts#unheart', via: :delete
 end

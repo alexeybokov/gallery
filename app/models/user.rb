@@ -5,9 +5,8 @@ class User < ApplicationRecord
          :rememberable, :validatable, :omniauthable, omniauth_providers: [:facebook]
 
   has_many :comments
-  has_many :images
-
-  validates :email, presence: true, format: { with: /.+@.+\..+/i }
+  has_many :images, through: :hearts
+  has_many :hearts, dependent: :destroy
 
   def self.new_with_session(params, session)
     super.tap do |user|
@@ -26,5 +25,18 @@ class User < ApplicationRecord
       user.oauth_expires_at = Time.at(auth.credentials.expires_at)
       user.save!
     end
+  end
+
+  def heart!(image)
+    self.hearts.create(image_id: image.id)
+  end
+
+  def unheart!(image)
+    heart = self.hearts.find_by_image_id(image.id)
+    heart.destroy!
+  end
+
+  def heart?(image)
+    self.hearts.find_by_image_id(image.id)
   end
 end

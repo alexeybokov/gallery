@@ -1,0 +1,4 @@
+- if current_user.heart?(image)
+  = button_to "Unheart", unheart_path(image_id: image.id), remote: true, method: :delete
+- else
+  = button_to "Heart", heart_path(image_id: image.id), remote: true

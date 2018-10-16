@@ -8,7 +8,7 @@ class ImagesController < ApplicationController
   end
 
   def index
-    @images = Image.all.order('created_at DESC')
+    @images = Image.all.order(created_at: :desc).page(params[:page])
   end
 
   def show

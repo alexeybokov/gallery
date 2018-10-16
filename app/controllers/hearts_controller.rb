@@ -1,5 +1,5 @@
 class HeartsController < ApplicationController
-  respond_to :js
+  respond_to :html, :js
 
   def heart
     @user = current_user

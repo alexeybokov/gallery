@@ -8,6 +8,8 @@ class User < ApplicationRecord
   has_many :images, through: :hearts
   has_many :hearts, dependent: :destroy
 
+  acts_as_follower
+
   def self.new_with_session(params, session)
     super.tap do |user|
       if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["raw_info"]

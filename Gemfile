@@ -34,6 +34,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 # Reduces boot times through caching; required in config/boot.rb
+gem 'activeadmin'
 gem 'acts_as_follower', github: 'tcocca/acts_as_follower', branch: 'master'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bootstrap', '~> 4.1.3'
@@ -50,7 +51,9 @@ gem 'rspec'
 gem 'simple_form'
 gem 'therubyracer'
 gem 'twitter-bootstrap-rails'
-
+gem 'cancan'
+gem 'draper'
+gem 'pundit'
 gem 'haml'
 
 

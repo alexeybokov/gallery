@@ -1,16 +1,6 @@
-!!!
-%html
-  %head
-    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    %title Gallery
-    = csrf_meta_tags
-    = csp_meta_tag
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
-    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
-  %body
-    %h1
-      Hello
-    = link_to 'Demo image', images_path, class: "navbar-item"
-    = link_to 'Create New Image', new_image_path, class:"navbar-item"
-    = link_to 'Create New Category', new_category_path, class:"navbar-item"
-    = yield :page_title
+%h1
+  Hello
+= link_to 'Demo image', images_path, class: "navbar-item"
+= link_to 'Create New Image', new_image_path, class:"navbar-item"
+= link_to 'Create New Category', new_category_path, class:"navbar-item"
+= yield :page_title

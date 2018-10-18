@@ -40,13 +40,17 @@ class ImagesController < ApplicationController
     redirect_to images_path
   end
 
-  def vote
-    if !current_user.liked? @image
-      @image.liked_by current_user
-    elsif
-      current_user.liked? @image
-      @image.unliked_by current_user
-    end
+  def heart
+    @user = current_user
+    @image = Image.find(params[:id])
+    @user.heart!(@image)
+  end
+
+  def unheart
+    @user = current_user
+    @heart = @user.hearts.find_by_image_id(params[:id])
+    @image = Image.find(params[:id])
+    @heart.destroy!
   end
 
   private

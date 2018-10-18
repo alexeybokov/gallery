@@ -6,7 +6,8 @@
   - @images.each do |image|
     .row
       = image.name
-      = div_for image do
-        = render partial: 'hearts/button', locals: { image: image, user: @user }
-        = link_to(image_tag(image.picture.thumb.url, alt: 'image'), image.picture.url)
+    = div_for image do
+      %button.delete{ id: image.id } Remove
+      = render partial: 'hearts/button', locals: { image: image, user: @user }
+      = link_to(image_tag(image.picture.thumb.url, alt: 'image'), image.picture.url)
   = paginate @images

@@ -1,11 +1,10 @@
-#$(document).ready(function() {
-#  $('.delete').on('click', function() {
-#    if (confirm('Are your sure?')) {
-#      $.ajax({
-#        url: '/images/' + this.parentElement.id,
-#        type: 'DELETE',
-#        success: function(r) {}
-#      });
-#    }
-#  });
-#});
+$(document).on 'turbolinks:load', ->
+  $(document).ready ->
+    $('.delete').on 'click', ->
+      if confirm('Are your sure?')
+        $.ajax
+          url: '/images/' + @id
+          type: 'DELETE'
+          success: (r) ->
+      return
+    return

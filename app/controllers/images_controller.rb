@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class ImagesController < ApplicationController
+  respond_to :html, :js
+
   before_action :set_image, only: :show
 
   def new

@@ -54,9 +54,6 @@ gem 'rspec'
 gem 'simple_form'
 gem 'therubyracer'
 gem 'twitter-bootstrap-rails'
-gem 'cancan'
-gem 'draper'
-gem 'pundit'
 gem 'haml'
 
 

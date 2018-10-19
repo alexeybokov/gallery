@@ -34,7 +34,8 @@ class User < ApplicationRecord
   end
 
   def unheart!(image)
-    heart = self.hearts.find_by_image_id(image.id)
+    # heart = self.hearts.find_by_image_id(image.id)
+    heart = self.hearts.find_by(image_id: image.id)
     heart.destroy!
   end
 

@@ -1,4 +1,5 @@
 - if current_user.heart?(image)
-  %button.unheart{ id: image.id } Unheart
+  -#%button.glyphicon.glyphicon-heart-empty.unheart{ id: image.id }
+  = link_to '123', root_path, remote: true
 - else
-  %button.heart{ id: image.id } Heart
+  %button.glyphicon.glyphicon-heart.heart{ id: image.id }

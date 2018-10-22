@@ -3,11 +3,29 @@
   %h2 All Images
   .container
   -# if @images.exists?
+  -#- @images.each do |image|
+  -#  .row
+  -#    = image.name
+  -#  = div_for image do
+  -#    %button.delete{ id: image.id } Remove
+  -#    = render partial: 'hearts/button', locals: { image: image, user: @user }
+  -#    = link_to(image_tag(image.picture.thumb.url, alt: 'image'), image.picture.url)
+  -#= paginate @images
+
+
+
   - @images.each do |image|
     .row
-      = image.name
-    = div_for image do
-      %button.delete{ id: image.id } Remove
-      = render partial: 'hearts/button', locals: { image: image, user: @user }
-      = link_to(image_tag(image.picture.thumb.url, alt: 'image'), image.picture.url)
+      .col-mid-3
+        .photo.photo-type-line
+          %a.photo-hover{:href => '../../assets/images/cars/1.jpeg'}
+          -#= link_to(image_tag(image.picture.thumb.url, alt: 'image'), image.picture.url)
+            .photo-info
+              .headline
+                = image.name
+              .line
+              .desc Description
+              .mask
+              .photo-img
+                %img{:src => '../assets/images/cars/1.jpeg'}/
   = paginate @images

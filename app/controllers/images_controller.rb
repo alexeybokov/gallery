@@ -24,7 +24,7 @@ class ImagesController < ApplicationController
       flash[:notice] = 'Image Uploaded'
       redirect_to root_path
     else
-      flash[:notice] = 'Image not save'
+      flash[:alert] = 'Image not save'
       render 'new'
     end
   end

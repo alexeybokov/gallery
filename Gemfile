@@ -52,8 +52,6 @@ gem 'recaptcha'
 gem 'record_tag_helper'
 gem 'rspec'
 gem 'simple_form'
-gem 'therubyracer'
-gem 'twitter-bootstrap-rails'
 gem 'haml'
 
 

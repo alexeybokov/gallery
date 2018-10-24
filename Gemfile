@@ -34,7 +34,26 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 # Reduces boot times through caching; required in config/boot.rb
+gem 'activeadmin'
+gem 'acts_as_follower', github: 'tcocca/acts_as_follower', branch: 'master'
 gem 'bootsnap', '>= 1.1.0', require: false
+gem 'bootstrap', '~> 4.1.3'
+gem 'carrierwave'
+gem 'devise'
+gem 'devise-bootstrap-views'
+gem 'file_validators'
+gem 'jquery-rails'
+gem 'pusher'
+gem 'figaro'
+gem 'kaminari'
+gem 'mini_magick'
+gem 'omniauth-facebook'
+gem 'recaptcha'
+gem 'record_tag_helper'
+gem 'rspec'
+gem 'simple_form'
+gem 'haml'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -43,9 +62,11 @@ end
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
-  gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'web-console', '>= 3.3.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+  gem 'letter_opener'
+  gem 'rubocop'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end

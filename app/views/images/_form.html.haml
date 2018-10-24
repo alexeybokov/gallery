@@ -1,0 +1,12 @@
+.upload_form
+  = form_for @image, :html => {:multipart => true}  do |f|
+    .field
+      = f.label :name
+      = f.text_field :name
+    .field
+      = f.label :picture
+      = f.file_field :picture
+    .field
+      = f.label :category
+      = f.select :category_id, Category.all.collect {|x| [x.title, x.id]}, {:include_blank => 'Select One'},class:'form-control'
+    = f.submit 'Create Image!'

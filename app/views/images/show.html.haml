@@ -1,0 +1,7 @@
+= image_tag(@image.path.url, alt: 'some_image')
+%br
+
+= link_to 'Edit', edit_image_path(@image)
+= link_to  'Back', images_path
+
+= render 'comments/comment'

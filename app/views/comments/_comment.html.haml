@@ -1,0 +1,10 @@
+%h2
+  This image has #{pluralize(@comments.count, "Reply")}
+= @comments.each do |comment|
+  %p
+    %b= comment.body
+  - if current_user == comment.user
+    %p= link_to 'Delete comment', [comment.image, comment], method: :delete
+    %p= link_to 'Edit comment', edit_image_comment_path(comment.image, comment)
+- if user_signed_in?
+  = render 'comments/form'

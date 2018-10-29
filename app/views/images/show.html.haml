@@ -1,4 +1,7 @@
-= image_tag(@image.path.url, alt: 'some_image')
+%h2
+  = @image.name
+%br
+= image_tag(@image.picture.url, alt: 'some_image')
 %br
 
 = link_to 'Edit', edit_image_path(@image)

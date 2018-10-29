@@ -3,14 +3,14 @@
 class ImagesController < ApplicationController
   respond_to :html, :js
 
-  before_action :set_image, only: :show
+  before_action :set_image, only: [:show, :edit]
 
   def new
     @image = Image.new
   end
 
   def index
-    @images = Image.all.order(created_at: :desc).page(params[:page])
+    @images = Image.order(created_at: :desc).page(params[:page])
   end
 
   def show
@@ -18,11 +18,11 @@ class ImagesController < ApplicationController
   end
 
   def create
-    @image = Image.new(image_params)
+    @image = current_user.images.build(image_params)
 
     if @image.save
       flash[:notice] = 'Image Uploaded'
-      redirect_to root_path
+      redirect_to image_path(@image)
     else
       flash[:alert] = 'Image not save'
       render 'new'
@@ -30,7 +30,6 @@ class ImagesController < ApplicationController
   end
 
   def edit
-    @image = Image.find(params[:id])
   end
 
   def destroy
@@ -40,19 +39,6 @@ class ImagesController < ApplicationController
     flash[:notice] = 'Image removed'
 
     redirect_to images_path
-  end
-
-  def heart
-    @user = current_user
-    @image = Image.find(params[:id])
-    @user.heart!(@image)
-  end
-
-  def unheart
-    @user = current_user
-    @heart = @user.hearts.find_by_image_id(params[:id])
-    @image = Image.find(params[:id])
-    @heart.destroy!
   end
 
   private

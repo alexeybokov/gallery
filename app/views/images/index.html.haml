@@ -7,7 +7,7 @@
           - image.each do |image|
             .col-mid-3
               .photo.photo-type-line
-                %a.photo-hover{"data-title" => image.name, :href => image.picture.thumb.url()}
+                %a.photo-hover{"data-title" => image.name, :href => image_path(image)}
                   .photo-info
                     .headline= image.name
                     .line

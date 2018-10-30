@@ -7,6 +7,10 @@
     = csrf_meta_tags
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     %script{:src => "https://www.google.com/recaptcha/api.js"}
+    / %script{:crossorigin => "anonymous", :integrity => "sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN", :src => "https://code.jquery.com/jquery-3.2.1.slim.min.js"}
+    / %script{:crossorigin => "anonymous", :integrity => "sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q", :src => "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"}
+    / %script{:crossorigin => "anonymous", :integrity => "sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl", :src => "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"}
+    / %script{:src => "assets/bootstrap.js"}
     / Bootstrap core CSS
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     -#%link{:href => "assets/bootstrap.scss", :rel => "stylesheet"}
@@ -23,29 +27,15 @@
             = link_to 'Home', root_path, class: "nav-link"
             %a.nav-link{:href => "#"}
               %span.sr-only (current)
+
           %li.nav-item.dropdown
             %a#dropdown03.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "https://example.com"} Category
             .dropdown-menu{"aria-labelledby" => "dropdown03"}
-              -#- if @category.exists?
-                - @category.each do |category|
-                  = link_to(category.title, categories_path(category), class: "dropdown-item")
-              -#- else
-                %p.dropdown-item{:href => "#"} There are no categories
-
-
-          -#%li.nav-item.dropdown.active
-          -#  %a.nav-link.dropdown-toggle{ 'aria-expanded' => 'false', 'aria-haspopup' => 'true',
-          -#                               'data-toggle' => 'dropdown', :href => '#', :role => 'button' }
-          -#    =t('layout.top_categories.top')
-          -#  .dropdown-menu{ 'aria-labelledby' => 'navbarDropdown' }
-          -#    -if Category.count.zero?
-          -#      %a.dropdown-item
-          -#        = t('layout.top_categories.empty')
-          -#    -else
-          -#      -Category.limit(5).each do |category|
-          -#        =link_to(category.title, categories_path(category), class: 'dropdown-item')
-          -#
-
+              - @categories.each do |category|
+                %a.dropdown-item{:href => "#{category_path(category)}"}
+                  = category.title
+              %a.dropdown-item{:href => "#{new_category_path}"} Add Category
+                
           %li.nav-item.active
             = link_to 'All images', images_path, class: "nav-link"
           %li.nav-item
@@ -79,10 +69,7 @@
       \==================================================
     / Placed at the end of the document so the pages load faster
     -#
-    -#%script{:crossorigin => "anonymous", :integrity => "sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN", :src => "https://code.jquery.com/jquery-3.2.1.slim.min.js"}
-    -#%script{:crossorigin => "anonymous", :integrity => "sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q", :src => "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"}
-    -#%script{:crossorigin => "anonymous", :integrity => "sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl", :src => "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"}
-    -#%script{:src => "assets/bootstrap.js"}
+
     // :javascript
 -#  %head
 -#    %meta{:charset => "utf-8"}/

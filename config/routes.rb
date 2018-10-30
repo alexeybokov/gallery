@@ -7,15 +7,11 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   resources :images do
-    post 'heart', on: :member
-    delete 'unheart', on: :member
-    resources :comments
+    resources :comments, only: :create
   end
 
+  resources :hearts, only: %i(create destroy)
   resources :categories
 
   root to: 'dashboard#index'
-
-  # match 'heart', to: 'hearts#heart', via: :post
-  # match 'unheart', to: 'hearts#unheart', via: :delete
 end

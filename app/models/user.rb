@@ -5,8 +5,10 @@ class User < ApplicationRecord
          :rememberable, :validatable, :omniauthable, omniauth_providers: [:facebook]
 
   has_many :comments
-  has_many :images, through: :hearts
+  has_many :images, dependent: :destroy
   has_many :hearts, dependent: :destroy
+  has_many :categories, dependent: :destroy
+
 
   acts_as_follower
 

@@ -3,12 +3,16 @@ class CategoriesController < ApplicationController
     @categories = Category.all
   end
 
+  def show
+    Category.find(params[:id])
+  end
+
   def new
     @category = Category.new
   end
 
   def create
-    @category = Category.new(categories_params)
+    @category = current_user.categories.build(categories_params)
 
     if @category.save
       redirect_to categories_path

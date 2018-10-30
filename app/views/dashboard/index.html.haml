@@ -1,0 +1,24 @@
+/ Slideshow container
+.slideshow-container
+  / Full-width images with number and caption text
+  .mySlides.fade
+    .numbertext 1 / 3
+    = image_tag @images.limit(1).url(:thumb_m)
+    .text Caption Text
+  .mySlides.fade
+    .numbertext 2 / 3
+    %img{:src => "img2.jpg", :style => "width:100%"}/
+    .text Caption Two
+  .mySlides.fade
+    .numbertext 3 / 3
+    %img{:src => "img3.jpg", :style => "width:100%"}/
+    .text Caption Three
+  / Next and previous buttons
+  %a.prev{:onclick => "plusSlides(-1)"} ❮
+  %a.next{:onclick => "plusSlides(1)"} ❯
+%br/
+/ The dots/circles
+%div{:style => "text-align:center"}
+  %span.dot{:onclick => "currentSlide(1)"}
+  %span.dot{:onclick => "currentSlide(2)"}
+  %span.dot{:onclick => "currentSlide(3)"}

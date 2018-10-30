@@ -1,17 +1,9 @@
 %h2
   = @image.name
 %br
-= image_tag(@image.picture.url, alt: 'some_image')
+= image_tag(@image.picture.thumb_m.url, alt: 'some_image')
 %br
-
-
-
-
--#
--#= image_tag(@image.path.url, alt: 'some_image')
--#%br
--#
--#= link_to 'Edit', edit_image_path(@image)
--#= link_to  'Back', images_path
-
+%p
+  = render 'hearts/button'
+%br
 = render 'comments/comment'

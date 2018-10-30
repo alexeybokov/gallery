@@ -28,14 +28,14 @@
             %a.nav-link{:href => "#"}
               %span.sr-only (current)
 
-          %li.nav-item.dropdown
+          %li.nav-item.dropdown.active
             %a#dropdown03.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "https://example.com"} Category
             .dropdown-menu{"aria-labelledby" => "dropdown03"}
               - @categories.each do |category|
                 %a.dropdown-item{:href => "#{category_path(category)}"}
                   = category.title
-              %a.dropdown-item{:href => "#{new_category_path}"} Add Category
-                
+              %a.dropdown-item.alert-info{:href => "#{new_category_path}"} Add Category
+
           %li.nav-item.active
             = link_to 'All images', images_path, class: "nav-link"
           %li.nav-item
@@ -44,10 +44,10 @@
             %a#dropdown02.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "https://example.com"} Account
             .dropdown-menu{"aria-labelledby" => "dropdown02"}
               - if user_signed_in?
-                = link_to 'Logout', destroy_user_session_path, class: "dropdown-item", method: :delete
+                = link_to 'Logout', destroy_user_session_path, class: "dropdown-item alert-danger", method: :delete
               - else
                 = link_to 'Login', new_user_session_path, class: "dropdown-item"
-              = link_to 'Edit Profile', edit_user_registration_path, class: "dropdown-item"
+              = link_to 'Edit Profile', edit_user_registration_path, class: "dropdown-item alert-info"
         %ul.nav.navbar-nav.pull-right
           %li.nav-item.active
             = link_to 'Upload Image', new_image_path, class:"nav-link"

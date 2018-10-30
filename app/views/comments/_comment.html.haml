@@ -1,5 +1,5 @@
 %i
-  This image has #{pluralize(@comments.count, "Reply")}
+  This image has #{pluralize(@comments.count, "Comment")}
 -    @comments.each do |comment|
   %p
     %b= comment.body

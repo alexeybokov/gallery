@@ -9,7 +9,6 @@ class User < ApplicationRecord
   has_many :hearts, dependent: :destroy
   has_many :categories, dependent: :destroy
 
-
   acts_as_follower
 
   def self.new_with_session(params, session)

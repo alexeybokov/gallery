@@ -3,6 +3,9 @@ class CommentsController < ApplicationController
   before_action :find_comment, only: [:destroy, :edit, :update] # :comment_owner]
   # before_action :comment_owner, only: [:destroy, :edit, :update]
 
+  def index
+
+  end
 
   def create
     @comment = @image.comments.create(params[:comment].permit(:name, :comment))

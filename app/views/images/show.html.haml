@@ -1,7 +1,16 @@
-= image_tag(@image.path.url, alt: 'some_image')
-%br
+%img#myImg{:alt => "Snow", :src => "img_snow.jpg", :style => "width:100%;max-width:300px"}/
+#myModal.modal
+  %span.close ×
+  %img#img01.modal-content/
+  #caption
 
-= link_to 'Edit', edit_image_path(@image)
-= link_to  'Back', images_path
+
+
+-#
+-#= image_tag(@image.path.url, alt: 'some_image')
+-#%br
+-#
+-#= link_to 'Edit', edit_image_path(@image)
+-#= link_to  'Back', images_path
 
 = render 'comments/comment'

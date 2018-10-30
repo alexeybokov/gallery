@@ -11,7 +11,7 @@
                   .photo-info
                     .headline= image.name
                     .line
-                    -#.desc= image.category.title
+                    .desc= image.category.title
                     .mask
                   .photo-img= image_tag image.picture.url(:thumb)
   - else

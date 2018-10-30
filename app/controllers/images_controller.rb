@@ -11,6 +11,7 @@ class ImagesController < ApplicationController
 
   def index
     @images = Image.all.order(created_at: :desc).page(params[:page])
+    @category = Category.all
   end
 
   def show

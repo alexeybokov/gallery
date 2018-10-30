@@ -23,23 +23,28 @@
             = link_to 'Home', root_path, class: "nav-link"
             %a.nav-link{:href => "#"}
               %span.sr-only (current)
-
-          %li.nav-item.dropdown
-            %a#dropdown01.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "https://example.com"} Category
-            .dropdown-menu{"aria-labelledby" => "dropdown01"}
-              %a.dropdown-item{:href => "#"} Action
-              %a.dropdown-item{:href => "#"} Another action
-              %a.dropdown-item{:href => "#"} Something else here
-
           %li.nav-item.dropdown
             %a#dropdown03.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "https://example.com"} Category
             .dropdown-menu{"aria-labelledby" => "dropdown03"}
               -#- if @category.exists?
-              -#  - @category.each do |category|
-              -#    = link_to "#{category.title}", class: "dropdown-item"
+                - @category.each do |category|
+                  = link_to(category.title, categories_path(category), class: "dropdown-item")
               -#- else
-              -#  %p.dropdown-item{:href => "#"} There are no categories
+                %p.dropdown-item{:href => "#"} There are no categories
 
+
+          -#%li.nav-item.dropdown.active
+          -#  %a.nav-link.dropdown-toggle{ 'aria-expanded' => 'false', 'aria-haspopup' => 'true',
+          -#                               'data-toggle' => 'dropdown', :href => '#', :role => 'button' }
+          -#    =t('layout.top_categories.top')
+          -#  .dropdown-menu{ 'aria-labelledby' => 'navbarDropdown' }
+          -#    -if Category.count.zero?
+          -#      %a.dropdown-item
+          -#        = t('layout.top_categories.empty')
+          -#    -else
+          -#      -Category.limit(5).each do |category|
+          -#        =link_to(category.title, categories_path(category), class: 'dropdown-item')
+          -#
 
           %li.nav-item.active
             = link_to 'All images', images_path, class: "nav-link"

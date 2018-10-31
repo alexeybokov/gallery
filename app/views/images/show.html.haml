@@ -1,7 +1,7 @@
 %h2
   = @image.name
 %br
-= image_tag(@image.picture.thumb_m.url, alt: 'some_image')
+= image_tag(@image.picture.thumb_list.url, alt: 'some_image')
 %br
 %p
   = render 'hearts/button'

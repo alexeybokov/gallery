@@ -1,24 +1,9 @@
-/ Slideshow container
-.slideshow-container
-  / Full-width images with number and caption text
-  .mySlides.fade
-    .numbertext 1 / 3
-    = image_tag @images.limit(1).url(:thumb_m)
-    .text Caption Text
-  .mySlides.fade
-    .numbertext 2 / 3
-    %img{:src => "img2.jpg", :style => "width:100%"}/
-    .text Caption Two
-  .mySlides.fade
-    .numbertext 3 / 3
-    %img{:src => "img3.jpg", :style => "width:100%"}/
-    .text Caption Three
-  / Next and previous buttons
-  %a.prev{:onclick => "plusSlides(-1)"} ❮
-  %a.next{:onclick => "plusSlides(1)"} ❯
-%br/
-/ The dots/circles
-%div{:style => "text-align:center"}
-  %span.dot{:onclick => "currentSlide(1)"}
-  %span.dot{:onclick => "currentSlide(2)"}
-  %span.dot{:onclick => "currentSlide(3)"}
+%h2 Wellcome to our Gallery
+%p
+  Slider images
+%hr.my-5/
+- @images.last(4).each_slice(4) do |image|
+  %p.imglist
+    - image.each do |image|
+      %a.grouped_elements{"data-caption" => "<b>image.name</b><br />Caption can contain <em>any</em> HTML elements", "data-fancybox" => "", :href => image.picture.thumb_list.url}
+        = image_tag image.picture.thumb_list.url

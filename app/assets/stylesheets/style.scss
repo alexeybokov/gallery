@@ -46,10 +46,6 @@ h1, h2 {
   margin-bottom: 30px;
 }
 
-#gallery img{
-  width: 100%;
-}
-
 .col-md-3{
   padding: 0;
 }
@@ -70,16 +66,16 @@ footer{
 
 .photo,
 .photo-hover,
-.photo-hover .mask,
+.photo-hover.mask,
 .photo-img,
 .photo-info{
-  width: 135px;
+  width: 275px;
   height: 220px;
 }
 
 .photo-img,
 .photo-hover,
-.photo-hover .mask{
+.photo-hover.mask{
   position: absolute;
   top: 0;
   left: 0;

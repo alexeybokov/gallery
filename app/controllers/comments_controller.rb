@@ -7,6 +7,10 @@ class CommentsController < ApplicationController
     redirect_to image_path(@image)
   end
 
+  def index
+    @comments = Comment.order(created_at: :desc)
+  end
+
   private
 
   def find_image

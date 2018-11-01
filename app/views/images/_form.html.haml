@@ -9,4 +9,4 @@
     .field
       = f.label :category
       = f.select :category_id, Category.all.collect {|x| [x.title, x.id]}, {:include_blank => 'Select One'},class:'form-control'
-    = f.submit 'Create Image!'
+    = f.submit 'Create Image!', class: 'btn btn-secondary'

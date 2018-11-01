@@ -5,4 +5,5 @@ class Category < ApplicationRecord
   validates :title, presence: true
 
   acts_as_followable
+
 end

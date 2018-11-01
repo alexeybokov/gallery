@@ -1,5 +1,5 @@
 - if current_user.heart?(@image)
-  %button.glyphicon.glyphicon-heart-empty.unheart{ id: @image.id }
-  -#= link_to '123', root_path, remote: true
+  = button_to 'UnHeart', heart_path(id: @image.id), method: 'delete', class: 'btn btn-danger', remote: true
 - else
-  %button.glyphicon.glyphicon-heart.heart{ id: @image.id }
+  = button_to 'Heart', hearts_path(id: @image.id), class: 'btn btn-danger', remote: true
+

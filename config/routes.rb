@@ -11,7 +11,12 @@ Rails.application.routes.draw do
   end
 
   resources :hearts, only: %i(create destroy)
-  resources :categories
+  resources :categories do
+    put :follow, on: :member
+    put :unfollow, on: :member
+  end
+
+  get 'comments', to: 'comments#index'
 
   root to: 'dashboard#index'
 end

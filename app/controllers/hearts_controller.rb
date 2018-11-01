@@ -3,6 +3,7 @@ class HeartsController < ApplicationController
     @user = current_user
     @image = Image.find(params[:id])
     @user.heart!(@image)
+    redirect_to image_path(params[:id])
   end
 
   def destroy
@@ -10,5 +11,6 @@ class HeartsController < ApplicationController
     @heart = @user.hearts.find_by_image_id(params[:id])
     @image = Image.find(params[:id])
     @heart.destroy!
+    redirect_to image_path
   end
 end

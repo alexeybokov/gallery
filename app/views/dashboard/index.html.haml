@@ -5,5 +5,5 @@
 - @images.last(4).each_slice(4) do |image|
   %p.imglist
     - image.each do |image|
-      %a.grouped_elements{"data-caption" => "<b>image.name</b><br />Caption can contain <em>any</em> HTML elements", "data-fancybox" => "", :href => image.picture.thumb_list.url}
+      %a.data-fancybox{"data-caption" => "<b>image.name</b><br />Caption can contain <em>any</em> HTML elements", "data-fancybox" => "", :href => image.picture.thumb_list.url}
         = image_tag image.picture.thumb_list.url

@@ -1,7 +1,10 @@
 %i
-  This image has #{pluralize(@comments.count, "Comment")}
+  This image has #{pluralize(@comments.count, "Comment") + ":"}
 -    @comments.each do |comment|
   %p
-    %b= comment.body
+    %ul
+      %li= comment.body
+      %br
+      = comment.user.email
 - if user_signed_in?
   = render 'comments/form'

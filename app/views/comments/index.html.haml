@@ -1,3 +1,16 @@
 - @comments.each do |comment|
+
   = comment.body
   %br/
+
+
+
+
+-#
+-#-if comment.body != nil
+-#  %p
+-#    =t('comments._comment.user')
+-#    = User.find(comment.user_id).username
+-#    =t('comments._comment.comment_body')
+-#  %p
+-#    = comment.body

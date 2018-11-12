@@ -1,16 +1,8 @@
 - @comments.each do |comment|
-
-  = comment.body
+  %br/
+  = image_tag(comment.image.picture.small.url)
+  = "Comment : '#{comment.body}'"
+  = "User : '#{comment.user.email}'"
   %br/
 
 
-
-
--#
--#-if comment.body != nil
--#  %p
--#    =t('comments._comment.user')
--#    = User.find(comment.user_id).username
--#    =t('comments._comment.comment_body')
--#  %p
--#    = comment.body

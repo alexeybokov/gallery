@@ -1,10 +1,14 @@
 %i
-  This image has #{pluralize(@comments.count, "Comment") + ":"}
--    @comments.each do |comment|
-  %p
-    %ul
-      %li= comment.body
-      %br
-      = comment.user.email
+  -if @comments.exists?
+    -"This image has #{pluralize(@comments.count, "Comment") + ":"}"
+    -@comments.each do |comment|
+      %p
+        %ul
+          %li=comment.body
+          %br
+          =comment.user.email
+  -else
+    ="No comments yet"
+
 - if user_signed_in?
   = render 'comments/form'

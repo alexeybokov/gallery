@@ -7,7 +7,7 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    @images = Category.find(params[:id]).images.page(params[:page]).per 12
+    @images = @category.images.page(params[:page]).per 12
   end
 
   def new

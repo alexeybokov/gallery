@@ -5,8 +5,10 @@
     %meta{:content => "width=device-width, initial-scale=1, shrink-to-fit=no", :name => "viewport"}/
     %title Gallery
     = csrf_meta_tags
+    %link{:crossorigin => "anonymous", :href => "https://use.fontawesome.com/releases/v5.5.0/css/all.css", :integrity => "sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU", :rel => "stylesheet"}/
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+
   %body
     %nav.navbar.navbar-expand-md.navbar-dark.bg-dark
       %a.navbar-brand{:href => "#"} Gallery
@@ -14,11 +16,16 @@
         %span.navbar-toggler-icon
       #navbarsExampleDefault.collapse.navbar-collapse
         %ul.navbar-nav.mr-auto
+
+          %li.nav-item.active
+            %i.fas.fa-home
           %li.nav-item.active
             = link_to 'Home', root_path, class: "nav-link"
             %a.nav-link{:href => "#"}
               %span.sr-only (current)
 
+          %li.nav-item.active
+            %i.fas.fa-align-justify
           %li.nav-item.dropdown.active
             %a#dropdown03.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "https://example.com"} Category
             .dropdown-menu{"aria-labelledby" => "dropdown03"}
@@ -28,9 +35,17 @@
               %a.dropdown-item.alert-info{:href => "#{new_category_path}"} Add Category
 
           %li.nav-item.active
+            %i.fab.fa-instagram
+          %li.nav-item.active
             = link_to 'All images', images_path, class: "nav-link"
-          %li.nav-item
+
+          %li.nav-item.active
+            %i.fas.fa-comment
+          %li.nav-item.active
             = link_to 'Comments', comments_path, class:"nav-link"
+
+          %li.nav-item.active
+            %i.fas.fa-user-circle
           %li.nav-item.dropdown.active
             %a#dropdown02.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "https://example.com"} Account
             .dropdown-menu{"aria-labelledby" => "dropdown02"}
@@ -39,11 +54,16 @@
               - else
                 = link_to 'Login', new_user_session_path, class: "dropdown-item"
               = link_to 'Edit Profile', edit_user_registration_path, class: "dropdown-item alert-info"
+
         %ul.nav.navbar-nav.pull-right
           %li.nav-item.active
+            %i.far.fa-arrow-alt-circle-down
+          %li.nav-item.active
             = link_to 'Upload Image', new_image_path, class:"nav-link"
+
           %li.nav-item.active
             = link_to 'Add Category', new_category_path, class:"nav-link"
+
     %main.container{:role => "main"}
     %section
       .container

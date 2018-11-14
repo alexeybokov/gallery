@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
   before_action :find_image, only: :create
 
   def index
-    @comments = Comment.order(created_at: :desc)
+    @comments = Comment.order(created_at: :desc).page(params[:page])
   end
 
   def create

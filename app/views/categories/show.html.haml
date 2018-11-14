@@ -21,9 +21,9 @@
     %p There are no images
 
   - if current_user.following?(@category)
-    = button_to "UnFollow", {action: 'unfollow'}, method: 'put', class: 'btn btn-light', remote: true
+    = button_to "UnFollow", {action: 'unfollow'}, method: 'put', class: 'btn btn-outline-primary', remote: true
   - else
-    = button_to "Follow", {action: 'follow'}, method: 'put', class: 'btn btn-light', remote: true
+    = button_to "Follow", {action: 'follow'}, method: 'put', class: 'btn btn-outline-primary', remote: true
 
 #paginate
   =paginate @images

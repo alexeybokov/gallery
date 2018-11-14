@@ -2,13 +2,14 @@
   -if @comments.exists?
     -"This image has #{pluralize(@comments.count, "Comment") + ":"}"
     -@comments.each do |comment|
-      %p
+      .commentlistitem
         %ul
-          %li=comment.body
-          %br
-          =comment.user.email
+          %li
+            =comment.body
+            =comment.user.email
   -else
     ="No comments yet"
+
 
 - if user_signed_in?
   = render 'comments/form'

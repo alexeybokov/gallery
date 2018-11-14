@@ -24,6 +24,12 @@ class CategoriesController < ApplicationController
     end
   end
 
+  def destroy
+    Category.find(params[:id]).destroy
+    flash[:notice] = 'Category and images removed'
+    redirect_to categories_path
+  end
+
   def follow
     current_user.follow(@category)
     @follow = Follow.find_by(follower: current_user, followable: @category)

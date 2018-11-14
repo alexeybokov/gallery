@@ -5,7 +5,7 @@ class Image < ApplicationRecord
   has_many :hearts, dependent: :destroy
 
   validates :name, presence: true
-  validates :picture, file_size: { less_than: 50.megabytes }
+  validates :picture, presence: true, file_size: { less_than: 50.megabytes }
 
   mount_uploader :picture, PictureUploader
 

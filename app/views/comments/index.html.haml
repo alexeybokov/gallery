@@ -1,8 +1,13 @@
 - @comments.each do |comment|
   %br/
-  = image_tag(comment.image.picture.small.url)
-  = "Comment : '#{comment.body}'"
-  = "User : '#{comment.user.email}'"
-  %br/
+  .commentlistitem
+    = image_tag(comment.image.picture.small.url)
+    .commentlistitem
+      = "Comment : '#{comment.body}'"
+    .commentlistitem
+      = "User : '#{comment.user.email}'"
+    %br/
+#paginate
+  = paginate @comments
 
 

@@ -6,7 +6,7 @@ namespace :app do
     tasks = %w[db:drop db:create db:migrate db:seed]
     tasks.each { |t| Rake::Task[t].invoke }
 
-    Dir.chdir("#{Rails.root}/lib/assets/to_table/")
+    Dir.chdir("#{Rails.root}/lib/assets/images/")
     categories = Dir['*'].select { |f| File.directory? f }
 
     categories.each do |item|
@@ -16,7 +16,7 @@ namespace :app do
   end
 
   def upload_images(category_title)
-    Dir.chdir("#{Rails.root.to_s}/lib/assets/to_table/#{category_title}")
+    Dir.chdir("#{Rails.root.to_s}/lib/assets/images/#{category_title}")
     image_paths = Dir['*.*']
     category = Category.find_by(title: category_title)
 

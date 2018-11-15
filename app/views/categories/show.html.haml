@@ -25,5 +25,7 @@
   - else
     = button_to "Follow", {action: 'follow'}, method: 'put', class: 'btn btn-outline-primary', remote: true
 
+  -if @category.user.eql?(current_user)
+    = button_to "Delete Category", {action: 'destroy'}, data: { confirm: "Are you sure?" }, method: :delete, class: 'btn btn-danger', remote: true
 #paginate
   =paginate @images

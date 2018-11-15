@@ -1,9 +1,9 @@
 class CategoriesController < ApplicationController
 
-  before_action :find_category, only: %i[show follow unfollow]
+  before_action :find_category, only: %i[show destroy follow unfollow]
 
   def index
-    @categories = Category.all
+    @categories = Category.all.page(params[:page])
   end
 
   def show
@@ -25,14 +25,15 @@ class CategoriesController < ApplicationController
   end
 
   def destroy
-    Category.find(params[:id]).destroy
-    flash[:notice] = 'Category and images removed'
+    @category.destroy
+    flash[:alert] = 'Category and images removed'
     redirect_to categories_path
   end
 
   def follow
     current_user.follow(@category)
     @follow = Follow.find_by(follower: current_user, followable: @category)
+    UserMailer.with(user: current_user, category: params[:id]).follow_email.deliver_later
     respond_to :js
     redirect_to category_path
   end

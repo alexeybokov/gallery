@@ -8,7 +8,6 @@ Rails.application.routes.draw do
 
   resources :images do
     resources :comments, only: :create
-    resources :hearts, only: %i(create destroy)
   end
 
   resources :categories do
@@ -16,8 +15,9 @@ Rails.application.routes.draw do
     put :unfollow, on: :member
   end
 
+  resources :hearts, only: %i(create destroy)
   get 'comments', to: 'comments#index'
-  match '/hearts', to: 'hearts#create', via: [:get, :post]
+  # match '/hearts', to: 'hearts#create', via: [:get, :post]
 
   root to: 'dashboard#index'
 end

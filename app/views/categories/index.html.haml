@@ -1,7 +1,24 @@
 %h2 Categories
-#myBtnContainer
-  %button.btn.active{:onclick => "filterSelection('all')"} Show all
-  - @categories.each do |category|
-    %button.btn={:onclick => "filterSelection('nature')"}; category.title
-
+- if @categories.exists?
+  - @categories.each_slice(4) do |category|
+    %div
+      .row
+        - category.each do |category|
+          .col-mid-3
+            .photo.photo-type-line
+              %a.photo-hover{ "data-title" => category.title, :href => category_path(category) }
+                .photo-info
+                  .headline= category.title
+                  .line
+                  .desc= category.title
+                  .mask
+                .photo-img
+                  - if category.images.first.present?
+                    = image_tag category.images.first.picture.thumb.url
+                  - else
+                    = image_tag 'background.jpg', style: "width: 250px"
+- else
+  %p There are no categories
+#paginate
+  = paginate @categories
 

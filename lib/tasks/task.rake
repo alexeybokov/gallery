@@ -8,9 +8,10 @@ namespace :app do
     tasks.each { |t| Rake::Task[t].invoke }
   end
 
-  desc 'Create data'
+  desc 'Create data fo app'
   task create_data: :environment do
-    tasks = %w[app:prepare_db app:migrate_images app:create_categories app:create_comments app:create_likes app:create_follows]
+    tasks = %w[app:prepare_db app:migrate_images app:create_categories
+               app:create_comments app:create_likes app:create_follows]
     tasks.each { |t| Rake::Task[t].invoke }
   end
 
@@ -52,9 +53,9 @@ namespace :app do
     image_paths.each_with_index do |img_path, i|
       file_img = File.open(img_path)
       puts "\tUpload #{File.basename(img_path)}" if Image.create!(name: ('d_img_' + (i + 1).to_s),
-      picture: file_img,
-      user_id: 1,
-      category_id: category.id)
+                                                                  picture: file_img,
+                                                                  user_id: 1,
+                                                                  category_id: category.id)
       file_img.close
     end
   end
@@ -62,8 +63,8 @@ namespace :app do
   def create_comments
     300.times do
       Comment.create!(user_id: User.first.id,
-      image_id: rand(1..75),
-      body: Faker::Lorem.sentence(15, true).chop)
+                      image_id: rand(1..75),
+                      body: Faker::Lorem.sentence(15, true).chop)
     end
     puts 'Create comments..................................................................................'
   end

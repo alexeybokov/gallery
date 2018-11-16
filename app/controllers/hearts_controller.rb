@@ -1,4 +1,5 @@
-class HeartsController < ApplicationController
+class HeartsController < ApplicationController    User.create!(email: 'developer@gmail.com', password: 'developer')
+
   def create
     @user = current_user
     @image = Image.find(params[:id])

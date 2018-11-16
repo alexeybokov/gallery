@@ -1,4 +1,4 @@
-class HeartsController < ApplicationController    User.create!(email: 'developer@gmail.com', password: 'developer')
+class HeartsController < ApplicationController
 
   def create
     @user = current_user

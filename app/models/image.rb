@@ -15,6 +15,7 @@ class Image < ApplicationRecord
 
   paginates_per 12
 
+
   private
 
   def should_generate_new_friendly_id?

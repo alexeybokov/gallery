@@ -17,24 +17,6 @@ class Category < ApplicationRecord
 
   scope :newest, -> { order(created_at: :desc) }
 
-  scope :by_images, -> { joins(:images).group(:category_id).order(images: :desc) }
-
-  # def by_images_count
-  #   Category.joins(images).group(category_id).order(images)
-  # end
-
-  # scope :by_images_count, -> do
-  #   select <<~SQL
-  #     (
-  #       SELECT title FROM categories
-  #       JOIN images ON images.category_id = categories.id
-  #       GROUP BY categories.id
-  #       ORDER BY COUNT(category_id) DESC
-  #     )
-  #   SQL
-  # end
-  #
-
   private
 
   def should_generate_new_friendly_id?

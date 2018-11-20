@@ -5,5 +5,8 @@
 %br
 %p
   = render 'hearts/button'
+  %i.fas.fa-heart
+  = @image.hearts_count
+
 %br
 = render 'comments/comment'# comments: @comments#, comments: @image.comments

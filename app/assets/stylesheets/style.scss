@@ -2,9 +2,13 @@ body{
   font-family: Georgia, 'Arrial', sans-serif;
 }
 
+section{
+  background-image: url("image.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 .navbar{
   min-height: 30px;
-  margin-bottom: 20px !important;
   border-radius: 0;
 }
 
@@ -40,6 +44,8 @@ body{
 }
 
 h1, h2{
+  color: white !important;
+  text-align: center;
   border-left:5px #666 solid;
   border-bottom: 1px #666 solid;
   padding: 0 0 5px 10px;
@@ -90,7 +96,7 @@ footer{
   -webkit-transition: all 500ms ease-out;
   -moz-transition: all 500ms ease-out;
   transition: opacity 500ms ease-out;
-  opacity:0.9;
+  opacity:1;
   cursor:pointer;
   display:block;
   text-decoration: none;
@@ -135,7 +141,6 @@ footer{
 }
 
 .photo-img{
-  background:#777c7c;
   z-index:0;
 }
 

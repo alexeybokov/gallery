@@ -87,9 +87,9 @@ footer{
 
 .photo-type-line .photo-hover{
   z-index: 100;
-  //-webkit-transition: all 500ms ease-out;
-  //-moz-transition: all 500ms ease-out;
-  //transition: opacity 500ms ease-out;
+  -webkit-transition: all 500ms ease-out;
+  -moz-transition: all 500ms ease-out;
+  transition: opacity 500ms ease-out;
   opacity:0.9;
   cursor:pointer;
   display:block;

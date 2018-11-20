@@ -4,3 +4,4 @@ class DashboardController < ApplicationController
     @images = Image.all
   end
 end
+

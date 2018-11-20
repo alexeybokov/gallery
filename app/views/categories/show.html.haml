@@ -1,6 +1,6 @@
 #gallery
   %h2
-    #{Category.find(params[:id]).title}
+    #{Category.friendly.find(params[:id]).title}
 
   - if @images.exists?
     - @images.each_slice(4) do |image|

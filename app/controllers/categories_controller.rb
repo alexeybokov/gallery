@@ -2,6 +2,7 @@ class CategoriesController < ApplicationController
 
   before_action :find_category, only: %i[show destroy follow unfollow]
 
+
   def index
     @categories = Category.all.page(params[:page])
   end
@@ -51,6 +52,6 @@ class CategoriesController < ApplicationController
   end
 
   def find_category
-    @category = Category.find(params[:id])
+    @category = Category.friendly.find(params[:id])
   end
 end

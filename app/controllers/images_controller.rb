@@ -41,7 +41,7 @@ class ImagesController < ApplicationController
   private
 
   def set_image
-    @image = Image.find(params[:id])
+    @image = Image.friendly.find(params[:id])
   end
 
   def image_params

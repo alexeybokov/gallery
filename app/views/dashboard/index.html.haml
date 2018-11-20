@@ -2,13 +2,13 @@
 
 - if @images.exists?
   %p.imglist{:style => "max-width: 520px;"}
-    %a{"data-fancybox-trigger" => "preview", :href => "javascript:;"}
+    %a{"data-fancybox-trigger" => "preview"}
       = image_tag @images.last.picture.large.url
 
+  %p.imglist
   = @images.last(4).each_slice(4) do |image|
     - image.each do |image|
-      %p.imglist
-        %a{"data-fancybox" => "preview", "data-height" => "1000", "data-width" => "1500",:href => image.picture.thumb.url}
-          = image_tag image.picture.thumb.url
+      %a{"data-fancybox" => "preview", "data-height" => "1000", "data-width" => "1500",:href => image.picture.thumb.url}
+        = image_tag image.picture.thumb.url
 - else
   %p There are no images

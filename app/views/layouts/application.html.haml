@@ -29,7 +29,7 @@
           %li.nav-item.dropdown.active
             %a#dropdown03.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "https://example.com"} Top Category
             .dropdown-menu{"aria-labelledby" => "dropdown03"}
-              - @categories.each do |category|
+              - top_5_categories.each do |category|
                 %a.dropdown-item{:href => "#{category_path(category)}"}
                   = category.title
               %a.dropdown-item.alert-info{:href => "#{new_category_path}"} Add Category

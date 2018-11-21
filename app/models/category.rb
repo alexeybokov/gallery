@@ -16,10 +16,4 @@ class Category < ApplicationRecord
   paginates_per 12
 
   scope :newest, -> { order(created_at: :desc) }
-
-  private
-
-  def should_generate_new_friendly_id?
-    slug.nil? || title_changed? || location_changed?
-  end
 end

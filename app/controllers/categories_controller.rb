@@ -4,7 +4,7 @@ class CategoriesController < ApplicationController
 
 
   def index
-    @categories = Category.all.page(params[:page])
+    @categories = Category.all.order(images_count: :desc).page(params[:page])
   end
 
   def show

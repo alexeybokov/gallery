@@ -1,7 +1,7 @@
 class Image < ApplicationRecord
   extend FriendlyId
 
-  belongs_to :category
+  belongs_to :category, counter_cache: :images_count
   belongs_to :user
   has_many :comments
   has_many :hearts, dependent: :destroy
@@ -14,11 +14,4 @@ class Image < ApplicationRecord
   mount_uploader :picture, PictureUploader
 
   paginates_per 12
-
-
-  private
-
-  def should_generate_new_friendly_id?
-    slug.nil? || title_changed? || location_changed?
-  end
 end

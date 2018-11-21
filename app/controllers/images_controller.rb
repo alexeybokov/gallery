@@ -10,7 +10,7 @@ class ImagesController < ApplicationController
   end
 
   def index
-    @images = Image.order(created_at: :desc).page(params[:page])
+    @images = Image.order(hearts_count: :desc).page(params[:page])
   end
 
   def show

@@ -18,14 +18,15 @@
                   .photo-img
                     = image_tag image.picture.thumb.url
   - else
-    %p There are no images
+    %p
+      = t('images.index.no_images')
 
   - if current_user.following?(@category)
-    = button_to "UnFollow", {action: 'unfollow'}, method: 'put', class: 'btn btn-outline-primary', remote: true
+    = button_to (t('categories.index.unfollow')), {action: 'unfollow'}, method: 'put', class: 'btn btn-outline-primary', remote: true
   - else
-    = button_to "Follow", {action: 'follow'}, method: 'put', class: 'btn btn-outline-primary', remote: true
+    = button_to (t('categories.index.follow')), {action: 'follow'}, method: 'put', class: 'btn btn-outline-primary', remote: true
 
   -if @category.user.eql?(current_user)
-    = button_to "Delete Category", {action: 'destroy'}, data: { confirm: "Are you sure?" }, method: :delete, class: 'btn btn-danger', remote: true
+    = button_to (t('categories.index.delete_category')), {action: 'destroy'}, data: { confirm: t('categories.index.delete_category.confirm')}, method: :delete, class: 'btn btn-danger', remote: true
 #paginate
   =paginate @images

@@ -14,7 +14,7 @@ class CommentsController < ApplicationController
   private
 
   def find_image
-    @image = Image.find(params[:image_id])
+    @image = Image.friendly.find(params[:image_id])
   end
 
   def comment_params

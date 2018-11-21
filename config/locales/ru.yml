@@ -1,0 +1,89 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# The following keys must be escaped otherwise they will not be retrieved by
+# the default I18n backend:
+#
+# true, false, on, off, yes, no
+#
+# Instead, surround them with single quotes.
+#
+# en:
+#   'true': 'foo'
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+ru:
+  activerecord:
+    models:
+      image: 'Изображение'
+      category: 'Категория'
+    attributes:
+      image:
+        name: 'Имя'
+        picture: 'Изображение'
+        category: 'Категория'
+        include_blank: 'Выбрать категорию'
+        create: 'Создать Изображение'
+        choose_file: 'Выбрать Файл'
+        select_category: 'Выбрать Категорию'
+      category:
+        title: 'Имя'
+        create: 'Создать Категорию'
+  layouts:
+    application:
+      title: 'Галерея'
+      home: 'Домашняя страница'
+      top_categories: 'Топ 5 Категорий'
+      images: 'Все Изображения'
+      comments: 'Комментарии'
+      account: 'Мой Профиль'
+      categories: 'Категории'
+      upload_images: 'Загрузить Изображение'
+      add_category: 'Добавить Категорию'
+      login: 'Войти'
+      logout: 'Выйти'
+      edit_profile: 'Редактировать профиль'
+  dashboard:
+    welcome: 'Приветствуем в нашей Галерее'
+  images:
+    index:
+      show: 'Все Изображения'
+      no_images: 'Нет Изображений'
+  comments:
+    index:
+      show: 'Все Комментарии'
+      comment: 'Комментарий'
+      user: 'Пользователь'
+    _form:
+      add_comment: 'Добавить Комментарий'
+  hearts:
+    _button:
+      like: 'Нравится'
+      dislike: 'Не Нравится'
+  categories:
+    index:
+      categories: 'Категории'
+      no_categories: 'Нет Категорий'
+      follow: 'Подписаться'
+      unfollow: 'Отписаться'
+      delete_category: 'Удалить Категорию'
+      confirm: 'Вы уверены ?!'
+
+

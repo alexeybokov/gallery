@@ -30,4 +30,58 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  activerecord:
+    models:
+      image: 'Image'
+      category: 'Category'
+    attributes:
+      image:
+        name: 'Name'
+        picture: 'Picture'
+        category: 'Category'
+        include_blank: 'Choose category'
+        create: 'Create Image'
+        choose_file: 'Choose file'
+        select_category: 'Choose category'
+      category:
+        title: 'Name'
+        create: 'Create Category'
+  layouts:
+    application:
+      title: 'Gallery'
+      home: 'Home'
+      top_categories: 'Top 5 Category'
+      images: 'All Images'
+      comments: 'Comments'
+      account: 'My Account'
+      categories: 'Categories'
+      upload_images: 'Download Images'
+      add_category: 'Add Category'
+      login: 'Login'
+      logout: 'Log out'
+      edit_profile: 'Edit Profile'
+  dashboard:
+    welcome: 'Wellcome to our Gallery'
+  images:
+    index:
+      show: 'All Images'
+      no_images: 'There are no Images'
+  comments:
+    index:
+      show: 'All Comments'
+      comment: 'Comment'
+      user: 'User'
+    _form:
+      add_comment: 'Add Comment'
+  hearts:
+    _button:
+      like: 'Heart'
+      dislike: 'Unheart'
+  categories:
+    index:
+      categories: 'Categories'
+      no_categories: 'There are no Categories'
+      follow: 'Follow'
+      unfollow: 'UnFollow'
+      delete_category: 'Delete Category'
+      confirm: 'Are you sure ?!'

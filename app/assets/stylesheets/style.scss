@@ -3,9 +3,9 @@ body{
 }
 
 section{
-  background-image: url("image.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
+  //background-image: url("image.jpg");
+  //background-repeat: no-repeat;
+  //background-size: cover;
 }
 .navbar{
   min-height: 30px;
@@ -44,7 +44,7 @@ section{
 }
 
 h1, h2{
-  color: white !important;
+  color: black !important;
   text-align: center;
   border-left:5px #666 solid;
   border-bottom: 1px #666 solid;
@@ -153,6 +153,7 @@ footer{
 .fab.fa-instagram,
 .fas.fa-user-circle,
 .fas.fa-align-justify,
+.fas.fa-globe-americas,
 .far.fa-arrow-alt-circle-down {
   color: white;
   margin-top: 10px;

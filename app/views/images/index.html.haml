@@ -1,5 +1,6 @@
 #gallery
-  %h2 All Images
+  %h2
+    = t('.show')
   - if @images.exists?
     - @images.each_slice(4) do |image|
       %div
@@ -7,14 +8,16 @@
           - image.each do |image|
             .col-mid-3
               .photo.photo-type-line
-                %a.photo-hover{"data-title" => image.name, :href => image.picture.thumb.url()}
+                %a.photo-hover{:href => image_path(image)}
                   .photo-info
                     .headline= image.name
                     .line
-                    -#.desc= image.category.title
+                    .desc= image.category.title
                     .mask
-                  .photo-img= image_tag image.picture.url(:thumb)
+                  .photo-img
+                    = image_tag image.picture.thumb.url
   - else
-    %p There are no images
+    %p
+      = t('.no_images')
+#paginate
   = paginate @images
-

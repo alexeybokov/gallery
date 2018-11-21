@@ -3,61 +3,85 @@
   %head
     %meta{:charset => "utf-8"}/
     %meta{:content => "width=device-width, initial-scale=1, shrink-to-fit=no", :name => "viewport"}/
-    %title Gallery
+    %title
+      =t('layouts.application.title')
     = csrf_meta_tags
-    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
-    %script{:src => "https://www.google.com/recaptcha/api.js"}
-    / Bootstrap core CSS
+    %link{:crossorigin => "anonymous", :href => "https://use.fontawesome.com/releases/v5.5.0/css/all.css", :integrity => "sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU", :rel => "stylesheet"}/
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
-    -#%link{:href => "assets/bootstrap.scss", :rel => "stylesheet"}
-    / Custom styles for this template
-    -#%link{:href => "css/style.css", :rel => "stylesheet"}/
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+
   %body
     %nav.navbar.navbar-expand-md.navbar-dark.bg-dark
-      %a.navbar-brand{:href => "#"} Gallery
+      %a.navbar-brand{:href => "#"}
+        = t('layouts.application.title')
       %button.navbar-toggler{"aria-controls" => "navbarsExampleDefault", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarsExampleDefault", "data-toggle" => "collapse", :type => "button"}
         %span.navbar-toggler-icon
       #navbarsExampleDefault.collapse.navbar-collapse
         %ul.navbar-nav.mr-auto
+
           %li.nav-item.active
-            = link_to 'Home', root_path, class: "nav-link"
+            %i.fas.fa-home
+          %li.nav-item.active
+            = link_to (t('layouts.application.home')), root_path, class: "nav-link"
             %a.nav-link{:href => "#"}
               %span.sr-only (current)
 
-          %li.nav-item.dropdown
-            %a#dropdown01.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "https://example.com"} Category
-            .dropdown-menu{"aria-labelledby" => "dropdown01"}
-              %a.dropdown-item{:href => "#"} Action
-              %a.dropdown-item{:href => "#"} Another action
-              %a.dropdown-item{:href => "#"} Something else here
-
-          %li.nav-item.dropdown
-            %a#dropdown03.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "https://example.com"} Category
+          %li.nav-item.active
+            %i.fas.fa-align-justify
+          %li.nav-item.dropdown.active
+            %a#dropdown03.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "https://example.com"}
+              = t('layouts.application.top_categories')
             .dropdown-menu{"aria-labelledby" => "dropdown03"}
-              -#- if @category.exists?
-              -#  - @category.each do |category|
-              -#    = link_to "#{category.title}", class: "dropdown-item"
-              -#- else
-              -#  %p.dropdown-item{:href => "#"} There are no categories
-
+              - top_5_categories.each do |category|
+                %a.dropdown-item{:href => "#{category_path(category)}"}
+                  = category.title
+              %a.dropdown-item.alert-info{:href => "#{new_category_path}"}
+                = t('layouts.application.add_category')
 
           %li.nav-item.active
-            = link_to 'All images', images_path, class: "nav-link"
-          %li.nav-item
-            %a.nav-link.disabled{:href => "#"} Comments
+            %i.fab.fa-instagram
+          %li.nav-item.active
+            = link_to (t('layouts.application.images')), images_path, class: "nav-link"
+
+          %li.nav-item.active
+            %i.fas.fa-comment
+          %li.nav-item.active
+            = link_to (t('layouts.application.comments')), comments_path, class:"nav-link"
+
+          %li.nav-item.active
+            %i.fas.fa-user-circle
           %li.nav-item.dropdown.active
-            %a#dropdown02.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "https://example.com"} Account
+            %a#dropdown02.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "https://example.com"}
+              = t('layouts.application.account')
             .dropdown-menu{"aria-labelledby" => "dropdown02"}
               - if user_signed_in?
-                = link_to 'Logout', destroy_user_session_path, class: "dropdown-item", method: :delete
+                = link_to (t('layouts.application.logout')), destroy_user_session_path, class: "dropdown-item alert-danger", method: :delete
               - else
-                = link_to 'Login', new_user_session_path, class: "dropdown-item"
-              = link_to 'Edit Profile', edit_user_registration_path, class: "dropdown-item"
+                = link_to (t('layouts.application.login')), new_user_session_path, class: "dropdown-item"
+              = link_to (t('layouts.application.edit_profile')), edit_user_registration_path, class: "dropdown-item alert-info"
+
+          %li.nav-item.active
+            = link_to (t('layouts.application.categories')), categories_path, class:"nav-link"
+
         %ul.nav.navbar-nav.pull-right
           %li.nav-item.active
-            = link_to 'Upload Image', new_image_path, class:"nav-link"
+            %i.far.fa-arrow-alt-circle-down
           %li.nav-item.active
-            = link_to 'Add Category', new_category_path, class:"nav-link"
+            = link_to (t('layouts.application.upload_images')), new_image_path, class:"nav-link"
+
+          %li.nav-item.active
+            = link_to (t('layouts.application.add_category')), new_category_path, class:"nav-link"
+
+          %li.nav-item.active
+            %i.fas.fa-globe-americas
+          %li.nav-item.active
+            -if I18n.locale == :ru
+              =link_to('En', { locale: :en }, class: 'nav-link')
+            -else
+              =link_to('Ru', { locale: :ru }, class: 'nav-link')
+
+
+
     %main.container{:role => "main"}
     %section
       .container
@@ -67,29 +91,8 @@
           .alert.alert-danger= flash[:alert]
         = yield
     -#%footer
-
-
     /
       Bootstrap core JavaScript
       \==================================================
     / Placed at the end of the document so the pages load faster
-    -#
-    -#%script{:crossorigin => "anonymous", :integrity => "sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN", :src => "https://code.jquery.com/jquery-3.2.1.slim.min.js"}
-    -#%script{:crossorigin => "anonymous", :integrity => "sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q", :src => "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"}
-    -#%script{:crossorigin => "anonymous", :integrity => "sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl", :src => "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"}
-    -#%script{:src => "assets/bootstrap.js"}
-    // :javascript
--#  %head
--#    %meta{:charset => "utf-8"}/
--#    %meta{:content => "IE=Edge,chrome=1", "http-equiv" => "X-UA-Compatible"}/
--#    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
--#    %title= content_for?(:title) ? yield(:title) : "Gallery"
--#  -#<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js" type="text/javascript"></script>
--#  %body
--#    = render partial: "layouts/header"
--#    .container
--#      .row
--#        .col-lg-9
--#          = bootstrap_flash
--#          = yield
--#      = render partial: "layouts/footer"
+

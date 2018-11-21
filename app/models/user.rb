@@ -2,11 +2,13 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and
   devise :database_authenticatable, :registerable, :recoverable,
-         :rememberable, :validatable, :omniauthable, omniauth_providers: [:facebook]
+         :rememberable, :validatable, :omniauthable, :lockable,
+          omniauth_providers: [:facebook]
 
   has_many :comments
-  has_many :images, through: :hearts
+  has_many :images, dependent: :destroy
   has_many :hearts, dependent: :destroy
+  has_many :categories, dependent: :destroy
 
   acts_as_follower
 
@@ -34,7 +36,6 @@ class User < ApplicationRecord
   end
 
   def unheart!(image)
-    # heart = self.hearts.find_by_image_id(image.id)
     heart = self.hearts.find_by(image_id: image.id)
     heart.destroy!
   end

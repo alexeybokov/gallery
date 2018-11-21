@@ -1,18 +1,17 @@
 class HeartsController < ApplicationController
-  # respond_to :html, :js
-  #
-  # def heart
-  #   @user = current_user
-  #   @image = Image.find(params[:image_id])
-  #   @user.heart!(@image)
-  #   redirect_to images_path
-  # end
-  #
-  # def unheart
-  #   @user = current_user
-  #   @heart = @user.hearts.find_by_image_id(params[:image_id])
-  #   @image = Image.find(params[:image_id])
-  #   @heart.destroy!
-  #   redirect_to images_path
-  # end
+
+  def create
+    @user = current_user
+    @image = Image.find(params[:id])
+    @user.heart!(@image)
+    redirect_to image_path(params[:id])
+  end
+
+  def destroy
+    @user = current_user
+    @heart = @user.hearts.find_by_image_id(params[:id])
+    @image = Image.find(params[:id])
+    @heart.destroy!
+    redirect_to image_path
+  end
 end

@@ -1,7 +1,12 @@
-= image_tag(@image.path.url, alt: 'some_image')
+%h2
+  = @image.name
 %br
+= image_tag(@image.picture.large.url, alt: 'some_image')
+%br
+%p
+  = render 'hearts/button'
+  %i.fas.fa-heart
+  = @image.hearts_count
 
-= link_to 'Edit', edit_image_path(@image)
-= link_to  'Back', images_path
-
-= render 'comments/comment'
+%br
+= render 'comments/comment'# comments: @comments#, comments: @image.comments

@@ -1,5 +1,7 @@
 class DashboardController < ApplicationController
   def index
-    # @category = Category.all
+    @category = Category.all
+    @images = Image.all
   end
 end
+

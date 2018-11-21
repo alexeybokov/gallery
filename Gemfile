@@ -36,6 +36,7 @@ gem 'jbuilder', '~> 2.5'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'activeadmin'
 gem 'acts_as_follower', github: 'tcocca/acts_as_follower', branch: 'master'
+gem 'bcrypt'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bootstrap', '~> 4.1.3'
 gem 'carrierwave'
@@ -51,13 +52,16 @@ gem 'omniauth-facebook'
 gem 'recaptcha'
 gem 'record_tag_helper'
 gem 'rspec'
+gem 'resque'
 gem 'simple_form'
 gem 'haml'
-
+gem 'rails-i18n', '~> 5.1'
+gem 'friendly_id', '~> 5.2.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'faker'
 end
 
 group :development do

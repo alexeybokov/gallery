@@ -1,0 +1,32 @@
+#gallery
+  %h2
+    #{Category.friendly.find(params[:id]).title}
+
+  - if @images.exists?
+    - @images.each_slice(4) do |image|
+      %div
+        .row
+          - image.each do |image|
+            .col-mid-3
+              .photo.photo-type-line
+                %a.photo-hover{"data-title" => image.name, :href => image_path(image)}
+                  .photo-info
+                    .headline= image.name
+                    .line
+                    .desc= image.category.title
+                    .mask
+                  .photo-img
+                    = image_tag image.picture.thumb.url
+  - else
+    %p
+      = t('images.index.no_images')
+
+  - if current_user.following?(@category)
+    = button_to (t('categories.index.unfollow')), {action: 'unfollow'}, method: 'put', class: 'btn btn-outline-primary', remote: true
+  - else
+    = button_to (t('categories.index.follow')), {action: 'follow'}, method: 'put', class: 'btn btn-outline-primary', remote: true
+
+  -if @category.user.eql?(current_user)
+    = button_to (t('categories.index.delete_category')), {action: 'destroy'}, data: { confirm: t('categories.index.delete_category.confirm')}, method: :delete, class: 'btn btn-danger', remote: true
+#paginate
+  =paginate @images

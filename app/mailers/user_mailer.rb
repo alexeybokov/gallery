@@ -4,10 +4,8 @@ class UserMailer < ApplicationMailer
   before_action :user_params
   before_action :category_url, only: %i[follow_email new_image_email]
 
-  def welcome_email
-    @url = 'http://localhost:3000/users/sign_in'
-    mail(to: @user.email, subject: 'Welcome Gallery') if @user.email.present?
-  end
+  default from: 'from@example.com'
+
 
   def follow_email
     mail(to: @user.email, subject: 'Follow') if @user.email.present?

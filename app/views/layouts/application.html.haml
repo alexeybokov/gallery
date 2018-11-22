@@ -60,6 +60,8 @@
                 = link_to (t('layouts.application.login')), new_user_session_path, class: "dropdown-item"
               = link_to (t('layouts.application.edit_profile')), edit_user_registration_path, class: "dropdown-item alert-info"
 
+
+
           %li.nav-item.active
             = link_to (t('layouts.application.categories')), categories_path, class:"nav-link"
 
@@ -68,7 +70,8 @@
             %i.far.fa-arrow-alt-circle-down
           %li.nav-item.active
             = link_to (t('layouts.application.upload_images')), new_image_path, class:"nav-link"
-
+          %li.nav-item.active
+            %i.fas.fa-plus
           %li.nav-item.active
             = link_to (t('layouts.application.add_category')), new_category_path, class:"nav-link"
 

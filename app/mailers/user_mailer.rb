@@ -6,7 +6,6 @@ class UserMailer < ApplicationMailer
 
   default from: 'from@example.com'
 
-
   def follow_email
     mail(to: @user.email, subject: 'Follow') if @user.email.present?
   end

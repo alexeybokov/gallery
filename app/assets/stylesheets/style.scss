@@ -3,9 +3,9 @@ body{
 }
 
 section{
-  //background-image: url("image.jpg");
-  //background-repeat: no-repeat;
-  //background-size: cover;
+  background-image: url("image.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 .navbar{
   min-height: 30px;
@@ -44,7 +44,7 @@ section{
 }
 
 h1, h2{
-  color: black !important;
+  color: white !important;
   text-align: center;
   border-left:5px #666 solid;
   border-bottom: 1px #666 solid;
@@ -88,7 +88,7 @@ footer{
 .photo-hover .mask{
   position: absolute;
   top:0;
-  left:0;
+  left:50px;
 }
 
 .photo-type-line .photo-hover{
@@ -105,10 +105,11 @@ footer{
 
 .photo-type-line .photo-info{
   z-index: 10;
-  color: #ff2831;
+  color: #000000;
   display:table-cell;
   vertical-align: middle;
   position: relative;
+  left: 50px;
 }
 
 .photo-type-line .photo-info .headline{
@@ -119,7 +120,7 @@ footer{
   height:1px;
   width:0;
   margin:15px auto;
-  background-color: #ff2831;
+  background-color: #000000;
   -webkit-transition: all 500ms ease-out;
   -moz-transition: all 500ms ease-out;
   transition: all 500ms ease-out;
@@ -128,7 +129,7 @@ footer{
 .photo-type-line .photo-hover .mask{
   background:#000;
   filter:alpha(opacity=50);
-  opacity:0.2;
+  opacity:0;
   z-index:0;
 }
 

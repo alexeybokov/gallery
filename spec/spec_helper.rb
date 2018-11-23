@@ -97,4 +97,13 @@ RSpec.configure do |config|
   # as the one that triggered the failure.
   Kernel.srand config.seed
 =end
+  # # These lines hook up database_cleaner around the beginning and end of each test,
+  # # telling it to execute whatever cleanup strategy we selected beforehand.
+  # config.before(:each) do
+  #   DatabaseCleaner.start
+  # end
+  #
+  # config.after(:each) do
+  #   DatabaseCleaner.clean
+  # end
 end

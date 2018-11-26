@@ -7,12 +7,12 @@ describe User do
   let(:user) { FactoryBot.create :user }
 
   it 'is invalid without an email' do
-    # expect(:subject, email: nil).not_to be_valid
-    skip
+    expect(FactoryBot.build(:user, email: nil)).not_to be_valid
   end
 
   it 'does not allow duplicate emails' do
     # expect(:subject, email: user.email).not_to be_valid
+    # expect(FactoryBot.create(:user).validate_uniqueness_of(:email)
     skip
   end
 
@@ -32,16 +32,3 @@ describe User do
     expect(user).to respond_to :categories
   end
 end
-
-
-
-
-# RSpec.describe User, type: :model do
-#   before(:all) do
-#     @user1 = create
-#   end
-#
-#   it "is valid with valid attributes" do
-#     expect(@user1).to be_valid
-#   end
-# end

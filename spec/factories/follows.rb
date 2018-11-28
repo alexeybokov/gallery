@@ -1,10 +1,8 @@
 # frozen_string_literal: true
 
-require 'rails_helper'
-
 FactoryBot.define do
   factory :follow do
-    user
-    category
+    user_id { User.last.id }
+    category_id { Category.last.id }
   end
 end

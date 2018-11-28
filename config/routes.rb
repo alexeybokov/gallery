@@ -3,7 +3,9 @@
 Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+  devise_for :users, only: :omniauth_callbacks, controllers: {
+      omniauth_callbacks: 'users/omniauth_callbacks'
+  }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   authenticated do
@@ -11,6 +13,7 @@ Rails.application.routes.draw do
   end
 
   scope '(:locale)' do
+    devise_for :users, skip: :omniauth_callbacks
     resources :images do
       resources :comments, only: :create
     end

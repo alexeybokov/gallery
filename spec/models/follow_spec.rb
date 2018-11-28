@@ -2,8 +2,12 @@
 
 require 'rails_helper'
 
-describe Follow, type: :model do
-  let(:follow) { FactoryBot.create :follow }
+RSpec.describe Follow, type: :model do
+  let(:follow) { create :follow }
+
+  it 'is an instance of Follow' do
+    expect(subject).to be_an Follow
+  end
 
   describe 'association tests' do
     it 'should belongs_to followable' do

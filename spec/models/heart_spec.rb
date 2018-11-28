@@ -4,11 +4,15 @@ require 'rails_helper'
 
 RSpec.describe Heart, type: :model do
   before do
-    FactoryBot.build(:valid_user)
-    FactoryBot.create(:valid_image)
+    build(:valid_user)
+    create(:valid_image)
   end
 
-  let(:heart) { FactoryBot.build :heart }
+  let(:heart) { build :heart }
+
+  it 'is an instance of Heart' do
+    expect(subject).to be_an Heart
+  end
 
   describe 'association tests' do
     it 'should belongs_to user' do

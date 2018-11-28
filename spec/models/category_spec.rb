@@ -2,12 +2,16 @@
 
 require 'rails_helper'
 
-RSpec.describe Category do
+RSpec.describe Category, type: :model do
   before do
-    FactoryBot.build(:valid_user)
+    build(:valid_user)
   end
 
-  let(:category) { FactoryBot.build(:valid_category) }
+  let(:category) { build(:valid_category) }
+
+  it 'is an instance of Category' do
+    expect(subject).to be_an Category
+  end
 
   describe 'association tests' do
     it 'should belongs_to user' do
@@ -21,11 +25,11 @@ RSpec.describe Category do
 
   describe 'validation tests' do
     it 'is invalid without an title' do
-      expect(FactoryBot.build(:category_without_title).save).to be_falsey
+      expect(build(:category_without_title).save).to be_falsey
     end
 
     it 'ensures user_present' do
-      expect(FactoryBot.build(:category_without_user).save).to be_falsey
+      expect(build(:category_without_user).save).to be_falsey
     end
   end
 end

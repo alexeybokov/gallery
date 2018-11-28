@@ -4,11 +4,15 @@ require 'rails_helper'
 
 RSpec.describe Image, type: :model do
   before do
-    FactoryBot.build(:valid_user)
-    FactoryBot.build(:category)
+    build(:valid_user)
+    build(:category)
   end
 
-  let(:image) { FactoryBot.build(:valid_image) }
+  let(:image) { build(:valid_image) }
+
+  it 'is an instance of Image' do
+    expect(subject).to be_an Image
+  end
 
   describe 'association tests' do
     it 'should belongs_to user' do

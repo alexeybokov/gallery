@@ -2,14 +2,18 @@
 
 require 'rails_helper'
 
-RSpec.describe Comment do
+RSpec.describe Comment, type: :model do
   before do
-    FactoryBot.build(:valid_user)
-    FactoryBot.build(:valid_category)
-    FactoryBot.create(:valid_image)
+    build(:valid_user)
+    build(:valid_category)
+    create(:valid_image)
   end
 
-  let(:comment) { FactoryBot.build(:valid_comment) }
+  let(:comment) { build(:valid_comment) }
+
+  it 'is an instance of Comment' do
+    expect(subject).to be_an Comment
+  end
 
   describe 'association tests' do
     it 'should belongs_to user' do

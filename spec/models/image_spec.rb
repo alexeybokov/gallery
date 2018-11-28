@@ -2,30 +2,47 @@
 
 require 'rails_helper'
 
-describe Image do
-  let(:image) { FactoryBot.create :image }
-
-  it 'should belongs_to user' do
-    expect(Image.reflect_on_association(:user).macro).to eq(:belongs_to)
+RSpec.describe Image, type: :model do
+  before do
+    FactoryBot.build(:valid_user)
+    FactoryBot.build(:category)
   end
 
-  it 'should belongs_to category' do
-    expect(Image.reflect_on_association(:category).macro).to eq(:belongs_to)
+  let(:image) { FactoryBot.build(:valid_image) }
+
+  describe 'association tests' do
+    it 'should belongs_to user' do
+      expect(Image.reflect_on_association(:user).macro).to eq(:belongs_to)
+    end
+
+    it 'should belongs_to category' do
+      expect(Image.reflect_on_association(:category).macro).to eq(:belongs_to)
+    end
+
+    it 'has many comments' do
+      expect(image).to respond_to :comments
+    end
+
+    it 'has many hearts' do
+      expect(image).to respond_to :hearts
+    end
   end
 
-  it 'has many comments' do
-    expect(image).to respond_to :comments
-  end
+  describe 'validation tests' do
+    it 'ensures name present' do
+      expect(FactoryBot.build(:image_without_name).save).to be_falsey
+    end
 
-  it 'has many hearts' do
-    expect(image).to respond_to :hearts
-  end
+    it 'ensures picture present' do
+      expect(FactoryBot.build(:image_without_picture).save).to be_falsey
+    end
 
-  it 'is invalid without an name' do
-    expect(FactoryBot.build(:image, name: nil)).not_to be_valid
-  end
+    it 'ensures user present' do
+      expect(FactoryBot.build(:image_without_user).save).to be_falsey
+    end
 
-  it 'is invalid without an picture' do
-    expect(FactoryBot.build(:image, picture: nil)).not_to be_valid
+    it 'ensures category present' do
+      expect(FactoryBot.build(:image_without_category).save).to be_falsey
+    end
   end
 end

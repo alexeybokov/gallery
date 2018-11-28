@@ -4,7 +4,7 @@ require 'rails_helper'
 
 
 describe User do
-  let(:user) { FactoryBot.create :user }
+  let(:user) { FactoryBot.create :valid_user }
 
   it 'is invalid without an email' do
     expect(FactoryBot.build(:user, email: nil)).not_to be_valid
@@ -30,5 +30,19 @@ describe User do
 
   it 'has many categories' do
     expect(user).to respond_to :categories
+  end
+
+  context 'change email' do
+    it 'sends email changed notification' do
+      user.email = Faker::Internet.email
+      expect(UserMailer).to receive(:email_changed).with(user).and_return(double('emeil', deliver: true))
+      user.save
+    end
+
+    it "doesn't send email changed notification" do
+      user.name = 'Santa Claus'
+      expect(UserMailer).not_to receive(:follow_email)
+      user.save
+    end
   end
 end

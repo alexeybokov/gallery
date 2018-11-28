@@ -2,18 +2,27 @@
 
 require 'rails_helper'
 
-describe Heart do
-  let(:heart) { FactoryBot.create :heart }
-
-  it 'should belongs_to user' do
-    expect(Heart.reflect_on_association(:user).macro).to eq(:belongs_to)
+RSpec.describe Heart, type: :model do
+  before do
+    FactoryBot.build(:valid_user)
+    FactoryBot.create(:valid_image)
   end
 
-  it 'should belongs_to image' do
-    expect(Heart.reflect_on_association(:image).macro).to eq(:belongs_to)
+  let(:heart) { FactoryBot.build :heart }
+
+  describe 'association tests' do
+    it 'should belongs_to user' do
+      expect(Heart.reflect_on_association(:user).macro).to eq(:belongs_to)
+    end
+
+    it 'should belongs_to image' do
+      expect(Heart.reflect_on_association(:image).macro).to eq(:belongs_to)
+    end
   end
 
-  it 'is invalid without an user_id' do
-    expect(FactoryBot.build(:heart, user_id: nil)).not_to be_valid
+  describe 'validation test' do
+    it 'is invalid without an user_id' do
+      expect(FactoryBot.build(:heart, user_id: nil)).not_to be_valid
+    end
   end
 end

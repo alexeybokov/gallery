@@ -16,8 +16,16 @@
                     .mask
                   .photo-img
                     = image_tag image.picture.thumb.url
+                  .overlay
+                    %i.fas.fa-heart
+                      = image.hearts_count
   - else
     %p
       = t('.no_images')
 #paginate
   = paginate @images
+
+
+
+
+

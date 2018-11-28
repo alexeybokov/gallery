@@ -34,7 +34,7 @@ class CategoriesController < ApplicationController
   def follow
     current_user.follow(@category)
     @follow = Follow.find_by(follower: current_user, followable: @category)
-    UserMailer.with(user: current_user, category: params[:id]).follow_email.deliver_later
+    UserMailer.with(user: current_user, category: params[:id]).follow_email.deliver_now
     respond_to :js
     redirect_to category_path
   end

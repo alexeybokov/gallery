@@ -18,8 +18,10 @@ RSpec.describe CommentsController, type: :controller do
       expect(response.status).to eq(200)
     end
 
-    it 'assigns instance variables' do
-      expect(:image).not_to be_nil
+    it 'assigns instance variables @image' do
+      allow(:image).to receive(:create).and_return true
+      get :index
+      expect(assigns(:images)).to eq([image])
     end
 
     it 'assigns instance variables' do
@@ -36,6 +38,20 @@ RSpec.describe CommentsController, type: :controller do
 
     it 'renders :create template' do
       expect(response).to redirect_to(image_comments_path)
+    end
+  end
+
+
+
+  context "with 2 or more comments" do
+    it "orders them in reverse chronologically" do
+      # image = Image.create!(user_id: User.last,
+      #                       category_id: Category.first.id,
+      #                       picture: File.new(Rails.root + 'spec/factories/images/image.jpg'),
+      #                       name: Faker::Name.name)
+      comment1 = image.comments.create!(:body => "first comment")
+      comment2 = image.comments.create!(:body => "second comment")
+      expect(image.reload.comments).to eq([comment2, comment1])
     end
   end
 end

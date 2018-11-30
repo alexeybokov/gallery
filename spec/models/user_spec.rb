@@ -14,8 +14,10 @@ RSpec.describe User, type: :model do
   end
 
   it 'does not allow duplicate emails' do
-    # expect(:subject, email: user.email).not_to be_valid
-    # expect(FactoryBot.create(:user).validate_uniqueness_of(:email)
+    # old_user = user.save(email: 'developer@gmail.com', password: Faker::Internet.password)
+    # new_user = user.save(email: 'developer@gmail.com', password: Faker::Internet.password)
+    # new_user.valid?
+    # expect(new_user.errors[:user]).to include('has already been taken')
     skip
   end
 

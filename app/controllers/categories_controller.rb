@@ -19,8 +19,10 @@ class CategoriesController < ApplicationController
     @category = current_user.categories.build(categories_params)
 
     if @category.save
+      flash[:notice] = 'Category created'
       redirect_to categories_path
     else
+      flash[:alert] = 'Category was not create, try again'
       render 'new'
     end
   end

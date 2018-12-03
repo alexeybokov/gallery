@@ -15,4 +15,11 @@ RSpec.describe 'comments/index' do
   it 'has a request.fullpath that is defined' do
     expect(controller.request.fullpath).to eq comments_path
   end
+
+  it 'renders _comment partial for each comment' do
+    FactoryBot.create(:valid_image)
+    assign(:comments, [stub_model(Comment), stub_model(Comment)])
+    render
+    view.should render_template(partial: '_comment', count: 2)
+  end
 end

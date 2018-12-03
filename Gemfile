@@ -85,6 +85,7 @@ group :test do
   gem 'chromedriver-helper'
   gem 'shoulda-matchers'
   gem 'rails-controller-testing'
+  gem 'rspec-activemodel-mocks'
   gem 'simplecov', require: false
 end
 

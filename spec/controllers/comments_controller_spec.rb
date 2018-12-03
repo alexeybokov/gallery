@@ -51,15 +51,20 @@ RSpec.describe CommentsController, type: :controller do
     end
   end
 
-  # context 'with 2 or more comments' do
-  #   let(:user) { create(:valid_user) }
-  #   let(:image) { create(:valid_image) }
-  #   let(:comment) { build(:valid_comment, image: image) }
-  #
-  #   it 'orders them in reverse chronologically' do
-  #     comment1 = image.comments.create!(body: 'first comment', user_id: user.id)
-  #     comment2 = image.comments.create!(body: 'second comment', user_id: user.id)
-  #     expect(image.reload.comments).to eq([comment2, comment1])
-  #   end
-  # end
+  context 'with 2 or more comments' do
+    skip
+    # let(:user) { create(:valid_user) }
+    # let(:image) { create(:valid_image) }
+    # let(:comment) { build(:valid_comment, image: image) }
+    #
+    # it 'orders them in reverse chronologically' do
+    #   image = Image.create!(picture: fixture_file_upload(Rails.root + 'spec/factories/images/image.jpg'),
+    #            name: Faker::Name.name,
+    #            category_id: '5')
+    #   comment1 = image.comments.create!(body: 'first comment', user_id: user.id)
+    #   comment2 = image.comments.create!(body: 'second comment', user_id: user.id)
+    #   # expect(image.reload.comments).to eq([comment2, comment1])
+    #   expect(assigns(:comments)). to eq image.comments.order(created_at: :desc)
+    # end
+  end
 end

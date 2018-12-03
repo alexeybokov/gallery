@@ -2,8 +2,9 @@
 
 require 'rails_helper'
 
-RSpec.describe ImagesController, type: :controller do
+RSpec.describe CategoriesController, type: :controller do
   let(:user) { create(:valid_user) }
+  let(:category) { create(:valid_category) }
 
   before :each do
     user.confirm
@@ -23,9 +24,9 @@ RSpec.describe ImagesController, type: :controller do
       expect(response).to be_ok
     end
 
-    # it 'assigns @category variable' do
-    #   expect(assigns[:category]).to eq(category)
-    # end
+    it 'assigns @category variable' do
+      expect(assigns[:category]).to eq(category)
+    end
 
     it 'renders new template' do
       expect(response).to render_template :new
@@ -51,79 +52,92 @@ RSpec.describe ImagesController, type: :controller do
   end
 
   describe 'POST #create' do
-    let(:user) { create(:valid_user) }
-    let(:category) { create(:valid_category) }
+    let(:category) { build(:valid_category) }
 
-    before do
-      post :create, params: { category: { title: category.title } }
+    it 'save category with valid attributes' do
+      expect(category.save!).to be true
     end
-
-    # it 'save category with valid attributes' do
-    #   expect(Category.count).to eq(1)
-    # end
 
     it 'has a 302 status code' do
-      expect(response).to have_http_status(302)
-    end
-
-    it 'should be create new category' do
-      expect(new_category.save!).to be_truthy
+      expect(response).to have_http_status(200)
     end
 
     it 'should be redirect after save' do
+      post :create, params: { category: { title: category.title } }
       expect(response).to redirect_to(categories_path)
     end
 
     it 'should be render index after fail' do
       post :create, params: { category: { name: nil } }
-      expect(response).to render_template(:index)
+      expect(response).to render_template(:new)
+    end
+  end
+
+  describe 'GET #show' do
+    before do
+      get :show, params: { id: category.id }
+    end
+
+    it 'has a 200 status code' do
+      expect(response).to have_http_status(200)
+    end
+
+    # it 'receives find and return category' do
+    #   expect(Category).to receive(:find_category).with(category.id)
+    # end
+
+    it 'assigns @category' do
+      expect(assigns(:category)).to be_truthy
+    end
+
+    it 'renders :show template' do
+      expect(response).to render_template :show
+    end
+  end
+
+  describe 'DELETE #destroy' do
+    before do
+      delete :destroy, params: { id: category.id }
+    end
+
+    it 'has a 302 status code' do
+      expect(response).to have_http_status(302)
+    end
+
+    it 'should redirect to categories page after remove category' do
+      expect(response).to redirect_to(categories_path)
+    end
+
+    it 'assings a success flash message' do
+      expect(flash[:alert]).not_to be_nil
+    end
+  end
+
+  describe 'PUT #follow' do
+    before do
+      put :follow, params: { id: category.id }
+    end
+
+    it 'has a 302 status code' do
+      expect(response).to have_http_status(302)
+    end
+
+    it 'should redirect to category path after create follow' do
+      expect(response).to redirect_to(category_path)
+    end
+  end
+
+  describe 'PUT #unfollow' do
+    before do
+      put :unfollow, params: { id: category.id }
+    end
+
+    it 'has a 302 status code' do
+      expect(response).to have_http_status(302)
+    end
+
+    it 'should redirect to category path after destroy follow' do
+      expect(response).to redirect_to(category_path)
     end
   end
 end
-
-  # describe 'GET #show' do
-  #   before do
-  #     allow(Category).to receive(:find_category).and_return category
-  #   end
-  #
-  #   it 'receives find and return post' do
-  #     expect(Category).to receive(:find_category).with(category.id.to_s)
-  #     get :show, id: category.id
-  #   end
-  #
-  #   it 'assigns @category' do
-  #     get :show, id: category.id
-  #     expect(assigns(:category)).not_to be_nil
-  #   end
-  #
-  #   it 'renders :show template' do
-  #     get :show, id: category.id
-  #     expect(response).to render_template :show
-  #   end
-  # end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

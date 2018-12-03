@@ -20,7 +20,7 @@ class ImagesController < ApplicationController
   def create
     @image = current_user.images.build(image_params)
 
-    if @image.save!
+    if @image.save
       UserMailer.with(user: current_user, category: params[:id]).new_image_email.deliver_now
       flash[:notice] = 'Image Uploaded'
       redirect_to image_path(@image)
@@ -35,7 +35,7 @@ class ImagesController < ApplicationController
 
   def destroy
     Image.find(params[:id]).destroy
-    flash[:notice] = 'Image removed'
+    flash[:alert] = 'Image removed'
     redirect_to images_path
   end
 

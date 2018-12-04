@@ -19,9 +19,9 @@ RSpec.describe CategoriesController, type: :controller do
       get :new
     end
 
-    it 'returns 200' do
+    it 'returns success responce' do
       get :new
-      expect(response).to be_ok
+      expect(response).to be_success
     end
 
     it 'assigns @category variable' do
@@ -38,8 +38,8 @@ RSpec.describe CategoriesController, type: :controller do
       get :index
     end
 
-    it 'has a 200 status code' do
-      expect(response.status).to eq(200)
+    it 'returns success responce' do
+      expect(response).to be_success
     end
 
     it 'assigns instance variables' do

@@ -11,4 +11,14 @@ RSpec.describe 'images/show' do
   it 'infers the controller action' do
     expect(controller.request.path_parameters[:action]).to eq('show')
   end
+
+  it 'should  be render _button.html.haml' do
+    skip
+    # expect(rendered).to render(partial: 'hearts/button')
+  end
+
+  it 'should  be render _comment.html.haml' do
+    skip
+    # expect(rendered).to render(partial: 'comments/comment')
+  end
 end

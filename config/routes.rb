@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   scope '(:locale)' do
     devise_for :users, skip: :omniauth_callbacks
-    resources :images do
+    resources :images, only: %i[index show new create] do
       resources :comments, only: :create
     end
 

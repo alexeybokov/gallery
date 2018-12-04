@@ -39,10 +39,13 @@ RSpec.describe CommentsController, type: :controller do
     end
 
     it 'renders :create template' do
-      post :create, params: { image_id: image.id,
-                              comment: {
-                                       user_id: User.first.id,
-                                       body: Faker::Lorem.sentence(3, true, 10) } }
+      post :create, params: {
+          image_id: image.id,
+          comment: {
+                    user_id: User.first.id,
+                    body: Faker::Lorem.sentence(3, true, 10)
+          }
+      }
       expect(response).to redirect_to image_path(id: image.slug)
     end
 

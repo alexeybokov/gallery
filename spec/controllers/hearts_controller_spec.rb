@@ -47,11 +47,10 @@ RSpec.describe HeartsController, type: :controller do
     let(:heart) { create(:heart) }
 
     before do
-      post :create, params: { category_id: category.id, id: image.id }
+      delete :destroy, params: { category_id: category.id, id: image.id }
     end
 
     it 'returns success(302) status code' do
-      delete :destroy, params: { category_id: category.id, id: image.id }
       expect(response.status).to eq(302)
     end
 
@@ -60,12 +59,10 @@ RSpec.describe HeartsController, type: :controller do
     end
 
     it 'success redirect after create hearts' do
-      delete :destroy, params: { category_id: category.id, id: image.id }
       expect(response).to redirect_to(image_path(id: image.id))
     end
 
     it 'change hearts count after destroy' do
-      delete :destroy, params: { category_id: category.id, id: image.id }
       expect(Heart.count).to eq(0)
     end
   end

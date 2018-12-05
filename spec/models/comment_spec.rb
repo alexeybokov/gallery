@@ -4,8 +4,8 @@ require 'rails_helper'
 
 RSpec.describe Comment, type: :model do
   before do
-    build(:valid_user)
-    build(:valid_category)
+    create(:valid_user)
+    create(:valid_category)
     create(:valid_image)
   end
 

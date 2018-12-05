@@ -4,8 +4,8 @@ require 'rails_helper'
 
 RSpec.describe Image, type: :model do
   before do
-    build(:valid_user)
-    build(:category)
+    create(:valid_user)
+    create(:valid_category)
   end
 
   let(:image) { build(:valid_image) }

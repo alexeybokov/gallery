@@ -47,6 +47,7 @@ RSpec.describe HeartsController, type: :controller do
     let(:heart) { create(:heart) }
 
     before do
+      post :create, params: { category_id: category.id, id: image.id }
       delete :destroy, params: { category_id: category.id, id: image.id }
     end
 

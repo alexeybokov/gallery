@@ -6,10 +6,10 @@ RSpec.describe DashboardController, type: :controller do
 
   describe 'GET #index' do
     let(:user) { build(:valid_user) }
+    let(:category) { build(:valid_category) }
+    let(:image) { build(:valid_image) }
 
     before do
-      @category = FactoryBot.create(:valid_category)
-      @image = FactoryBot.create(:valid_image)
       user.confirm
       sign_in user
     end
@@ -26,12 +26,12 @@ RSpec.describe DashboardController, type: :controller do
 
     it 'assigns instance variable @category' do
       get :index
-      expect(@category).to be_truthy
+      expect(category).to be_truthy
     end
 
     it 'assigns instance variable @image' do
       get :index
-      expect(@image).to be_truthy
+      expect(image).to be_truthy
     end
 
     context 'when the user is logged out' do

@@ -61,7 +61,7 @@ en:
       logout: 'Log out'
       edit_profile: 'Edit Profile'
   dashboard:
-    welcome: 'Wellcome to our Gallery'
+    welcome: 'Welcome to our Gallery'
   images:
     index:
       show: 'All Images'

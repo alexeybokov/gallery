@@ -4,7 +4,7 @@ require 'rails_helper'
 
 RSpec.describe Category, type: :model do
   before do
-    build(:valid_user)
+    create(:valid_user)
   end
 
   let(:category) { build(:valid_category) }

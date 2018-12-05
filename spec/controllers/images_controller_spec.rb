@@ -126,6 +126,12 @@ RSpec.describe ImagesController, type: :controller do
       get :show, params: { id: image.id }
     end
 
+    # it 'use before_filter set_image' do
+    #   expect(controller).to receive(:set_image)
+    #   get :show
+    # end
+
+
     it 'has a 200 status code' do
       expect(response).to have_http_status(200)
     end

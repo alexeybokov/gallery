@@ -19,6 +19,19 @@ feature 'Registration' do
     expect(page).to have_content 'Sign up'
     expect(page).to have_content 'Log in'
     # expect(page).not_to have_content 'Sign out'
-    # expect(page).to have_content 'You registered'
+  end
+
+  scenario 'Visitor registers failure via register form' do
+
+    within '#new_user' do
+      fill_in 'user[email]', with: ''
+      fill_in 'user[password]', with: '12345678'
+      fill_in 'user[password_confirmation]', with: ''
+      click_button('Sign up')
+    end
+
+    expect(page).to have_button 'Sign up'
+    expect(page).to have_content 'Email can\'t be blank'
+    expect(page).to have_content 'Password confirmation doesn\'t match Password'
   end
 end

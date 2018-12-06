@@ -81,4 +81,6 @@ RSpec.configure do |config|
   config.include Devise::Test::ControllerHelpers, type: :view
   # config.include RequestSpecHelper, type: :request
   config.include FactoryBot::Syntax::Methods
+  config.include Warden::Test::Helpers
+  config.include Capybara::DSL
 end

@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-feature 'Category pages' do
+feature 'Category pages', driver: :selenium_chrome do
 
   given!(:user) { create(:valid_user) }
   given!(:category) { create(:valid_category) }

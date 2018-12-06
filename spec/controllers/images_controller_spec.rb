@@ -55,8 +55,6 @@ RSpec.describe ImagesController, type: :controller do
     let(:category) { create(:valid_category) }
     let(:image) { build(:valid_image) }
 
-    # before { allow(Image).to receive(:new).and_return(image) }
-
     it 'has a 200 status code' do
       expect(response.status).to eq(200)
     end
@@ -126,19 +124,15 @@ RSpec.describe ImagesController, type: :controller do
       get :show, params: { id: image.id }
     end
 
-    # it 'use before_filter set_image' do
-    #   expect(controller).to receive(:set_image)
-    #   get :show
-    # end
-
-
     it 'has a 200 status code' do
       expect(response).to have_http_status(200)
     end
 
-    # it 'receives find and return images' do
-    #   expect(image).to receive(:find).with(image.id)
-    # end
+    it 'receives find and return images' do
+      allow(controller).to receive(:set_image).and_return image
+      get :show, params: { id: image.id }
+      expect(assigns(:image)).not_to be_nil
+    end
 
     it 'assigns @image' do
       expect(assigns(:image)).to be_truthy

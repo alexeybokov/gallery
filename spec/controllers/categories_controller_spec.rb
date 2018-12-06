@@ -82,9 +82,11 @@ RSpec.describe CategoriesController, type: :controller do
       expect(response).to have_http_status(200)
     end
 
-    # it 'receives find and return category' do
-    #   expect(Category).to receive(:find_category).with(category.id)
-    # end
+    it 'receives find and return category' do
+      allow(controller).to receive(:find_category).and_return category
+      get :show, params: { id: category.id }
+      expect(assigns(:category)).not_to be_nil
+    end
 
     it 'assigns @category' do
       expect(assigns(:category)).to be_truthy

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'boot'
 require 'rails/all'
 
@@ -15,8 +17,9 @@ module Gallery
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
+    # config.I18n.load_path += Dir[Rails.root.join('config', 'locales', '*.{rb,yml}')]
+    # config.I18n.available_locales = [:en, :ru]
     config.i18n.default_locale = :en
-
   end
 end
 

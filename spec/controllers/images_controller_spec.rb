@@ -34,9 +34,7 @@ RSpec.describe ImagesController, type: :controller do
   end
 
   describe 'GET #index' do
-    before do
-      get :index
-    end
+    subject! { get :index }
 
     it 'has a 200 status code' do
       expect(response.status).to eq(200)
@@ -144,23 +142,20 @@ RSpec.describe ImagesController, type: :controller do
   end
 
   describe 'DELETE #destroy' do
-    # before do
-    #   delete :destroy, params: { id: image.id }
-    # end
-
-    it 'has a 302 status code' do
-      skip
-      # expect(response).to have_http_status(302)
+    before do
+      delete :destroy, params: { id: image.id }
     end
 
-    it 'should redirect to categories page after remove category' do
-      skip
-      # expect(response).to redirect_to(images_path)
+    xit 'has a 302 status code' do
+      expect(response).to have_http_status(302)
     end
 
-    it 'assings a success flash message' do
-      skip
-      # expect(flash[:alert]).not_to be_nil
+    xit 'should redirect to categories page after remove category' do
+      expect(response).to redirect_to(images_path)
+    end
+
+    xit 'assigns a success flash message' do
+      expect(flash[:alert]).not_to be_nil
     end
   end
 end

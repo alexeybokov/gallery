@@ -13,9 +13,7 @@ RSpec.describe CommentsController, type: :controller do
   end
 
   describe 'GET #index' do
-    before do
-      get :index
-    end
+    subject! { get :index }
 
     it 'has a 200 status code' do
       expect(response.status).to eq(200)
@@ -40,11 +38,11 @@ RSpec.describe CommentsController, type: :controller do
 
     it 'renders :create template' do
       post :create, params: {
-          image_id: image.id,
-          comment: {
-                    user_id: User.first.id,
-                    body: Faker::Lorem.sentence(3, true, 10)
-          }
+        image_id: image.id,
+        comment: {
+          user_id: User.first.id,
+          body: Faker::Lorem.sentence(3, true, 10)
+        }
       }
       expect(response).to redirect_to image_path(id: image.slug)
     end

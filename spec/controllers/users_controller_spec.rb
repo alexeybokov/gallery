@@ -7,8 +7,8 @@ RSpec.describe UsersController, type: :controller do
     let(:user) { create(:valid_user) }
 
     it 'save user with valid attributes' do
-      # expect(User.count).to eq(1)
-      skip
+      user.save
+      expect(User.count).to eq(1)
     end
   end
 end

@@ -21,7 +21,7 @@ RSpec.describe CategoriesController, type: :controller do
 
     it 'returns success responce' do
       get :new
-      expect(response).to be_success
+      expect(response).to be_successful
     end
 
     it 'assigns @category variable' do
@@ -34,12 +34,10 @@ RSpec.describe CategoriesController, type: :controller do
   end
 
   describe 'GET #index' do
-    before do
-      get :index
-    end
+    subject! { get :index }
 
     it 'returns success responce' do
-      expect(response).to be_success
+      expect(response).to be_successful
     end
 
     it 'assigns instance variables' do
@@ -83,7 +81,7 @@ RSpec.describe CategoriesController, type: :controller do
     end
 
     it 'receives find and return category' do
-      allow(controller).to receive(:find_category).and_return category
+      expect(controller).to receive(:find_category)
       get :show, params: { id: category.id }
       expect(assigns(:category)).not_to be_nil
     end

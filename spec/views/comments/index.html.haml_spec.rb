@@ -2,7 +2,19 @@
 
 require 'rails_helper'
 
-RSpec.describe 'comments/index' do
+RSpec.describe 'comments/index', type: :view do
+
+  let(:user) { create(:valid_user) }
+  let(:image) { create(:image_with_comments) } # Comment count = 5
+
+  before do
+    user.confirm
+    login_as user, scope: :user
+    assign(:image, image)
+    assign(:comments, image.comments)
+    visit image_path(category_id: image.category.id, id: image.id)
+  end
+
   it 'infers the controller path' do
     expect(controller.request.path_parameters[:controller]).to eq('comments')
     expect(controller.controller_path).to eq('comments')
@@ -17,10 +29,7 @@ RSpec.describe 'comments/index' do
   end
 
   it 'renders _comment partial for each comment' do
-    skip
-    # FactoryBot.create(:valid_image)
-    # assign(:comments, [stub_model(Comment), stub_model(Comment)])
-    # render
-    # view.should render_template(partial: '_comment', count: 2)
+    expect(page).to render_template('comments/_comment')
+    expect(image.comments_count).to eq 5
   end
 end

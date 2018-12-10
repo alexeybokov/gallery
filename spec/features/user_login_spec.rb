@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-feature 'Login Fail' do
+feature 'Login Fail', driver: :selenium_chrome do
 
   given(:user) { create(:valid_user) }
 
@@ -42,7 +42,7 @@ feature 'Login Fail' do
       end
 
       find('#dropdown02', text: 'My Account').click
-      ['Edit Profile', 'Login'].each do |title|
+      ['Edit Profile', 'Log out'].each do |title|
         expect(page).to have_selector('.dropdown-item', text: title)
       end
     end

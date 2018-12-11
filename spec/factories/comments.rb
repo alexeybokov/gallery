@@ -10,7 +10,7 @@ FactoryBot.define do
 
     factory :comment_without_body, parent: :comment do
       user_id { User.first.id }
-      image_id { Image.first.id }
+      image_id { 1 }
     end
 
     factory :comment_without_user, parent: :comment do

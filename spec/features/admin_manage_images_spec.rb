@@ -80,19 +80,14 @@ feature 'Admin Image', driver: :selenium_chrome do
     end
 
     feature 'Delete' do
-      skip
-      # before do
-      #   find_link(text: 'Delete').click
-      # end
-      #
-      # scenario 'remove category' do
-      #   expect(Category.count).to eq(1)
-      #   accept_alert do
-      #     click_link('OK')
-      #   end
-      #   expect(Category.count).to eq(0)
-      #   # expect(page).to have_content('Category was successfully destroyed.')
-      # end
+      scenario 'remove image' do
+        expect(Image.count).to eq(1)
+        find_link(text: 'Delete').click
+        page.driver.browser.switch_to.alert.accept
+        expect(page).to have_content('Image was successfully destroyed.')
+        visit admin_user_session_path
+        expect(Image.count).to eq(0)
+      end
     end
   end
 end

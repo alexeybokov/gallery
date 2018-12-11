@@ -23,7 +23,6 @@ feature 'Category pages', driver: :selenium_chrome do
   end
 
   scenario 'User can add new category' do
-    # click_link('add Category')
     visit new_category_path
     expect(page).to have_button('Create Category')
   end
@@ -44,11 +43,11 @@ feature 'Category pages', driver: :selenium_chrome do
   end
 
   scenario 'Delete Category' do
-    skip
-    # click_button('Delete Category')
-    # accept_alert do
-    #   click_link('Ok')
-    # end
-    # expect(page).to have_content('Category and images removed')
+    expect(Category.count).to eq(1)
+    click_button('Delete Category')
+    page.driver.browser.switch_to.alert.accept
+    page.driver.browser.switch_to.alert.accept
+    expect(page).to have_content('Category and images removed')
+    expect(Category.count).to eq(0)
   end
 end

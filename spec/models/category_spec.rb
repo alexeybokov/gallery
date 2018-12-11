@@ -26,7 +26,6 @@ RSpec.describe Category, type: :model do
   describe 'validation tests' do
     it 'is invalid without an title' do
       expect(build(:category_without_title).valid?).to be_falsey
-      # expect(build(:category_without_title).valid?).to be_falsey
     end
 
     it 'ensures user_present' do

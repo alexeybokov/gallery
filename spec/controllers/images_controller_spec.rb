@@ -118,9 +118,8 @@ RSpec.describe ImagesController, type: :controller do
   end
 
   describe 'GET #show' do
-    before do
-      get :show, params: { id: image.id }
-    end
+
+    subject! { get :show, params: { id: image.id } }
 
     it 'has a 200 status code' do
       expect(response).to have_http_status(200)
@@ -142,9 +141,8 @@ RSpec.describe ImagesController, type: :controller do
   end
 
   describe 'DELETE #destroy' do
-    before do
-      delete :destroy, params: { id: image.id }
-    end
+
+    subject! { delete :destroy, params: { id: image.id } }
 
     xit 'has a 302 status code' do
       expect(response).to have_http_status(302)

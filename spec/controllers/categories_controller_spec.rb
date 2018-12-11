@@ -65,16 +65,16 @@ RSpec.describe CategoriesController, type: :controller do
       expect(response).to redirect_to(categories_path)
     end
 
-    it 'should be render index after fail' do
-      post :create, params: { category: { name: nil } }
-      expect(response).to render_template(:new)
+    context 'with invalid attributes' do
+      it 'should be render new template after fail' do
+        post :create, params: { category: { name: nil } }
+        expect(response).to render_template(:new)
+      end
     end
   end
 
   describe 'GET #show' do
-    before do
-      get :show, params: { id: category.id }
-    end
+    subject! { get :show, params: { id: category.id } }
 
     it 'has a 200 status code' do
       expect(response).to have_http_status(200)
@@ -96,9 +96,7 @@ RSpec.describe CategoriesController, type: :controller do
   end
 
   describe 'DELETE #destroy' do
-    before do
-      delete :destroy, params: { id: category.id }
-    end
+    subject! { delete :destroy, params: { id: category.id } }
 
     it 'has a 302 status code' do
       expect(response).to have_http_status(302)
@@ -108,15 +106,13 @@ RSpec.describe CategoriesController, type: :controller do
       expect(response).to redirect_to(categories_path)
     end
 
-    it 'assings a success flash message' do
+    it 'assigns a success flash message' do
       expect(flash[:alert]).not_to be_nil
     end
   end
 
   describe 'PUT #follow' do
-    before do
-      put :follow, params: { id: category.id }
-    end
+    subject! { put :follow, params: { id: category.id } }
 
     it 'has a 302 status code' do
       expect(response).to have_http_status(302)
@@ -128,9 +124,7 @@ RSpec.describe CategoriesController, type: :controller do
   end
 
   describe 'PUT #unfollow' do
-    before do
-      put :unfollow, params: { id: category.id }
-    end
+    subject! { put :unfollow, params: { id: category.id } }
 
     it 'has a 302 status code' do
       expect(response).to have_http_status(302)

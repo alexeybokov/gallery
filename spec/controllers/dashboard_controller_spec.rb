@@ -14,23 +14,21 @@ RSpec.describe DashboardController, type: :controller do
       sign_in user
     end
 
+    subject! { get :index }
+
     it 'returns http success after User Sign In' do
-      get :index
       expect(response.status).to eq(200)
     end
 
     it 'render index template' do
-      get :index
       expect(response).to render_template(:index)
     end
 
     it 'assigns instance variable @category' do
-      get :index
       expect(category).to be_truthy
     end
 
     it 'assigns instance variable @image' do
-      get :index
       expect(image).to be_truthy
     end
 

@@ -8,10 +8,6 @@ Rails.application.routes.draw do
   }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  authenticated do
-    root to: 'secret#index', as: :authenticated_root
-  end
-
   scope '(:locale)' do
     devise_for :users, skip: :omniauth_callbacks
     resources :images, only: %i[index show new create] do

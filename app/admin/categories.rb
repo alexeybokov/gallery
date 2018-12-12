@@ -11,6 +11,8 @@ ActiveAdmin.register Category, as: 'All Category' do
     end
   end
 
+  scope :all, default: true
+
   index do
     selectable_column
     id_column

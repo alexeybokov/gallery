@@ -58,11 +58,11 @@ feature 'Admin Image', driver: :selenium_chrome do
 
       scenario 'new image' do
         skip
-        # expect(Image.count).to eq(1)
         # fill_in 'image[name]', with: 'New Image'
-        # # fill_in 'category[user_id]', with: '1'
+        # category { category }
+        # image { image }
         # find('#image_submit_action').click
-        # expect(Category.count).to eq(1)
+        # expect(Image.count).to eq(1)
       end
     end
 

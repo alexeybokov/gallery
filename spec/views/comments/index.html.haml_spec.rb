@@ -32,4 +32,12 @@ RSpec.describe 'comments/index', type: :view do
     expect(page).to render_template('comments/_comment')
     expect(image.comments_count).to eq 5
   end
+
+  it 'have comments' do
+    expect(page).to have_content(image.comments[1].body)
+  end
+
+  it 'have author of comment' do
+    expect(page).to have_content(user.email)
+  end
 end

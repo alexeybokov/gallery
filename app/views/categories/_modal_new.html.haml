@@ -1,0 +1,14 @@
+#categoryModal.modal.fade{:role => "dialog"}
+  .modal-dialog.modal-lg
+    .modal-content
+      .modal-header
+        %button.close{"data-dismiss" => "modal", :type => "button"} ×
+        %h4.modal-title Create a new Category
+      .modal-body
+        = form_for Category.new, :html => {:multipart => true} do |f|
+          .field
+            = f.label :title
+            = f.text_field :title
+            = f.submit t('activerecord.attributes.category.create'), class: 'btn btn-secondary'
+      .modal-footer
+        %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close

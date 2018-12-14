@@ -21,7 +21,7 @@ RSpec.describe CategoriesController, type: :controller do
 
     it 'returns success responce' do
       get :new
-      expect(response).to be_success
+      expect(response).to be_successful
     end
 
     it 'assigns @category variable' do
@@ -34,12 +34,10 @@ RSpec.describe CategoriesController, type: :controller do
   end
 
   describe 'GET #index' do
-    before do
-      get :index
-    end
+    subject! { get :index }
 
     it 'returns success responce' do
-      expect(response).to be_success
+      expect(response).to be_successful
     end
 
     it 'assigns instance variables' do
@@ -67,24 +65,26 @@ RSpec.describe CategoriesController, type: :controller do
       expect(response).to redirect_to(categories_path)
     end
 
-    it 'should be render index after fail' do
-      post :create, params: { category: { name: nil } }
-      expect(response).to render_template(:new)
+    context 'with invalid attributes' do
+      it 'should be render new template after fail' do
+        post :create, params: { category: { name: nil } }
+        expect(response).to render_template(:new)
+      end
     end
   end
 
   describe 'GET #show' do
-    before do
-      get :show, params: { id: category.id }
-    end
+    subject! { get :show, params: { id: category.id } }
 
     it 'has a 200 status code' do
       expect(response).to have_http_status(200)
     end
 
-    # it 'receives find and return category' do
-    #   expect(Category).to receive(:find_category).with(category.id)
-    # end
+    it 'receives find and return category' do
+      expect(controller).to receive(:find_category)
+      get :show, params: { id: category.id }
+      expect(assigns(:category)).not_to be_nil
+    end
 
     it 'assigns @category' do
       expect(assigns(:category)).to be_truthy
@@ -96,9 +96,7 @@ RSpec.describe CategoriesController, type: :controller do
   end
 
   describe 'DELETE #destroy' do
-    before do
-      delete :destroy, params: { id: category.id }
-    end
+    subject! { delete :destroy, params: { id: category.id } }
 
     it 'has a 302 status code' do
       expect(response).to have_http_status(302)
@@ -108,15 +106,13 @@ RSpec.describe CategoriesController, type: :controller do
       expect(response).to redirect_to(categories_path)
     end
 
-    it 'assings a success flash message' do
+    it 'assigns a success flash message' do
       expect(flash[:alert]).not_to be_nil
     end
   end
 
   describe 'PUT #follow' do
-    before do
-      put :follow, params: { id: category.id }
-    end
+    subject! { put :follow, params: { id: category.id } }
 
     it 'has a 302 status code' do
       expect(response).to have_http_status(302)
@@ -128,9 +124,7 @@ RSpec.describe CategoriesController, type: :controller do
   end
 
   describe 'PUT #unfollow' do
-    before do
-      put :unfollow, params: { id: category.id }
-    end
+    subject! { put :unfollow, params: { id: category.id } }
 
     it 'has a 302 status code' do
       expect(response).to have_http_status(302)

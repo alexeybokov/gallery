@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-feature 'Registration' do
+feature 'Registration', driver: :selenium_chrome do
 
   before { visit new_user_registration_path }
 

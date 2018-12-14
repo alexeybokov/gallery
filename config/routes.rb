@@ -1,16 +1,12 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
+  devise_for :admin_users, ActiveAdmin::Devise.config
   devise_for :users, only: :omniauth_callbacks, controllers: {
       omniauth_callbacks: 'users/omniauth_callbacks'
   }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-
-  authenticated do
-    root to: "secret#index", as: :authenticated_root
-  end
 
   scope '(:locale)' do
     devise_for :users, skip: :omniauth_callbacks
@@ -23,7 +19,7 @@ Rails.application.routes.draw do
       put :unfollow, on: :member
     end
 
-    resources :hearts, only: %i(create destroy)
+    resources :hearts, only: %i[create destroy]
     get 'comments', to: 'comments#index'
     # match '/hearts', to: 'hearts#create', via: [:get, :post]
     root to: 'dashboard#index'

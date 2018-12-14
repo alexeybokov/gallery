@@ -16,9 +16,7 @@ RSpec.describe HeartsController, type: :controller do
     let(:image) { create(:valid_image) }
     let(:heart) { create(:heart) }
 
-    before do
-      post :create, params: { category_id: category.id, id: image.id }
-    end
+    subject! { post :create, params: { category_id: category.id, id: image.id } }
 
     it 'returns success(302) status code' do
       expect(response.status).to eq(302)
@@ -46,8 +44,9 @@ RSpec.describe HeartsController, type: :controller do
     let(:image) { create(:valid_image) }
     let(:heart) { create(:heart) }
 
+    subject! { post :create, params: { category_id: category.id, id: image.id } }
+
     before do
-      post :create, params: { category_id: category.id, id: image.id }
       delete :destroy, params: { category_id: category.id, id: image.id }
     end
 

@@ -2,7 +2,6 @@ class CategoriesController < ApplicationController
 
   before_action :find_category, only: %i[show destroy follow unfollow]
 
-
   def index
     @categories = Category.all.order(images_count: :desc).page(params[:page])
   end

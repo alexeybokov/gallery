@@ -2,7 +2,18 @@
 
 require 'rails_helper'
 
-RSpec.describe 'images/index' do
+RSpec.describe 'images/index', type: :view do
+
+  let(:user) { create(:valid_user) }
+  let(:image) { create(:valid_image) }
+
+  before do
+    user.confirm
+    login_as user, scope: :user
+    assign(:image, image)
+    visit images_path
+  end
+
   it 'infers the controller path' do
     expect(controller.request.path_parameters[:controller]).to eq('images')
     expect(controller.controller_path).to eq('images')

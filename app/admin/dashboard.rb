@@ -1,49 +1,35 @@
-ActiveAdmin.register_page "Dashboard" do
+ActiveAdmin.register_page 'Dashboard' do
 
-  menu priority: 1, label: proc{ I18n.t("active_admin.dashboard") }
+  menu priority: 1, label: proc { I18n.t('active_admin.dashboard') }
 
-  content title: proc{ I18n.t("active_admin.dashboard") } do
-    div class: "blank_slate_container", id: "dashboard_default_message" do
-      span class: "blank_slate" do
-        span I18n.t("active_admin.dashboard_welcome.welcome")
-        small I18n.t("active_admin.dashboard_welcome.call_to_action")
+  content title: proc { I18n.t('active_admin.dashboard') } do
+
+    h5 section 'Recently 5 Categories' do
+      table_for Category.last(5) do |category|
+        category.column(:id)
+        category.column(:title) { |el| link_to(el.title, admin_all_category_path(el)) }
+        category.column(:user_id) { |elem| link_to(elem.user&.email, admin_user_path(elem.user)) }
       end
     end
 
-    # Here is an example of a simple dashboard with columns and panels.
-    #
-    columns do
-      column do
-        panel "Recent 5 Category" do
-          ul do
-            Category.last(5).map do |category|
-              li link_to(category.title, categories_path(category))
-            end
-          end
-        end
-
-        panel "Recently 5 Comment" do
-          ul do
-            Comment.last(5).map do |comment|
-              li link_to(comment.body, image_comments_path(comment))
-            end
-          end
-        end
-
-        panel "Recently 10 Images" do
-          ul do
-            Image.last(5).map do |image|
-              li link_to(image.name, images_path(image))
-            end
-          end
-        end
+    h5 section 'Recently 5 Comments' do
+      table_for(Comment.last(5).map) do |comment|
+        comment.column(:id)
+        comment.column(:image) { |comment| image_tag(comment.image.picture_url, size: '150x100') }
+        comment.column(:category) { |comment| link_to(comment.image.category.title, admin_all_category_path(comment.image.category)) }
+        comment.column(:body) { |item| link_to(item.body, admin_comment_path(item)) }
+        comment.column(:user) { |elem| link_to(elem.user&.email, admin_user_path(elem.user)) }
       end
-
-    #   column do
-    #     panel "Info" do
-    #       para "Welcome to ActiveAdmin."
-    #     end
-    #   end
     end
-  end # content
+
+    h5 section 'Recently 10 Images' do
+      table_for(Image.last(10)) do |image|
+        image.column(:id)
+        image.column(:picture) { |img| image_tag(img.picture.url, size: '150x100') }
+        image.column(:name) { |item| link_to(item.name, admin_image_path(item)) }
+        image.column(:category)
+        image.column(:user) { |category| link_to(category.user.email, admin_image_path(category.user)) }
+      end
+    end
+  end
 end

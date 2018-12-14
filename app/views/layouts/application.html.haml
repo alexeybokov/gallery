@@ -35,8 +35,8 @@
               - top_5_categories.each do |category|
                 %a.dropdown-item{:href => "#{category_path(category)}"}
                   = category.title
-              %a.dropdown-item.alert-info{:href => "#{new_category_path}"}
-                = t('layouts.application.add_category')
+              -#%a.dropdown-item.alert-info{:href => "Add Category"}
+                -#= link_to(t('layouts.application.add_category'), '#categoryModal', 'data-toggle' => 'modal', class: 'nav-link')
 
           %li.nav-item.active
             %i.fab.fa-instagram
@@ -60,8 +60,6 @@
                 = link_to (t('layouts.application.login')), new_user_session_path, class: "dropdown-item"
               = link_to (t('layouts.application.edit_profile')), edit_user_registration_path, class: "dropdown-item alert-info"
 
-
-
           %li.nav-item.active
             = link_to (t('layouts.application.categories')), categories_path, class:"nav-link"
 
@@ -69,11 +67,11 @@
           %li.nav-item.active
             %i.far.fa-arrow-alt-circle-down
           %li.nav-item.active
-            = link_to (t('layouts.application.upload_images')), new_image_path, class:"nav-link"
+            = link_to(t('layouts.application.upload_images'), '#imageModal', 'data-toggle' => 'modal', class: 'nav-link')
           %li.nav-item.active
             %i.fas.fa-plus
           %li.nav-item.active
-            = link_to (t('layouts.application.add_category')), new_category_path, class:"nav-link"
+            = link_to(t('layouts.application.add_category'), '#categoryModal', 'data-toggle' => 'modal', class: 'nav-link')
 
           %li.nav-item.active
             %i.fas.fa-globe-americas
@@ -83,8 +81,6 @@
             -else
               =link_to('Ru', { locale: :ru }, class: 'nav-link')
 
-
-
     %main.container{:role => "main"}
     %section
       .container
@@ -92,6 +88,8 @@
           .alert.alert-success= flash[:notice]
         - if flash[:alert]
           .alert.alert-danger= flash[:alert]
+        = render 'images/modal'
+        = render 'categories/modal_new'
         = yield
     -#%footer
     /

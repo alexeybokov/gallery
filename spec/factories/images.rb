@@ -26,7 +26,7 @@ FactoryBot.define do
 
     factory :image_with_comments do
       after(:create) do |image|
-        create_list(:comment, 5, image: image)
+        create_list(:valid_comment, 5, image: image)
       end
     end
   end

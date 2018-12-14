@@ -33,11 +33,11 @@ class ImagesController < ApplicationController
   def edit
   end
 
-  def destroy
-    Image.find(params[:id]).destroy
-    flash[:alert] = 'Image removed'
-    redirect_to images_path
-  end
+  # def destroy
+  #   Image.find(params[:id]).destroy
+  #   flash[:alert] = 'Image removed'
+  #   redirect_to images_path
+  # end
 
   private
 

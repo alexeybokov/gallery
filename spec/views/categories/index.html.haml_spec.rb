@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'categories/index' do
+RSpec.describe 'categories/index', type: :view do
   it 'infers the controller path' do
     expect(controller.request.path_parameters[:controller]).to eq('categories')
     expect(controller.controller_path).to eq('categories')
@@ -15,4 +15,8 @@ RSpec.describe 'categories/index' do
   it 'has a request.fullpath that is defined' do
     expect(controller.request.fullpath).to eq categories_path
   end
+
+  # it 'have follow button' do
+  #   expect(page).to have_button('Follow')
+  # end
 end

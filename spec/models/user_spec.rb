@@ -14,11 +14,10 @@ RSpec.describe User, type: :model do
   end
 
   it 'does not allow duplicate emails' do
-    # old_user = user.save(email: 'developer@gmail.com', password: Faker::Internet.password)
-    # new_user = user.save(email: 'developer@gmail.com', password: Faker::Internet.password)
-    # new_user.valid?
-    # expect(new_user.errors[:user]).to include('has already been taken')
-    skip
+    user
+    new_user = User.new(email: user.email, password: Faker::Internet.password)
+    new_user.valid?
+    expect(new_user.errors.any?).to be true
   end
 
   it 'has many comments' do

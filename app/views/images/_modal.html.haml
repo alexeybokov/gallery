@@ -1,0 +1,20 @@
+#imageModal.modal.fade{:role => "dialog"}
+  .modal-dialog.modal-lg
+    .modal-content
+      .modal-header
+        %button.close{"data-dismiss" => "modal", :type => "button"} ×
+        %h4.modal-title Create a new Image
+      .modal-body
+        = form_for Image.new, :html => {:multipart => true}  do |f|
+          .field
+            = f.label :name
+            = f.text_field :name
+          .field
+            = f.label :picture
+            = f.file_field :picture
+          .field
+            = f.label :category
+            = f.select :category_id, Category.all.collect { |x| [x.title, x.id] }, { :include_blank => t('activerecord.attributes.image.select_category') },class:'form-control'
+          = f.submit t('activerecord.attributes.image.create'), class: 'btn btn-secondary'
+      .modal-footer
+        %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close

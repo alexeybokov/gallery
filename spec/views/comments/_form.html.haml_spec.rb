@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'comments/_form' do
+RSpec.describe 'comments/_form', type: :view do
   it 'includes a link to new' do
     expect(controller.request.path_parameters[:action]).to be_nil
   end

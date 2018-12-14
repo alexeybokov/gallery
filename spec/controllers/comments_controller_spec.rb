@@ -13,9 +13,7 @@ RSpec.describe CommentsController, type: :controller do
   end
 
   describe 'GET #index' do
-    before do
-      get :index
-    end
+    subject! { get :index }
 
     it 'has a 200 status code' do
       expect(response.status).to eq(200)
@@ -31,8 +29,16 @@ RSpec.describe CommentsController, type: :controller do
   end
 
   describe 'POST #create' do
+    let(:user) { create(:valid_user) }
     let(:image) { create(:valid_image) }
     let(:comment) { build(:valid_comment, image: image) }
+    let(:invalid_comment) { build(:comment_without_user) }
+
+    before do
+      user.confirm
+      sign_in user
+      get :index
+    end
 
     it 'has a 200 status code' do
       expect(response.status).to eq(200)
@@ -40,11 +46,11 @@ RSpec.describe CommentsController, type: :controller do
 
     it 'renders :create template' do
       post :create, params: {
-          image_id: image.id,
-          comment: {
-                    user_id: User.first.id,
-                    body: Faker::Lorem.sentence(3, true, 10)
-          }
+        image_id: image.id,
+        comment: {
+          user_id: User.first.id,
+          body: Faker::Lorem.sentence(3, true, 10)
+        }
       }
       expect(response).to redirect_to image_path(id: image.slug)
     end
@@ -52,22 +58,24 @@ RSpec.describe CommentsController, type: :controller do
     it 'save comment with valid attributes' do
       expect(comment.save!).to be true
     end
-  end
 
-  context 'with 2 or more comments' do
-    skip
-    # let(:user) { create(:valid_user) }
-    # let(:image) { create(:valid_image) }
-    # let(:comment) { build(:valid_comment, image: image) }
-    #
-    # it 'orders them in reverse chronologically' do
-    #   image = Image.create!(picture: fixture_file_upload(Rails.root + 'spec/factories/images/image.jpg'),
-    #            name: Faker::Name.name,
-    #            category_id: '5')
-    #   comment1 = image.comments.create!(body: 'first comment', user_id: user.id)
-    #   comment2 = image.comments.create!(body: 'second comment', user_id: user.id)
-    #   # expect(image.reload.comments).to eq([comment2, comment1])
-    #   expect(assigns(:comments)). to eq image.comments.order(created_at: :desc)
-    # end
+    context 'with invalid attributes' do
+      it 'should be render index after fail' do
+        invalid_comment.save
+        expect(response).to render_template('comments/index')
+      end
+
+      it 'is invalid without body' do
+        expect(build(:comment_without_body).valid?).to be_falsey
+      end
+
+      it 'is invalid without user' do
+        expect(build(:comment_without_user).valid?).to be_falsey
+      end
+
+      it 'is invalid without picture' do
+        expect(build(:comment_without_picture).valid?).to be_falsey
+      end
+    end
   end
 end

@@ -34,9 +34,7 @@ RSpec.describe ImagesController, type: :controller do
   end
 
   describe 'GET #index' do
-    before do
-      get :index
-    end
+    subject! { get :index }
 
     it 'has a 200 status code' do
       expect(response.status).to eq(200)
@@ -54,8 +52,6 @@ RSpec.describe ImagesController, type: :controller do
   describe 'POST #create' do
     let(:category) { create(:valid_category) }
     let(:image) { build(:valid_image) }
-
-    # before { allow(Image).to receive(:new).and_return(image) }
 
     it 'has a 200 status code' do
       expect(response.status).to eq(200)
@@ -122,23 +118,18 @@ RSpec.describe ImagesController, type: :controller do
   end
 
   describe 'GET #show' do
-    before do
-      get :show, params: { id: image.id }
-    end
 
-    # it 'use before_filter set_image' do
-    #   expect(controller).to receive(:set_image)
-    #   get :show
-    # end
-
+    subject! { get :show, params: { id: image.id } }
 
     it 'has a 200 status code' do
       expect(response).to have_http_status(200)
     end
 
-    # it 'receives find and return images' do
-    #   expect(image).to receive(:find).with(image.id)
-    # end
+    it 'receives find and return images' do
+      allow(controller).to receive(:set_image).and_return image
+      get :show, params: { id: image.id }
+      expect(assigns(:image)).not_to be_nil
+    end
 
     it 'assigns @image' do
       expect(assigns(:image)).to be_truthy
@@ -150,23 +141,19 @@ RSpec.describe ImagesController, type: :controller do
   end
 
   describe 'DELETE #destroy' do
-    # before do
-    #   delete :destroy, params: { id: image.id }
-    # end
 
-    it 'has a 302 status code' do
-      skip
-      # expect(response).to have_http_status(302)
+    subject! { delete :destroy, params: { id: image.id } }
+
+    xit 'has a 302 status code' do
+      expect(response).to have_http_status(302)
     end
 
-    it 'should redirect to categories page after remove category' do
-      skip
-      # expect(response).to redirect_to(images_path)
+    xit 'should redirect to categories page after remove category' do
+      expect(response).to redirect_to(images_path)
     end
 
-    it 'assings a success flash message' do
-      skip
-      # expect(flash[:alert]).not_to be_nil
+    xit 'assigns a success flash message' do
+      expect(flash[:alert]).not_to be_nil
     end
   end
 end

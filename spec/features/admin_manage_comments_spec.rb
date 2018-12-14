@@ -3,7 +3,6 @@
 require 'rails_helper'
 
 feature 'Admin Comment', driver: :selenium_chrome do
-
   given!(:admin) { create(:admin_user) }
   given!(:user) { create(:valid_user) }
   given!(:category) { create(:valid_category) }
@@ -24,7 +23,6 @@ feature 'Admin Comment', driver: :selenium_chrome do
   end
 
   feature 'Manage' do
-
     before do
       find_link(text: 'Comments').click
     end
@@ -56,12 +54,13 @@ feature 'Admin Comment', driver: :selenium_chrome do
       end
 
       scenario 'new comments' do
-        skip
-        # expect(Image.count).to eq(1)
-        # fill_in 'image[name]', with: 'New Image'
-        # # fill_in 'category[user_id]', with: '1'
-        # find('#image_submit_action').click
-        # expect(Category.count).to eq(1)
+        expect(Comment.count).to eq(1)
+        fill_in 'comment[body]', with: Faker::Lorem.sentence(3, true, 10)
+        find('#comment_user_id').find(:xpath, 'option[2]').select_option
+        find('#comment_image_id').find(:xpath, 'option[1]').select_option
+        find('#comment_submit_action').click
+        expect(page).to have_content('Comment was successfully created.')
+        expect(Comment.count).to eq(2)
       end
     end
 
@@ -70,11 +69,23 @@ feature 'Admin Comment', driver: :selenium_chrome do
         find_link(text: 'Edit').click
       end
 
-      scenario 'change comment body' do
+      scenario 'change Comment body' do
         fill_in 'comment[body]', with: 'New text'
         find('#comment_submit_action').click
         expect(page).to have_content('Comment was successfully updated.')
         expect(page).to have_content('New text')
+      end
+
+      scenario 'change Comment image' do
+        find('#comment_image_id').find(:xpath, 'option[1]').select_option
+        find('#comment_submit_action').click
+        expect(page).to have_content('Comment was successfully updated.')
+      end
+
+      scenario 'change Comment creator' do
+        find('#comment_user_id').find(:xpath, 'option[2]').select_option
+        find('#comment_submit_action').click
+        expect(page).to have_content('Comment was successfully updated.')
       end
     end
 

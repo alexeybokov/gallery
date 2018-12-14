@@ -45,7 +45,6 @@ feature 'Admin login', driver: :selenium_chrome do
         expect(page).to have_content('NAME')
         expect(page).to have_content('CREATED AT')
         expect(page).to have_content('UPDATED AT')
-        expect(page).to have_content('SLUG')
         expect(page).to have_content('RANGE COUNTER')
       end
     end
@@ -58,9 +57,9 @@ feature 'Admin login', driver: :selenium_chrome do
       scenario 'new category' do
         expect(Category.count).to eq(1)
         fill_in 'category[title]', with: 'New title'
-        fill_in 'category[user_id]', with: '1'
+        find('#category_user_id').find(:xpath, 'option[2]').select_option
         find('#category_submit_action').click
-        expect(Category.count).to eq(1)
+        expect(Category.count).to eq(2)
       end
     end
 
@@ -74,6 +73,12 @@ feature 'Admin login', driver: :selenium_chrome do
         find('#category_submit_action').click
         expect(page).to have_content('Category was successfully updated.')
         expect(page).to have_content('Change title')
+      end
+
+      scenario 'change category creator' do
+        find('#category_user_id').find(:xpath, 'option[2]').select_option
+        find('#category_submit_action').click
+        expect(page).to have_content('Category was successfully updated.')
       end
     end
 

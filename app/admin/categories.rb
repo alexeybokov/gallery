@@ -28,7 +28,7 @@ ActiveAdmin.register Category, as: 'All Category' do
       row :title
       row(:user) { |category| link_to(category.user.email, admin_user_path(category.user)) }
       row :created_at
-      row :update_at
+      row :updated_at
     end
   end
 

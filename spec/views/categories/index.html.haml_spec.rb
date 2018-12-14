@@ -16,6 +16,10 @@ RSpec.describe 'categories/index', type: :view do
     expect(controller.request.fullpath).to eq categories_path
   end
 
+  it 'should be render kaminari' do
+    expect(rendered).to render_template(partial: 'kaminari/_paginator')
+  end
+
   # it 'have follow button' do
   #   expect(page).to have_button('Follow')
   # end

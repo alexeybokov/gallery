@@ -10,12 +10,39 @@ ActiveAdmin.register Image, as: 'Images' do
     end
   end
 
+  index do
+    selectable_column
+    id_column
+    column(:picture) do |image|
+      image_tag(image.picture_url, size: '150x100')
+    end
+    column(:name) { |image| link_to(image.name, admin_image_path(image)) }
+    column(:user) { |category| link_to(category.user.email, admin_image_path(category.user)) }
+    column :created_at
+    column :updated_at
+    actions
+  end
+
+  show do
+    attributes_table do
+      row :id
+      row :name
+      row :picture do |image|
+        image_tag(image.picture_url, size: '150x100')
+      end
+      row(:category)
+      row(:user) { |category| link_to(category.user.email, admin_user_path(category.user)) }
+      row :created_at
+      row :update_at
+    end
+  end
+
   form do |f|
     f.inputs 'Image details' do
       f.input :name
       f.input :picture
-      f.input :user_id, as: :select, collection: User.all, include_blank: false
-      f.input :category_id, as: :select, collection: Category.all, include_blank: false
+      f.input :user, as: :select, collection: Hash[User.all.map { |b| [b.email, b.id] }], include_blank: true
+      f.input :category_id, as: :select, collection: Category.order(:title), include_blank: false
     end
     f.actions
   end

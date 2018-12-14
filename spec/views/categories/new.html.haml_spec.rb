@@ -25,6 +25,10 @@ RSpec.describe 'categories/new', type: :view do
       find('#categoryModal').click
     end
 
+    it 'should be render kaminari' do
+      expect(rendered).to render_template(partial: 'kaminari/_paginator')
+    end
+
     it 'should be rendered' do
       expect(rendered).to render_template(partial: 'categories/_modal_new')
     end

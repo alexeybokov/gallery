@@ -16,4 +16,8 @@ class ApplicationController < ActionController::Base
   def default_url_options
     { locale: I18n.locale }
   end
+
+  def record_activity(note)
+    @activity = Activity.create!(user_id: current_user.id, action: note, url: request.original_url)
+  end
 end

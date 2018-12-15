@@ -4,10 +4,12 @@ class CommentsController < ApplicationController
 
   def index
     @comments = Comment.order(created_at: :desc).page(params[:page])
+    record_activity('navigation')
   end
 
   def create
     @image.comments.create(comment_params.merge(user: current_user))
+    record_activity('create comment')
     redirect_to image_path(@image)
   end
 

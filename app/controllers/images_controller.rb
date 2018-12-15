@@ -11,16 +11,19 @@ class ImagesController < ApplicationController
 
   def index
     @images = Image.order(hearts_count: :desc).page(params[:page])
+    record_activity('navigation')
   end
 
   def show
     @comments = Comment.where(image_id: @image).order('created_at DESC')
+    record_activity('navigation')
   end
 
   def create
     @image = current_user.images.build(image_params)
 
     if @image.save
+      record_activity('create image')
       UserMailer.with(user: current_user, category: params[:id]).new_image_email.deliver_now
       flash[:notice] = 'Image Uploaded'
       redirect_to image_path(@image)

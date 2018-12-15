@@ -4,10 +4,12 @@ class CategoriesController < ApplicationController
 
   def index
     @categories = Category.all.order(images_count: :desc).page(params[:page])
+    record_activity('navigation')
   end
 
   def show
     @images = @category.images.page(params[:page]).per 12
+    record_activity('navigation')
   end
 
   def new
@@ -18,6 +20,7 @@ class CategoriesController < ApplicationController
     @category = current_user.categories.build(categories_params)
 
     if @category.save
+      record_activity('create category')
       flash[:notice] = 'Category created'
       redirect_to categories_path
     else
@@ -28,6 +31,7 @@ class CategoriesController < ApplicationController
 
   def destroy
     @category.destroy
+    record_activity('delete category')
     flash[:alert] = 'Category and images removed'
     redirect_to categories_path
   end
@@ -36,11 +40,13 @@ class CategoriesController < ApplicationController
     current_user.follow(@category)
     @follow = Follow.find_by(follower: current_user, followable: @category)
     UserMailer.with(user: current_user, category: params[:id]).follow_email.deliver_now
+    record_activity('follow category')
     redirect_to category_path
   end
 
   def unfollow
     current_user.stop_following(@category)
+    record_activity('unfollow category')
     redirect_to category_path
   end
 

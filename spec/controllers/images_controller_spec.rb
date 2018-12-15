@@ -47,6 +47,20 @@ RSpec.describe ImagesController, type: :controller do
     it 'render index template' do
       expect(response).to render_template(:index)
     end
+
+    context 'activity' do
+      it 'action is "navigate"' do
+        expect(Activity.last.action).to eq('navigation')
+      end
+
+      it 'url is "http://test.host/images"' do
+        expect(Activity.last.url).to eq('http://test.host/images')
+      end
+
+      it 'record to db' do
+        expect(Activity.count).to eq(1)
+      end
+    end
   end
 
   describe 'POST #create' do
@@ -138,6 +152,20 @@ RSpec.describe ImagesController, type: :controller do
     it 'renders :show template' do
       expect(response).to render_template :show
     end
+
+    context 'activity' do
+      it 'action is "navigation"' do
+        expect(Activity.last.action).to eq('navigation')
+      end
+
+      it 'url is "http://test.host/images"' do
+        expect(Activity.last.url).to match('http://test.host/images')
+      end
+
+      it 'record to db' do
+        expect(Activity.count).to eq(1)
+      end
+    end
   end
 
   describe 'DELETE #destroy' do
@@ -154,6 +182,20 @@ RSpec.describe ImagesController, type: :controller do
 
     xit 'assigns a success flash message' do
       expect(flash[:alert]).not_to be_nil
+    end
+
+    context 'activity' do
+      xit 'action is "delete category"' do
+        expect(Activity.last.action).to eq('delete category')
+      end
+
+      xit 'url is "http://test.host/categories"' do
+        expect(Activity.last.url).to match('http://test.host/categories')
+      end
+
+      xit 'record to db' do
+        expect(Activity.count).to eq(1)
+      end
     end
   end
 end

@@ -47,6 +47,20 @@ RSpec.describe CategoriesController, type: :controller do
     it 'render index template' do
       expect(response).to render_template(:index)
     end
+
+    context 'activity' do
+      it 'action is "navigate"' do
+        expect(Activity.last.action).to eq('navigation')
+      end
+
+      it 'url is "http://test.host/categories"' do
+        expect(Activity.last.url).to eq('http://test.host/categories')
+      end
+
+      it 'record to db' do
+        expect(Activity.count).to eq(1)
+      end
+    end
   end
 
   describe 'POST #create' do
@@ -71,6 +85,24 @@ RSpec.describe CategoriesController, type: :controller do
         expect(response).to render_template(:new)
       end
     end
+
+    context 'activity' do
+      before do
+        post :create, params: { category: { title: category.title } }
+      end
+
+      it 'action is "create category"' do
+        expect(Activity.last.action).to eq('create category')
+      end
+
+      it 'url is "http://test.host/categories"' do
+        expect(Activity.last.url).to eq('http://test.host/categories')
+      end
+
+      it 'record to db' do
+        expect(Activity.count).to eq(1)
+      end
+    end
   end
 
   describe 'GET #show' do
@@ -93,6 +125,20 @@ RSpec.describe CategoriesController, type: :controller do
     it 'renders :show template' do
       expect(response).to render_template :show
     end
+
+    context 'activity' do
+      it 'action is "navigation"' do
+        expect(Activity.last.action).to eq('navigation')
+      end
+
+      it 'url is "http://test.host/categories"' do
+        expect(Activity.last.url).to match('http://test.host/categories')
+      end
+
+      it 'record to db' do
+        expect(Activity.count).to eq(1)
+      end
+    end
   end
 
   describe 'DELETE #destroy' do
@@ -109,6 +155,20 @@ RSpec.describe CategoriesController, type: :controller do
     it 'assigns a success flash message' do
       expect(flash[:alert]).not_to be_nil
     end
+
+    context 'activity' do
+      it 'action is "delete category"' do
+        expect(Activity.last.action).to eq('delete category')
+      end
+
+      it 'url is "http://test.host/categories"' do
+        expect(Activity.last.url).to match('http://test.host/categories')
+      end
+
+      it 'record to db' do
+        expect(Activity.count).to eq(1)
+      end
+    end
   end
 
   describe 'PUT #follow' do
@@ -121,6 +181,20 @@ RSpec.describe CategoriesController, type: :controller do
     it 'should redirect to category path after create follow' do
       expect(response).to redirect_to(category_path)
     end
+
+    context 'activity' do
+      it 'action is "follow category"' do
+        expect(Activity.last.action).to eq('follow category')
+      end
+
+      it 'url is "http://test.host/categories"' do
+        expect(Activity.last.url).to match('http://test.host/categories/\d+\/follow')
+      end
+
+      it 'record to db' do
+        expect(Activity.count).to eq(1)
+      end
+    end
   end
 
   describe 'PUT #unfollow' do
@@ -132,6 +206,20 @@ RSpec.describe CategoriesController, type: :controller do
 
     it 'should redirect to category path after destroy follow' do
       expect(response).to redirect_to(category_path)
+    end
+
+    context 'activity' do
+      it 'action is "unfollow category"' do
+        expect(Activity.last.action).to eq('unfollow category')
+      end
+
+      it 'url is "http://test.host/categories"' do
+        expect(Activity.last.url).to match('http://test.host/categories/\d+\/unfollow')
+      end
+
+      it 'record to db' do
+        expect(Activity.count).to eq(1)
+      end
     end
   end
 end

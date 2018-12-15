@@ -47,7 +47,6 @@ feature 'Admin Image', driver: :selenium_chrome do
         expect(page).to have_content('UPDATED AT')
         expect(page).to have_content('PICTURE')
         expect(page).to have_content('CATEGORY')
-        expect(page).to have_content('SLUG')
       end
     end
 
@@ -57,12 +56,14 @@ feature 'Admin Image', driver: :selenium_chrome do
       end
 
       scenario 'new image' do
-        skip
-        # fill_in 'image[name]', with: 'New Image'
-        # category { category }
-        # image { image }
-        # find('#image_submit_action').click
-        # expect(Image.count).to eq(1)
+        expect(Image.count).to eq(1)
+        fill_in 'image[name]', with: Faker::Name.name
+        page.attach_file('image_picture', Rails.root + 'spec/factories/images/image.jpg')
+        find('#image_user_id').find(:xpath, 'option[2]').select_option
+        find('#image_category_id').find(:xpath, 'option[1]').select_option
+        find('#image_submit_action').click
+        expect(page).to have_content('Image was successfully created.')
+        expect(Image.count).to eq(2)
       end
     end
 
@@ -71,11 +72,23 @@ feature 'Admin Image', driver: :selenium_chrome do
         find_link(text: 'Edit').click
       end
 
-      scenario 'change image name' do
+      scenario 'change Image name' do
         fill_in 'image[name]', with: 'Change name'
         find('#image_submit_action').click
         expect(page).to have_content('Image was successfully updated.')
         expect(page).to have_content('Change name')
+      end
+
+      scenario 'change Image category' do
+        find('#image_category_id').find(:xpath, 'option[1]').select_option
+        find('#image_submit_action').click
+        expect(page).to have_content('Image was successfully updated.')
+      end
+
+      scenario 'change Image creator' do
+        find('#image_user_id').find(:xpath, 'option[2]').select_option
+        find('#image_submit_action').click
+        expect(page).to have_content('Image was successfully updated.')
       end
     end
 

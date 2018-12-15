@@ -33,7 +33,7 @@ ActiveAdmin.register Image, as: 'Images' do
       row(:category)
       row(:user) { |category| link_to(category.user.email, admin_user_path(category.user)) }
       row :created_at
-      row :update_at
+      row :updated_at
     end
   end
 

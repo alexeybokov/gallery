@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :images, dependent: :destroy
   has_many :hearts, dependent: :destroy
   has_many :categories, dependent: :destroy
+  has_many :activities, dependent: :destroy
 
   acts_as_follower
 

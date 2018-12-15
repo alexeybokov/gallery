@@ -4,6 +4,7 @@ class HeartsController < ApplicationController
     @user = current_user
     @image = Image.find(params[:id])
     @user.heart!(@image)
+    record_activity('create heart')
     redirect_to image_path(params[:id])
   end
 

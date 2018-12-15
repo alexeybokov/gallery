@@ -27,6 +27,10 @@ RSpec.describe 'images/index', type: :view do
     expect(controller.request.fullpath).to eq images_path
   end
 
+  it 'should be render kaminari' do
+    expect(rendered).to render_template(partial: 'kaminari/_paginator')
+  end
+
   context 'with 2 images' do
     skip
     # before(:each) do

@@ -37,6 +37,16 @@ RSpec.describe HeartsController, type: :controller do
     it 'create new heart' do
       expect(Heart.count).to eq(1)
     end
+
+    context 'activity' do
+      it 'action is "create heart"' do
+        expect(Activity.last.action).to eq('create heart')
+      end
+
+      it 'record to db' do
+        expect(Activity.count).to eq(1)
+      end
+    end
   end
 
   describe 'DELETE#destroy' do
@@ -64,6 +74,16 @@ RSpec.describe HeartsController, type: :controller do
 
     it 'change hearts count after destroy' do
       expect(Heart.count).to eq(0)
+    end
+
+    context 'activity' do
+      it 'action is "delete heart"' do
+        expect(Activity.last.action).to eq('create heart')
+      end
+
+      it 'record to db' do
+        expect(Activity.count).to eq(1)
+      end
     end
   end
 end

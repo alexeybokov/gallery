@@ -36,6 +36,10 @@ RSpec.describe User, type: :model do
     expect(user).to respond_to :categories
   end
 
+  it 'has many activities' do
+    expect(user).to respond_to :activities
+  end
+
   context 'change email' do
     it 'sends email changed notification' do
       skip

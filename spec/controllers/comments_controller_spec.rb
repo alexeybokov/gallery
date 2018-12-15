@@ -26,6 +26,20 @@ RSpec.describe CommentsController, type: :controller do
     it 'assigns instance variables @image' do
       expect(:comment).to be_truthy
     end
+
+    context 'activity' do
+      it 'action is "navigate"' do
+        expect(Activity.last.action).to eq('navigation')
+      end
+
+      it 'url is "http://test.host/comments"' do
+        expect(Activity.last.url).to eq('http://test.host/comments')
+      end
+
+      it 'record to db' do
+        expect(Activity.count).to eq(1)
+      end
+    end
   end
 
   describe 'POST #create' do
@@ -57,6 +71,30 @@ RSpec.describe CommentsController, type: :controller do
 
     it 'save comment with valid attributes' do
       expect(comment.save!).to be true
+    end
+
+    context 'activity' do
+      before do
+        post :create, params: {
+        image_id: image.id,
+        comment: {
+          user_id: User.first.id,
+          body: Faker::Lorem.sentence(3, true, 10)
+        }
+      }
+      end
+
+      it 'action is "create comment"' do
+        expect(Activity.last.action).to eq('create comment')
+      end
+
+      it 'url is "http://test.host/comments"' do
+        expect(Activity.last.url).to eq('http://test.host/comments')
+      end
+
+      it 'record to db' do
+        expect(Activity.count).to eq(2)
+      end
     end
 
     context 'with invalid attributes' do

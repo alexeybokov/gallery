@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'rails_helper'
+require 'spec_helper'
 
 feature 'Admin Image', driver: :selenium_chrome do
 

@@ -14,7 +14,30 @@
 # it.
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+ENV['RAILS_ENV'] ||= 'test'
+require File.expand_path('../../config/environment', __FILE__)
+# Prevent database truncation if the environment is production
+abort("The Rails environment is running in production mode!") if Rails.env.production?
+require 'rspec/rails'
+require 'capybara/rspec'
+require 'capybara/rails'
+require 'database_cleaner'
+require 'simplecov'
+SimpleCov.start
+
+# Add additional requires below this line. Rails is not loaded until this point!
+
+begin
+  ActiveRecord::Migration.maintain_test_schema!
+rescue ActiveRecord::PendingMigrationError => e
+  puts e.to_s.strip
+  exit 1
+end
+
+
 RSpec.configure do |config|
+  config.use_transactional_fixtures = true
+
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.
@@ -105,4 +128,15 @@ RSpec.configure do |config|
   # test failures related to randomization by passing the same `--seed` value
   # as the one that triggered the failure.
   Kernel.srand config.seed
+
+  config.infer_spec_type_from_file_location!
+  config.filter_rails_from_backtrace!
+  # arbitrary gems may also be filtered via:
+  # config.filter_gems_from_backtrace("gem name")
+  config.include Devise::Test::ControllerHelpers, type: :controller
+  config.include Devise::Test::ControllerHelpers, type: :view
+  # config.include RequestSpecHelper, type: :request
+  config.include FactoryBot::Syntax::Methods
+  config.include Warden::Test::Helpers
+  config.include Capybara::DSL
 end

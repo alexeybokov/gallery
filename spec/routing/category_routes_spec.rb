@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'rails_helper'
+require 'spec_helper'
 
 RSpec.describe 'routes to the categories controller', type: :routing do
   it 'routes /categories/:new to categories#new' do

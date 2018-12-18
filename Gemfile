@@ -52,6 +52,7 @@ gem 'omniauth-facebook'
 gem 'recaptcha'
 gem 'record_tag_helper'
 gem 'resque'
+gem 'resque-scheduler'
 gem 'simple_form'
 gem 'haml'
 gem 'rails-i18n', '~> 5.1'
@@ -64,6 +65,7 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'rspec-rails'
   gem 'faker'
+  gem 'dotenv-rails'
 end
 
 group :development do

@@ -6,7 +6,6 @@ RSpec.describe 'categories/new', type: :view do
   let(:user) { create(:valid_user) }
 
   before do
-    user.confirm
     login_as user, scope: :user
     visit categories_path
   end

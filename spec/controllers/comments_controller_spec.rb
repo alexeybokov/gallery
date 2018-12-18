@@ -8,7 +8,6 @@ RSpec.describe CommentsController, type: :controller do
   let(:comment) { create(:valid_comment) }
 
   before do
-    user.confirm
     sign_in user
   end
 
@@ -49,7 +48,6 @@ RSpec.describe CommentsController, type: :controller do
     let(:invalid_comment) { build(:comment_without_user) }
 
     before do
-      user.confirm
       sign_in user
       get :index
     end

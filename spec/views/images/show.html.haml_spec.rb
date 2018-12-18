@@ -7,7 +7,6 @@ RSpec.describe 'images/show', type: :view do
   let(:image) { create(:image_with_comments) }
 
   before do
-    user.confirm
     login_as user, scope: :user
     assign(:image, image)
     assign(:comments, image.comments)

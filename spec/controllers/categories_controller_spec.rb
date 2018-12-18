@@ -6,7 +6,6 @@ RSpec.describe CategoriesController, type: :controller do
   let(:category) { create(:valid_category) }
 
   before :each do
-    user.confirm
     sign_in user
   end
 

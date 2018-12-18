@@ -10,7 +10,6 @@ RSpec.describe DashboardController, type: :controller do
     let(:image) { build(:valid_image) }
 
     before do
-      user.confirm
       sign_in user
     end
 

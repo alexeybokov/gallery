@@ -10,7 +10,6 @@ feature 'Image pages', driver: :selenium_chrome do
   given!(:comment) { create(:valid_comment) }
 
   before do
-    user.confirm
     login_as user, scope: :user
     visit image_path(id: image.id)
   end

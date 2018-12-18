@@ -9,7 +9,6 @@ feature 'Category pages', driver: :selenium_chrome do
   given!(:image) { create(:valid_image, category: category) }
 
   before do
-    user.confirm
     login_as user, scope: :user
     visit category_path(id: category.id)
   end

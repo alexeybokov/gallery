@@ -10,7 +10,6 @@ feature 'Admin Comment', driver: :selenium_chrome do
   given!(:comment) { create(:valid_comment, image: image) }
 
   before do
-    user.confirm
     login_as user, scope: :user
     visit admin_user_session_path
     fill_in 'admin_user[email]', with: admin.email

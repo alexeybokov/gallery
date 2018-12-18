@@ -7,6 +7,10 @@ FactoryBot.define do
       name { Faker::Name.name }
       email { Faker::Internet.email }
       password { Faker::Internet.password }
+
+      after(:create) do |_user, evaluator|
+        evaluator.confirm
+      end
     end
 
     factory :user_without_email, parent: :user do

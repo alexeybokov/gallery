@@ -7,7 +7,6 @@ RSpec.describe ImagesController, type: :controller do
   let(:image) { create(:valid_image) }
 
   before :each do
-    user.confirm
     sign_in user
   end
 

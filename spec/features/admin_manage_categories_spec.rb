@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-feature 'Admin login', driver: :selenium_chrome do
+feature 'Admin', driver: :selenium_chrome do
 
   given!(:admin) { create(:admin_user) }
   given!(:user) { create(:valid_user) }
@@ -12,6 +12,11 @@ feature 'Admin login', driver: :selenium_chrome do
   before do
     login_as user, scope: :user
     visit admin_user_session_path
+
+    def admin_user_session_path
+      admin_user_session_path
+    end
+
     fill_in 'admin_user[email]', with: admin.email
     fill_in 'admin_user[password]', with: admin.password
     click_button('Login')
@@ -28,7 +33,7 @@ feature 'Admin login', driver: :selenium_chrome do
     end
 
     scenario 'See manage links' do
-      expect(page).to have_content("#{category.title}")
+      expect(page).to have_content(category.title.to_s)
       expect(page).to have_link('View')
       expect(page).to have_link('Edit')
       expect(page).to have_link('Delete')
@@ -40,7 +45,7 @@ feature 'Admin login', driver: :selenium_chrome do
       end
 
       scenario 'see info' do
-        expect(page).to have_content("#{category.title}")
+        expect(page).to have_content(category.title.to_s)
         expect(page).to have_content('NAME')
         expect(page).to have_content('CREATED AT')
         expect(page).to have_content('UPDATED AT')
@@ -87,7 +92,6 @@ feature 'Admin login', driver: :selenium_chrome do
         find_link(text: 'Delete').click
         page.driver.browser.switch_to.alert.accept
         expect(page).to have_content('Category was successfully destroyed.')
-        visit admin_user_session_path
         expect(Category.count).to eq(0)
       end
     end

@@ -12,9 +12,9 @@
   .form-group
     = f.label :password_confirmation
     = f.password_field :password_confirmation, autocomplete: 'current-password', class: 'form-control'
-  - if User.find_by_email(resource.email)
-    - if User.find_by_email(resource.email).failed_attempts > User.logins_before_captcha
-      = recaptcha_tags
+  -#- if User.find_by_email(resource.email)
+  -#  - if User.find_by_email(resource.email).failed_attempts > User.logins_before_captcha
+  -#    = recaptcha_tags
   .form-group
     = f.submit t('.sign_up'), class: 'btn btn-primary'
 = render 'devise/shared/links'

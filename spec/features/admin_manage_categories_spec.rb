@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'rails_helper'
+require 'spec_helper'
 
 feature 'Admin login', driver: :selenium_chrome do
 
@@ -10,7 +10,6 @@ feature 'Admin login', driver: :selenium_chrome do
   given!(:image) { create(:valid_image, category: category) }
 
   before do
-    user.confirm
     login_as user, scope: :user
     visit admin_user_session_path
     fill_in 'admin_user[email]', with: admin.email

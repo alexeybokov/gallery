@@ -3,6 +3,7 @@
 class ImagesController < ApplicationController
   respond_to :html, :js
 
+  before_action :authenticate_user!
   before_action :set_image, only: [:show, :edit]
 
   def new

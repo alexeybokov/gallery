@@ -28,6 +28,17 @@ Rails.application.configure do
   end
 
   config.action_mailer.delivery_method = :letter_opener
+  #     :smtp
+  # config.action_mailer.smtp_settings = {
+  # address:              'smtp.gmail.com',
+  # port:                 587,
+  # domain:               'example.com',
+  # user_name:            ENV['EMAIL_LOGIN'],
+  # password:             ENV['EMAIL_PASSWORD'],
+  # authentication:       'plain',
+  # enable_starttls_auto: true }
+
+  # :letter_opener
   config.action_mailer.perform_deliveries = true
 
   # Store uploaded files on the local file system (see config/storage.yml for options)

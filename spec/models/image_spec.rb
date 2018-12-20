@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-require 'rails_helper'
+require 'spec_helper'
 
 RSpec.describe Image, type: :model do
   before do
-    create(:valid_user)
-    create(:valid_category)
+    build(:valid_user)
+    build(:valid_category)
   end
 
   let(:image) { build(:valid_image) }

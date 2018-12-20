@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'rails_helper'
+require 'spec_helper'
 
 RSpec.describe 'comments/index', type: :view do
 
@@ -8,7 +8,6 @@ RSpec.describe 'comments/index', type: :view do
   let(:image) { create(:image_with_comments) } # Comment count = 5
 
   before do
-    user.confirm
     login_as user, scope: :user
     assign(:image, image)
     assign(:comments, image.comments)

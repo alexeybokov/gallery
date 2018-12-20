@@ -1,13 +1,11 @@
 # frozen_string_literal: true
-
-require 'rails_helper'
+require 'spec_helper'
 
 RSpec.describe CategoriesController, type: :controller do
   let(:user) { create(:valid_user) }
   let(:category) { create(:valid_category) }
 
   before :each do
-    user.confirm
     sign_in user
   end
 

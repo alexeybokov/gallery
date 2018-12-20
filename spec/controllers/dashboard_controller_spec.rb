@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'rails_helper'
+require 'spec_helper'
 
 RSpec.describe DashboardController, type: :controller do
 
@@ -10,7 +10,6 @@ RSpec.describe DashboardController, type: :controller do
     let(:image) { build(:valid_image) }
 
     before do
-      user.confirm
       sign_in user
     end
 

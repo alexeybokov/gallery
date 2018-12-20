@@ -30,3 +30,5 @@
 /config/database.yml
 /.idea
 coverage
+*.env
+*.rdb

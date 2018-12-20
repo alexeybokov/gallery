@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-require 'rails_helper'
+require 'spec_helper'
 
 RSpec.describe Category, type: :model do
   before do
-    create(:valid_user)
+    build(:valid_user)
   end
 
   let(:category) { build(:valid_category) }

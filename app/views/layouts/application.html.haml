@@ -81,19 +81,14 @@
             -else
               =link_to('Ru', { locale: :ru }, class: 'nav-link')
 
-    %main.container{:role => "main"}
-    %section
-      .container
-        - if flash[:notice]
-          .alert.alert-success= flash[:notice]
-        - if flash[:alert]
-          .alert.alert-danger= flash[:alert]
-        = render 'images/modal'
-        = render 'categories/modal_new'
-        = yield
-    -#%footer
-    /
-      Bootstrap core JavaScript
-      \==================================================
-    / Placed at the end of the document so the pages load faster
-
+  %main.container{:role => "main"}
+  %section
+    .container
+      - if flash[:notice]
+        .alert.alert-success= flash[:notice]
+      - if flash[:alert]
+        .alert.alert-danger= flash[:alert]
+      = render 'images/modal'
+      = render 'categories/modal_new'
+      = yield
+  = render 'layouts/footer'

@@ -1,12 +1,11 @@
 # frozen_string_literal: true
 
-require 'rails_helper'
+require 'spec_helper'
 
 RSpec.describe 'images/new', type: :view do
   let(:user) { create(:valid_user) }
 
   before do
-    user.confirm
     login_as user, scope: :user
     visit images_path
   end

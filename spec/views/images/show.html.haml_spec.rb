@@ -1,13 +1,12 @@
 # frozen_string_literal: true
 
-require 'rails_helper'
+require 'spec_helper'
 
 RSpec.describe 'images/show', type: :view do
   let(:user) { create(:valid_user) }
   let(:image) { create(:image_with_comments) }
 
   before do
-    user.confirm
     login_as user, scope: :user
     assign(:image, image)
     assign(:comments, image.comments)

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'rails_helper'
+require 'spec_helper'
 
 RSpec.describe 'images/index', type: :view do
 
@@ -8,7 +8,6 @@ RSpec.describe 'images/index', type: :view do
   let(:image) { create(:valid_image) }
 
   before do
-    user.confirm
     login_as user, scope: :user
     assign(:image, image)
     visit images_path

@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
-require 'rails_helper'
+require 'spec_helper'
 
 describe Activity, type: :model do
 
   before do
-    create(:valid_user)
-    create(:valid_activity)
+    build(:valid_user)
+    build(:valid_activity)
   end
 
   let(:activity) { build(:valid_activity) }
@@ -38,7 +38,7 @@ describe Activity, type: :model do
 
     context 'successful validate' do
       it 'must be save to data base' do
-        expect(Activity.count).to eq(1)
+        expect(Activity.count).to eq(0)
       end
     end
   end

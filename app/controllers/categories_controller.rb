@@ -1,5 +1,6 @@
 class CategoriesController < ApplicationController
 
+  before_action :authenticate_user!
   before_action :find_category, only: %i[show destroy follow unfollow]
 
   def index
@@ -39,7 +40,9 @@ class CategoriesController < ApplicationController
   def follow
     current_user.follow(@category)
     @follow = Follow.find_by(follower: current_user, followable: @category)
-    UserMailer.with(user: current_user, category: params[:id]).follow_email.deliver_now
+    FollowEmail.perform([current_user.id, @category.title])
+    # Resque.enqueue(FollowEmail, [current_user.id, @category.title])
+    # UserMailer.with(user: current_user, category: params[:id]).follow_email.deliver_now
     record_activity('follow category')
     redirect_to category_path
   end

@@ -5,8 +5,8 @@ class PictureUploader < CarrierWave::Uploader::Base
 
   # Choose what kind of storage to use for this uploader:
   # storage :file
-  storage :fog
-
+  # storage :fog
+  storage ENV['RAILS_ENV'].eql?('test') ? :file : :fog
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
   def store_dir
@@ -32,8 +32,6 @@ class PictureUploader < CarrierWave::Uploader::Base
 
   # Create different versions of your uploaded files:
   #
-  #
-  #
   version :large do
     process resize_to_fit: [1020, 760]
   end
@@ -45,7 +43,6 @@ class PictureUploader < CarrierWave::Uploader::Base
   version :thumb do
     process resize_to_fit: [275, 220]
   end
-
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:

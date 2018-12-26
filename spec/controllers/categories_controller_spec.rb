@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'spec_helper'
 
 RSpec.describe CategoriesController, type: :controller do
@@ -31,7 +32,7 @@ RSpec.describe CategoriesController, type: :controller do
     end
   end
 
-  describe 'GET #index' do
+  describe '#index' do
     subject! { get :index }
 
     it 'returns success responce' do
@@ -103,7 +104,7 @@ RSpec.describe CategoriesController, type: :controller do
     end
   end
 
-  describe 'GET #show' do
+  describe '#show' do
     subject! { get :show, params: { id: category.id } }
 
     it 'has a 200 status code' do
@@ -139,7 +140,7 @@ RSpec.describe CategoriesController, type: :controller do
     end
   end
 
-  describe 'DELETE #destroy' do
+  describe '#destroy' do
     subject! { delete :destroy, params: { id: category.id } }
 
     it 'has a 302 status code' do

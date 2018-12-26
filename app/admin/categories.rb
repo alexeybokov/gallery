@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 ActiveAdmin.register Category, as: 'All Category' do
-  # scope :all, default: true
   permit_params :title, :user_id
   config.per_page = 15
 
@@ -10,6 +9,15 @@ ActiveAdmin.register Category, as: 'All Category' do
       @category = Category.friendly.find(params[:id])
     end
   end
+
+  filter :user, collection: -> { User.all.map { |user| [user.email, user.id] } }
+  filter :images
+  # filter :followings, collection: -> { Category.all.map { |category| [category.title, category.followers_scoped] } }
+  filter :title
+  filter :created_at
+  filter :updated_at
+  filter :slug
+  filter :range_counter
 
   index do
     selectable_column

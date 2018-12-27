@@ -2,9 +2,26 @@
 // They will automatically be included in application.scss.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.title {
+  color: navajowhite;
+}
+
 .commentlistitem {
-  color: white !important;
+  color: white;
   overflow-wrap: break-word;
   word-wrap: break-word;
   hyphens: auto;
+  width: 1000px;
 }
+
+#comment-form {
+  color: #ffffff;
+  margin-left: 15px;
+}
+
+.comments_counter {
+  font-size: 20px;
+  color: #007bff;
+  margin-left: 10px;
+}
+

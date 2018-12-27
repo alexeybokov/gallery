@@ -1,15 +1,6 @@
-.container
-%form
-  .form-group
-    %label{:for => "comment"} Comment:
-    = form_for([@image, @image.comments.build]) do |f|
-      .field
-        .form
-          = f.text_area :body, input_html: { class: 'textarea' }, wrapper: false, label_html: { class: 'label' }
-        = f.submit (t('comments._form.add_comment')),class: 'btn btn-secondary'
-
-  .container
-  %form
-    .form-group
-      %label{:for => "comment"} Comment:
-      %textarea#comment.form-control{:rows => "5"}
+= form_with model: @comment, url: image_comments_path do |f|
+  = f.label :comment
+  %br
+  = f.text_area :body, class: 'w-75' ,rows: '5', placeholder: 'Write You Comment'
+  %br
+  = f.submit (t('comments._form.add_comment')),class: 'btn btn-secondary'

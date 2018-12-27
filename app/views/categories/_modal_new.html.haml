@@ -8,7 +8,7 @@
         = form_for Category.new, :html => { :multipart => true } do |f|
           .field
             = f.label :title
-            = f.text_field :title
+            = f.text_field :title, placeholder: 'Category Name'
             = f.submit t('activerecord.attributes.category.create'), class: 'btn btn-secondary'
       .modal-footer
         %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close

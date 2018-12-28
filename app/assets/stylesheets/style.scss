@@ -7,9 +7,17 @@ section{
   background-repeat: no-repeat;
   background-size: cover;
 }
+
 .navbar{
   min-height: 30px;
   border-radius: 0;
+}
+
+.container {
+  width: 100%;
+  max-width: 1440px ;
+  margin: 0 auto;
+  padding-left: 50px !important;
 }
 
 
@@ -70,6 +78,7 @@ footer{
 }
 
 .photo{
+  float: left;
   text-align: center;
   position: relative;
 }
@@ -81,6 +90,7 @@ footer{
 .photo-info{
   width: 275px;
   height: 220px;
+  box-sizing: border-box !important;
 }
 
 .photo-img,
@@ -88,7 +98,6 @@ footer{
 .photo-hover .mask{
   position: absolute;
   top:0;
-  left:50px;
 }
 
 .photo-type-line .photo-hover{
@@ -109,7 +118,6 @@ footer{
   display:table-cell;
   vertical-align: middle;
   position: relative;
-  left: 50px;
 }
 
 .photo-type-line .photo-info .headline{
@@ -157,7 +165,7 @@ footer{
 .fas.fa-align-justify,
 .fas.fa-globe-americas,
 .far.fa-arrow-alt-circle-down {
-  color: white;
+  color: snow;
   margin-top: 10px;
 }
 

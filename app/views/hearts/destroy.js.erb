@@ -1,0 +1,2 @@
+$('#heart-button').html('<%= j link_to("<i class=\"far fa-heart\"></i>".html_safe, hearts_path(id: @image.id), method: :post, remote: true) %>')
+$("#heart-count").html('<%= @image.reload.hearts_count %>')

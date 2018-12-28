@@ -2,7 +2,7 @@
   %h2
     = t('.show')
   - if @images.exists?
-    - @images.each_slice(4) do |image|
+    - @images.each_slice(5) do |image|
       %div
         .row
           - image.each do |image|

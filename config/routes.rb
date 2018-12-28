@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   scope '(:locale)' do
     devise_for :users, skip: :omniauth_callbacks
     resources :images, only: %i[index show new create] do
-      resources :comments, only: :create
+      resources :comments, only: %i[new create]
     end
 
     resources :categories do
@@ -23,7 +23,6 @@ Rails.application.routes.draw do
 
     resources :hearts, only: %i[create destroy]
     get 'comments', to: 'comments#index'
-    # match '/hearts', to: 'hearts#create', via: [:get, :post]
     root to: 'dashboard#index'
   end
 end

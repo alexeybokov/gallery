@@ -17,7 +17,7 @@ class UserMailer < ApplicationMailer
   private
 
   def category_url
-    @url = "http://localhost:3000/categories/#{params[:category]}"
+    @url = "https://my-new-gallery-app.herokuapp.com/en/categories/#{params[:category]}"
   end
 
   def user_params

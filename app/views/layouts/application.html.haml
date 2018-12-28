@@ -11,7 +11,7 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
 
   %body
-    %nav.navbar.navbar-expand-md.navbar-dark.bg-dark
+    %nav.navbar.navbar-expand-xl.navbar-dark.bg-dark
       %a.navbar-brand{:href => "#"}
         = t('layouts.application.title')
       %button.navbar-toggler{"aria-controls" => "navbarsExampleDefault", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarsExampleDefault", "data-toggle" => "collapse", :type => "button"}
@@ -81,19 +81,14 @@
             -else
               =link_to('Ru', { locale: :ru }, class: 'nav-link')
 
-    %main.container{:role => "main"}
-    %section
-      .container
-        - if flash[:notice]
-          .alert.alert-success= flash[:notice]
-        - if flash[:alert]
-          .alert.alert-danger= flash[:alert]
-        = render 'images/modal'
-        = render 'categories/modal_new'
-        = yield
-    -#%footer
-    /
-      Bootstrap core JavaScript
-      \==================================================
-    / Placed at the end of the document so the pages load faster
-
+  %main.container{:role => "main"}
+  %section
+    .container
+      - if flash[:notice]
+        .alert.alert-success= flash[:notice]
+      - if flash[:alert]
+        .alert.alert-danger= flash[:alert]
+      = render 'images/modal'
+      = render 'categories/modal_new'
+      = yield
+  = render 'layouts/footer'

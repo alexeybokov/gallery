@@ -1,9 +1,6 @@
 - if current_user.heart?(@image)
-  = button_to (t('hearts._button.dislike')), heart_path(id: @image.id), method: 'delete', class: 'btn btn-danger', remote: true
-  -#%button.btn.btn-link.unheart{ id: @image.id }
+  =link_to heart_path(id: @image.id), method: 'delete', remote: true do
     %i.fas.fa-heart
 - else
-  -#%button.btn.btn-link.heart{ id: @image.id }
+  =link_to hearts_path(id: @image.id), method: :post, remote: true do
     %i.far.fa-heart
-  = button_to (t('hearts._button.like')), hearts_path(id: @image.id), class: 'btn btn-danger', remote: true
-

@@ -8,7 +8,7 @@
         = form_for Image.new, :html => {:multipart => true}  do |f|
           .field
             = f.label :name
-            = f.text_field :name
+            = f.text_field :name, placeholder: 'Image Name'
           .field
             = f.label :picture
             = f.file_field :picture

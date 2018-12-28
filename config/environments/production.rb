@@ -102,7 +102,7 @@ Rails.application.configure do
   end
 
 
-  config.action_mailer.default_url_options = { :host => 'my-new-gallery-app.herokuapp.heroku.com' }
+  config.action_mailer.default_url_options = { :host => 'https://my-new-gallery-app.herokuapp.com' }
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 end

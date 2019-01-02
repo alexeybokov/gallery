@@ -17,3 +17,7 @@
 //= require popper
 //= require_tree .
 
+
+setTimeout(function(){
+    $('.alert').remove();
+}, 5000);

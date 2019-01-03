@@ -1,0 +1,1 @@
+$('#follow-button').html('<%= j button_to(t('categories.index.unfollow'), unfollow_category_path(id: @category.slug), method: :put, class: 'btn btn-outline-primary', remote: true) %>')

@@ -44,13 +44,11 @@ class CategoriesController < ApplicationController
     # Resque.enqueue(FollowEmail, [current_user.id, @category.title])
     # UserMailer.with(user: current_user, category: params[:id]).follow_email.deliver_now
     record_activity('follow category')
-    redirect_to category_path
   end
 
   def unfollow
     current_user.stop_following(@category)
     record_activity('unfollow category')
-    redirect_to category_path
   end
 
   private

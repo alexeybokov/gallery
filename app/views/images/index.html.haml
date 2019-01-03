@@ -1,27 +1,27 @@
 #gallery
   %h2
-    = t('.show')
+    .title
+      = t('.show')
   - if @images.exists?
-    - @images.each_slice(5) do |image|
-      %div
-        .row
-          - image.each do |image|
-            .col-mid-3
-              .photo.photo-type-line
-                %a.photo-hover{:href => image_path(image)}
-                  .photo-info
-                    .headline= image.name
-                    .line
-                    .desc= image.category.title
-                    .mask
-                  .photo-img
-                    = image_tag image.picture.thumb.url
-                  .overlay
-                    %i.fas.fa-heart
-                      = image.hearts_count
+    .row
+      - @images.each do |image|
+        .col-md-3
+          .photo.photo-type-line
+            %a.photo-hover{:href => image_path(image)}
+              .photo-info
+                .headline= image.name
+                .line
+                .desc= image.category.title
+                .mask
+                -#.overlay
+                -#  %i.fas.fa-heart
+                -#    = image.hearts_count
+              .photo-img
+                = image_tag image.picture.thumb.url, class: 'w-100 h-100'
   - else
     %p
-      = t('.no_images')
+      .title
+        = t('.no_images')
 #paginate
   = paginate @images
 

@@ -21,12 +21,7 @@
     %p.title
       = t('images.index.no_images')
 
-  - if current_user.following?(@category)
-    #unfollow-button.d-inline
-      = button_to (t('categories.index.unfollow')), {action: 'unfollow'}, method: 'put', class: 'btn btn-outline-primary', remote: true
-  - else
-    #follow-button.d-inline
-      = button_to (t('categories.index.follow')), {action: 'follow'}, method: 'put', class: 'btn btn-outline-primary', remote: true
+  = render 'categories/following_button', category: @category
 
   -if @category.user.eql?(current_user)
     = button_to (t('categories.index.delete_category')), {action: 'destroy'}, data: { confirm: t('categories.index.delete_category.confirm')}, method: :delete, class: 'btn btn-danger', remote: true

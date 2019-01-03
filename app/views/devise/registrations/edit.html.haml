@@ -26,7 +26,8 @@
     .follow_item
       %li
         = link_to(follow.title, category_path(follow), id: 'category_link')
-      -#= link_to(t('categories.index.unfollow'), unfollow_category_path(follow), id: 'category_link')
+        = render 'categories/following_button', category: follow
+
   %br/
   %p
     = t('.unhappy')

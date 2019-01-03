@@ -20,7 +20,6 @@ section{
   padding-left: 50px !important;
 }
 
-
 .navbar .navbar-brand{
   padding: 0 12px;
   font-size: 16px;
@@ -40,7 +39,6 @@ section{
   margin-bottom: 0;
   padding: 8px 9px;
 }
-
 
 .navbar .navbar-form{
   margin-top: 2px;
@@ -78,7 +76,6 @@ footer{
 }
 
 .photo{
-  float: left;
   text-align: center;
   position: relative;
 }
@@ -102,10 +99,7 @@ footer{
 
 .photo-type-line .photo-hover{
   z-index: 100;
-  -webkit-transition: all 500ms ease-out;
-  -moz-transition: all 500ms ease-out;
-  transition: opacity 500ms ease-out;
-  opacity:1;
+  opacity: 0.7;
   cursor:pointer;
   display:block;
   text-decoration: none;
@@ -114,24 +108,42 @@ footer{
 
 .photo-type-line .photo-info{
   z-index: 10;
-  color: #000000;
+  color: black;
   display:table-cell;
   vertical-align: middle;
   position: relative;
 }
 
-.photo-type-line .photo-info .headline{
-  font-size:20px;
+.photo-type-line .photo-info{
+  font-family: "Droid Sans Mono Dotted";
+  font-style: italic;
+  font-weight: bold;
+}
+
+.photo-type-line .photo-info .headline, .desc {
+  opacity: 0;
+  font-size:30px;
+  -webkit-transition: all 1000ms ease-out;
+  -moz-transition: all 1000ms ease-out;
+  transition: opacity 1000ms ease-out;
+}
+
+.photo-info:hover .headline {
+  opacity: 1;
+}
+
+.photo-info:hover .desc {
+  opacity: 1;
 }
 
 .photo-type-line .photo-info .line{
-  height:1px;
+  height:2px;
   width:0;
   margin:15px auto;
   background-color: #000000;
-  -webkit-transition: all 500ms ease-out;
-  -moz-transition: all 500ms ease-out;
-  transition: all 500ms ease-out;
+  -webkit-transition: all 1000ms ease-out;
+  -moz-transition: all 1000ms ease-out;
+  transition: all 1000ms ease-out;
 }
 
 .photo-type-line .photo-hover .mask{
@@ -142,15 +154,11 @@ footer{
 }
 
 .photo-type-line .photo-hover:hover .line{
-  width:60%;
+  width:80%;
 }
 
 .photo-type-line .photo-hover:hover{
   opacity:1;
-}
-
-.photo-img{
-  z-index:0;
 }
 
 #paginate{
@@ -174,17 +182,24 @@ footer{
 }
 
 .overlay{
-  position: absolute;
-  bottom: 0;
-  background: rgb(0, 0, 0);
-  background: rgba(0, 0, 0, 0.5); /* Black see-through */
+  position: relative;
+  top: 0;
+  //background: rgb(0, 0, 0);
+  //background: rgba(0, 0, 0, 0.5); /* Black see-through */
   color: #f1f1f1;
   width: 100%;
   transition: .5s ease;
-  opacity:0;
+  opacity:1;
   color: white;
   font-size: 20px;
   padding: 20px;
   text-align: center;
-  left: 50px;
+}
+
+.row{
+  margin-top: 20px;
+}
+
+.col-md-3{
+  margin-top: 15px;
 }

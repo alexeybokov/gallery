@@ -1,0 +1,5 @@
+#follow-button.d-inline
+  -if current_user.following?(category)
+    =button_to (t('categories.index.unfollow')), unfollow_category_path(id: category.slug), method: 'put', class: 'btn btn-outline-primary', remote: true
+  -else
+    =button_to (t('categories.index.follow')), {action: 'follow'}, method: 'put', class: 'btn btn-outline-primary', remote: true

@@ -7,6 +7,8 @@ class Follow < ActiveRecord::Base
   belongs_to :followable, polymorphic: true, counter_cache: :follows_count
   belongs_to :follower,   polymorphic: true
 
+  paginates_per 5
+
   def block!
     self.update_attribute(:blocked, true)
   end

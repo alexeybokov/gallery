@@ -1,15 +1,17 @@
 %h2
-  = t('comments.index.show')
+  .title
+    = t('comments.index.show')
 - @comments.each do |comment|
   %br/
   .commentlistitem
     = image_tag(comment.image.picture.small.url)
-    .commentlistitem
+    .commentlistitem.title
       = t('comments.index.comment')
       = ": '#{comment.body}'"
     .commentlistitem
-      = t('.user')
-      = ": '#{comment.user.email}'"
+      .title
+        = t('.user')
+        = ": '#{comment.user.email}'"
     %br/
 #paginate
   = paginate @comments

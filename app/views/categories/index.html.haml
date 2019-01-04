@@ -1,5 +1,6 @@
 %h2
-  = t('categories.index.categories')
+  .title
+    = t('categories.index.categories')
 - if @categories.exists?
   - @categories.each_slice(4) do |category|
     %div

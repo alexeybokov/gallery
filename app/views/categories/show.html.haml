@@ -18,13 +18,10 @@
                   .photo-img
                     = image_tag image.picture.thumb.url
   - else
-    %p
+    %p.title
       = t('images.index.no_images')
 
-  - if current_user.following?(@category)
-    = button_to (t('categories.index.unfollow')), {action: 'unfollow'}, method: 'put', class: 'btn btn-outline-primary', remote: true
-  - else
-    = button_to (t('categories.index.follow')), {action: 'follow'}, method: 'put', class: 'btn btn-outline-primary', remote: true
+  = render 'categories/following_button', category: @category
 
   -if @category.user.eql?(current_user)
     = button_to (t('categories.index.delete_category')), {action: 'destroy'}, data: { confirm: t('categories.index.delete_category.confirm')}, method: :delete, class: 'btn btn-danger', remote: true

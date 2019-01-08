@@ -17,3 +17,5 @@ Rails.application.config.assets.paths << Rails.root.join("app", "assets", "img")
 Rails.application.config.assets.unknown_asset_fallback = true
 
 Rails.application.config.assets.precompile += %w( bootstrap.scss )
+
+Rails.application.config.assets.precompile = true

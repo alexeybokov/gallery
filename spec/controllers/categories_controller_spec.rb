@@ -171,14 +171,10 @@ RSpec.describe CategoriesController, type: :controller do
   end
 
   describe 'PUT #follow' do
-    subject! { put :follow, params: { id: category.id } }
+    subject! { put :follow, xhr: :js, params: { id: category.id } }
 
-    it 'has a 302 status code' do
-      expect(response).to have_http_status(302)
-    end
-
-    it 'should redirect to category path after create follow' do
-      expect(response).to redirect_to(category_path)
+    it 'has a 200 status code' do
+      expect(response).to have_http_status(200)
     end
 
     context 'activity' do
@@ -197,14 +193,10 @@ RSpec.describe CategoriesController, type: :controller do
   end
 
   describe 'PUT #unfollow' do
-    subject! { put :unfollow, params: { id: category.id } }
+    subject! { put :unfollow, xhr: :js, params: { id: category.id } }
 
-    it 'has a 302 status code' do
-      expect(response).to have_http_status(302)
-    end
-
-    it 'should redirect to category path after destroy follow' do
-      expect(response).to redirect_to(category_path)
+    it 'has a 200 status code' do
+      expect(response).to have_http_status(200)
     end
 
     context 'activity' do

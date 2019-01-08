@@ -26,16 +26,12 @@ RSpec.describe 'images/show', type: :view do
     expect(page).to render_template('hearts/_button')
   end
 
-  it 'should  be render _comment.html.haml' do
-    expect(page).to render_template('comments/_comment')
-  end
-
   it 'have heart button' do
     expect(page).to have_button('Heart')
   end
 
   it 'have heart button' do
-    expect(page).to have_button('Add Comment')
+    expect(page).to have_selector('Add Comment')
   end
 
   it 'have image on page' do

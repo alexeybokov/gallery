@@ -1,6 +1,6 @@
 # frozen_string_literal: true
-require 'spec_helper'
 
+require 'spec_helper'
 
 RSpec.describe CommentsController, type: :controller do
   let(:user) { create(:valid_user) }

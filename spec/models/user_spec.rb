@@ -41,11 +41,10 @@ RSpec.describe User, type: :model do
   end
 
   context 'change email' do
-    it 'sends email changed notification' do
-      skip
-      # user.email = Faker::Internet.email
-      # expect(UserMailer).to receive(:email_changed).with(user).and_return(double('emeil', deliver: true))
-      # user.save
+    xit 'sends email changed notification' do
+      user.email = Faker::Internet.email
+      expect(UserMailer).to receive(:email_changed).with(user).and_return(double('emeil', deliver: true))
+      user.save
     end
 
     it "doesn't send email changed notification" do

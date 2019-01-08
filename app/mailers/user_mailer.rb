@@ -1,6 +1,4 @@
 class UserMailer < ApplicationMailer
-  # include Resque::Mailer
-
   before_action :user_params
   before_action :category_url, only: %i[follow_email new_image_email]
 

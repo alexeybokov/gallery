@@ -15,8 +15,4 @@ RSpec.describe 'categories/index', type: :view do
   it 'has a request.fullpath that is defined' do
     expect(controller.request.fullpath).to eq categories_path
   end
-
-  # it 'have follow button' do
-  #   expect(page).to have_button('Follow')
-  # end
 end

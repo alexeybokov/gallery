@@ -12,7 +12,6 @@ ActiveAdmin.register Category, as: 'All Category' do
 
   filter :user, collection: -> { User.all.map { |user| [user.email, user.id] } }
   filter :images
-  # filter :followings, collection: -> { Category.all.map { |category| [category.title, category.followers_scoped] } }
   filter :title
   filter :created_at
   filter :updated_at

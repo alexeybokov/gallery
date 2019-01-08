@@ -46,7 +46,7 @@ gem 'file_validators'
 gem 'jquery-rails'
 gem 'pusher'
 gem 'figaro'
-gem 'fog', '~>1.20'
+gem 'fog-aws'
 gem 'kaminari'
 gem 'mini_magick'
 gem 'omniauth-facebook'
@@ -78,6 +78,11 @@ group :development do
   gem 'rubocop'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'capistrano'
+  gem 'capistrano3-puma'
+  gem 'capistrano-rails', require: false
+  gem 'capistrano-bundler', require: false
+  gem 'capistrano-rvm'
 end
 
 group :test do

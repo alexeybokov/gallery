@@ -31,19 +31,18 @@ RSpec.describe 'images/index', type: :view do
   end
 
   context 'with 2 images' do
-    skip
-    # before(:each) do
-    #   assign(:widgets, [
-    #            Image.create!(name: 'Test', category_id: 5),
-    #     Image.create!(name: 'Test2', category_id: 5)
-    #          ])
-    # end
-    #
-    # it 'displays both images' do
-    #   render
-    #
-    #   expect(rendered).to match /Test/
-    #   expect(rendered).to match /Test2/
-    # end
+    before(:each) do
+      assign(:widgets, [
+               Image.create!(name: 'Test', category_id: 5),
+        Image.create!(name: 'Test2', category_id: 5)
+             ])
+    end
+
+    xit 'displays both images' do
+      render
+
+      expect(rendered).to match /Test/
+      expect(rendered).to match /Test2/
+    end
   end
 end

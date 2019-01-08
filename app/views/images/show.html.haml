@@ -1,7 +1,8 @@
 %h2
   = @image.name
 %br
-= image_tag(@image.picture.large.url, alt: 'some_image')
+  .image
+    = image_tag(@image.picture.large.url, alt: 'some_image')
 %br
 %div
   #heart-button.d-inline
@@ -21,7 +22,7 @@
       %a.toggleLink{:href => "#", 'data-remote' => 'true', } See all Comments
       %i.comments
         -if @comments.exists?
-          %i.title
+          %i.comment_title
             ="Comments : "
           -@comments.each do |comment|
             .commentlistitem
@@ -40,7 +41,3 @@
         -else
           %i.title
             ='No comments yet'
-
-
-
--#= render 'comments/comment'

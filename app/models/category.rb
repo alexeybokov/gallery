@@ -5,7 +5,6 @@ class Category < ApplicationRecord
 
   has_many :images, dependent: :destroy
   belongs_to :user
-  # belongs_to :image, optional: true
 
   validates :title, presence: true
 

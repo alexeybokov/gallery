@@ -2,6 +2,10 @@
 // They will automatically be included in application.scss.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.comment_title {
+  color: navajowhite;
+}
+
 .title {
   color: navajowhite;
 }
@@ -23,5 +27,8 @@
   font-size: 20px;
   color: #007bff;
   margin-left: 10px;
+}
+
+.comments {
 }
 

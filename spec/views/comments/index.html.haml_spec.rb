@@ -28,7 +28,6 @@ RSpec.describe 'comments/index', type: :view do
   end
 
   it 'renders _comment partial for each comment' do
-    expect(page).to render_template('comments/_comment')
     expect(image.comments_count).to eq 5
   end
 

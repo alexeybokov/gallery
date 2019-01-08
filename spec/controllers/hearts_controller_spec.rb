@@ -15,18 +15,14 @@ RSpec.describe HeartsController, type: :controller do
     let(:image) { create(:valid_image) }
     let(:heart) { create(:heart) }
 
-    subject! { post :create, params: { category_id: category.id, id: image.id } }
+    subject! { post :create, xhr: :js, params: { category_id: category.id, id: image.id } }
 
-    it 'returns success(302) status code' do
-      expect(response.status).to eq(302)
+    it 'returns success(200) status code' do
+      expect(response.status).to eq(200)
     end
 
     it 'assigns @image variables' do
       expect(assigns(:image)).to eq(image)
-    end
-
-    it 'success redirect after create hearts' do
-      expect(response).to redirect_to(image_path(id: image.id))
     end
 
     it 'save heart' do
@@ -53,22 +49,18 @@ RSpec.describe HeartsController, type: :controller do
     let(:image) { create(:valid_image) }
     let(:heart) { create(:heart) }
 
-    subject! { post :create, params: { category_id: category.id, id: image.id } }
+    subject! { post :create, xhr: :js, params: { category_id: category.id, id: image.id } }
 
     before do
-      delete :destroy, params: { category_id: category.id, id: image.id }
+      delete :destroy, xhr: :js, params: { category_id: category.id, id: image.id }
     end
 
-    it 'returns success(302) status code' do
-      expect(response.status).to eq(302)
+    it 'returns success(200) status code' do
+      expect(response.status).to eq(200)
     end
 
     it 'assigns @image variables' do
       expect(assigns(:image)).to eq(image)
-    end
-
-    it 'success redirect after create hearts' do
-      expect(response).to redirect_to(image_path(id: image.id))
     end
 
     it 'change hearts count after destroy' do

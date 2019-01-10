@@ -81,9 +81,8 @@
             -else
               =link_to('Ru', { locale: :ru }, class: 'nav-link')
 
-  %main.container{:role => "main"}
-  %section
-    .container
+  .container-fluid
+    %section
       - if flash[:notice]
         .alert.alert-success= flash[:notice]
       - if flash[:alert]
@@ -91,4 +90,4 @@
       = render 'images/modal'
       = render 'categories/modal_new'
       = yield
-    = render 'layouts/footer'
+  = render 'layouts/footer'

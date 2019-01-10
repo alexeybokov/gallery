@@ -384,6 +384,9 @@ GEM
     multi_xml (0.6.0)
     multipart-post (2.0.0)
     mustermann (1.0.3)
+    net-scp (1.2.1)
+      net-ssh (>= 2.6.5)
+    net-ssh (5.1.0)
     netrc (0.11.0)
     nio4r (2.3.1)
     nokogiri (1.8.5)
@@ -628,7 +631,7 @@ DEPENDENCIES
   faker
   figaro
   file_validators
-  fog (~> 1.20)
+  fog
   friendly_id (~> 5.2.0)
   haml
   jbuilder (~> 2.5)

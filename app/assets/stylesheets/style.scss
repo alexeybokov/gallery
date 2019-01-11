@@ -1,5 +1,5 @@
 body{
-  font-family: Georgia, 'Arrial', sans-serif;
+  font-family: 'Open Sans', sans-serif;
   background-image: image_url("image.jpg");
   background-repeat: no-repeat;
   background-size: cover;
@@ -55,8 +55,9 @@ section{
 h1, h2{
   color: white !important;
   text-align: center;
-  border-left:5px #666 solid;
-  border-bottom: 1px #666 solid;
+  border-left: 1px #ffffff solid;
+  border-bottom: 1px #ffffff solid;
+  border-right: 1px #ffffff solid;
   padding: 0 0 5px 10px;
   margin-bottom: 30px;
 }
@@ -205,3 +206,8 @@ footer{
 .col-md-3{
   margin-top: 15px;
 }
+
+.nav-item a:hover{
+  border-bottom: 1px solid #FFFFFF;
+}
+

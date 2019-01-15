@@ -13,9 +13,6 @@
                 .line
                 .desc= image.category.title
                 .mask
-                -#.overlay
-                -#  %i.fas.fa-heart
-                -#    = image.hearts_count
               .photo-img
                 = image_tag image.picture.thumb.url, class: 'w-100 h-100'
   - else

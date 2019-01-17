@@ -211,3 +211,22 @@ footer{
   border-bottom: 1px solid #FFFFFF;
 }
 
+img {
+  -webkit-filter: grayscale(1);
+  -webkit-transition: all .8s ease-in-out;
+}
+
+img:hover {
+  -webkit-filter: grayscale(0);
+  -webkit-transform: scale(1.01);
+}
+
+.mask .photo-img img:hover {
+  -webkit-filter: grayscale(0);
+  -webkit-transform: scale(1.01);
+}
+
+.add_color {
+  -webkit-filter: grayscale(0);
+  -webkit-transform: scale(1.01);
+}

@@ -1,21 +1,11 @@
-const clearUrl = url => url.replace(/^data:image\/\w+;base64,/, '');
+function mouseIn(elem) {
+    var img = $(elem.parentNode.parentNode).find('img');
 
-const downloadImage = (name, content, type) => {
-  var link = document.createElement('a');
-  link.style = 'position: fixed; left -10000px;';
-  link.href = `data:application/octet-stream;base64,${encodeURIComponent(content)}`;
-  link.download = /\.\w+/.test(name) ? name : `${name}.${type}`;
-
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
+    img[0].classList.add('add_color');
 }
 
-['png', 'jpg', 'gif'].forEach(type => {
-  var download = document.querySelector(`#${type}`);
-  download.addEventListener('click', function() {
-    var img = document.querySelector('#img');
+function mouseOut(elem) {
+    var img = $(elem.parentNode.parentNode).find('img');
 
-    downloadImage('myImage', clearUrl(img.src), type);
-  });
-});
+    img[0].classList.remove('add_color');
+}

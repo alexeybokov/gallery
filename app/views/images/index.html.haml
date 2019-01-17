@@ -12,7 +12,8 @@
                 .headline= image.name
                 .line
                 .desc= image.category.title
-                .mask
+                .mask{ onmouseover: 'mouseIn(this);',
+                       onmouseout: 'mouseOut(this);' }
                 -#.overlay
                 -#  %i.fas.fa-heart
                 -#    = image.hearts_count

@@ -15,7 +15,7 @@
         %i.fas.fa-comment-dots
           %i.comments_counter
             = @image.comments_count
-  =link_to download_image_path(id: @image.id) do
+  =link_to download_image_path(id: @image.id), target: '_blank' do
     %i.fas.fa-download
 
   #comments-container

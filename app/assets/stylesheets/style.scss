@@ -1,11 +1,13 @@
 body{
-  font-family: Georgia, 'Arrial', sans-serif;
-}
-
-section{
+  font-family: 'Open Sans', sans-serif;
   background-image: image_url("image.jpg");
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+section{
+  height: 100%;
+  width: auto;
 }
 
 .navbar{
@@ -13,9 +15,10 @@ section{
   border-radius: 0;
 }
 
-.container {
+.container-fluid {
+  min-height: 100vh;
   width: 100%;
-  max-width: 1440px ;
+  max-width: 1440px;
   margin: 0 auto;
   padding-left: 50px !important;
 }
@@ -52,14 +55,14 @@ section{
 h1, h2{
   color: white !important;
   text-align: center;
-  border-left:5px #666 solid;
-  border-bottom: 1px #666 solid;
+  border-left: 1px #ffffff solid;
+  border-bottom: 1px #ffffff solid;
+  border-right: 1px #ffffff solid;
   padding: 0 0 5px 10px;
   margin-bottom: 30px;
 }
 
 #gallery img{
-  //height: ;
 }
 
 .col-md-3{
@@ -67,12 +70,12 @@ h1, h2{
 }
 
 footer{
-  margin-top: 2px;
   height: 30px;
   background: #333;
   color: #fff;
   text-align: center;
   padding-top: 10px;
+  position: -webkit-sticky;
 }
 
 .photo{
@@ -202,4 +205,28 @@ footer{
 
 .col-md-3{
   margin-top: 15px;
+}
+
+.nav-item a:hover{
+  border-bottom: 1px solid #FFFFFF;
+}
+
+img {
+  -webkit-filter: grayscale(1);
+  -webkit-transition: all .8s ease-in-out;
+}
+
+img:hover {
+  -webkit-filter: grayscale(0);
+  -webkit-transform: scale(1.01);
+}
+
+.mask .photo-img img:hover {
+  -webkit-filter: grayscale(0);
+  -webkit-transform: scale(1.01);
+}
+
+.add_color {
+  -webkit-filter: grayscale(0);
+  -webkit-transform: scale(1.01);
 }

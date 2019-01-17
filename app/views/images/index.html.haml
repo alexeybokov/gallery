@@ -5,14 +5,18 @@
   - if @images.exists?
     .row
       - @images.each do |image|
-        .col-md-3
+        .col-md-3-expand-xl
           .photo.photo-type-line
             %a.photo-hover{:href => image_path(image)}
               .photo-info
                 .headline= image.name
                 .line
                 .desc= image.category.title
-                .mask
+                .mask{ onmouseover: 'mouseIn(this);',
+                       onmouseout: 'mouseOut(this);' }
+                -#.overlay
+                -#  %i.fas.fa-heart
+                -#    = image.hearts_count
               .photo-img
                 = image_tag image.picture.thumb.url, class: 'w-100 h-100'
   - else

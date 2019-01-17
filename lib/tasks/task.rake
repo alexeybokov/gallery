@@ -63,7 +63,7 @@ namespace :app do
   def create_comments
     300.times do
       Comment.create!(user_id: User.first.id,
-                      image_id: rand(1..75),
+                      image_id: rand(1..45),
                       body: Faker::Lorem.sentence(15, true).chop)
     end
     puts 'Create comments..................................................................................'

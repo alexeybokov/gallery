@@ -4,7 +4,7 @@ class ImagesController < ApplicationController
   respond_to :html, :js
 
   before_action :authenticate_user!
-  before_action :set_image, only: [:show, :edit]
+  before_action :set_image, only: %i[show edit download]
 
   def new
     @image = Image.new
@@ -35,6 +35,10 @@ class ImagesController < ApplicationController
   end
 
   def edit
+  end
+
+  def download
+    send_data(open(@image.picture.url).read, filename: File.basename(@image.picture.path))
   end
 
   private

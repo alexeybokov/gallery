@@ -6,6 +6,7 @@
     %title
       =t('layouts.application.title')
     = csrf_meta_tags
+    %link{:href => "https://fonts.googleapis.com/css?family=Open+Sans", :rel => "stylesheet"}/
     %link{:crossorigin => "anonymous", :href => "https://use.fontawesome.com/releases/v5.5.0/css/all.css", :integrity => "sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU", :rel => "stylesheet"}/
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
@@ -81,9 +82,8 @@
             -else
               =link_to('Ru', { locale: :ru }, class: 'nav-link')
 
-  %main.container{:role => "main"}
-  %section
-    .container
+  .container-fluid
+    %section
       - if flash[:notice]
         .alert.alert-success= flash[:notice]
       - if flash[:alert]
@@ -91,4 +91,4 @@
       = render 'images/modal'
       = render 'categories/modal_new'
       = yield
-    = render 'layouts/footer'
+  -#= render 'layouts/footer'

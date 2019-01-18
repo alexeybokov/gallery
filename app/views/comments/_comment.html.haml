@@ -1,5 +1,5 @@
 %i
-  -if @comments.exists?
+  -if @comments.load.any?
     %i.title
       ="Comments : "
     -@comments.each do |comment|

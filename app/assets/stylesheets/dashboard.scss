@@ -1,8 +1,3 @@
-.image_container {
-  margin-left: 15%;
-}
-
-
 #musthead{
   border-bottom: 1px solid snow;
 }
@@ -18,9 +13,32 @@
 
 .nav-container{}
 
-
 .fab.fa-instagram{
   color: snow;
   margin-left: 50%;
   font-size: 75px;
+}
+
+.navbar {
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+}
+
+.slider_container {
+  margin-top: 1%;
+  //margin-left: 15%;
+}
+
+.image_container {
+  height: auto;
+}
+
+.img{
+  margin-left: 20%;
+  width: 720px;
+  height: 480px;
+}
+
+.img_slider {
+  margin-left: 3%;
 }

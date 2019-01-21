@@ -5,5 +5,5 @@ class Comment < ApplicationRecord
   validates :body, presence: true
   validates :user, presence: true
 
-  paginates_per 10
+  paginates_per 5
 end

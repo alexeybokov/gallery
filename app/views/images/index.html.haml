@@ -14,11 +14,8 @@
                 .desc= image.category.title
                 .mask{ onmouseover: 'mouseIn(this);',
                        onmouseout: 'mouseOut(this);' }
-                -#.overlay
-                -#  %i.fas.fa-heart
-                -#    = image.hearts_count
               .photo-img
-                = image_tag image.picture.thumb.url, class: 'w-100 h-100'
+                = image_tag image.picture.thumb.url, class: 'img-list'
   - else
     %p
       .title

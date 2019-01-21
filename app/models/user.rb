@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :confirmable, :rememberable, :validatable, :omniauthable,
          :lockable, :trackable, omniauth_providers: [:facebook]
 
-  has_many :comments
+  has_many :comments, dependent: :destroy
   has_many :images, dependent: :destroy
   has_many :hearts, dependent: :destroy
   has_many :categories, dependent: :destroy

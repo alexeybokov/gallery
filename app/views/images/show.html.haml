@@ -23,7 +23,7 @@
     .image_comments
       %a.toggleLink{:href => "#", 'data-remote' => 'true', } See all Comments
       %i.comments
-        -if @comments.exists?
+        -if @comments.load.any?
           %i.comment_title
             ="Comments : "
           -@comments.each do |comment|

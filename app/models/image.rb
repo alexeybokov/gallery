@@ -3,7 +3,7 @@ class Image < ApplicationRecord
 
   belongs_to :category, counter_cache: :images_count
   belongs_to :user
-  has_many :comments
+  has_many :comments, dependent: :destroy
   has_many :hearts, dependent: :destroy
 
   validates :name, presence: true

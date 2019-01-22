@@ -11,7 +11,7 @@ class ImagesController < ApplicationController
 
   def index
     @images = Image.order(hearts_count: :desc).page(params[:page])
-    record_activity('navigation')
+    # record_activity('navigation')
   end
 
   def show

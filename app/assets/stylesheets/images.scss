@@ -94,7 +94,6 @@
   color: navajowhite;
   text-decoration: none !important;
   margin-left: 10%;
-  //opacity: 0;
 }
 
 .comments {
@@ -104,4 +103,41 @@
 .fas.fa-download{
   color: navajowhite;
   margin-left: 10px;
+}
+
+@media screen and( max-width: 1420px) {
+  .image {
+    margin-left: 5%;
+  }
+}
+
+@media screen and( max-width: 1200px) {
+  .image {
+    text-align: center;
+    margin-left: 0;
+  }
+}
+
+@media screen and( max-width: 1100px) {
+  .image {
+    text-align: center;
+    margin-left: 0;
+  }
+
+  .image img {
+    max-width: 575px;
+    //max-height: 220px;
+  }
+}
+
+@media screen and( max-width: 654px) {
+  .image {
+    text-align: center;
+    margin-left: 0;
+  }
+
+  .image img {
+    max-width: 275px;
+    //max-height: 220px;
+  }
 }

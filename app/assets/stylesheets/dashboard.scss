@@ -47,3 +47,51 @@
   font-size: 60px;
   color: snow;
 }
+
+.navbar a:hover{
+  opacity: 0.5;
+}
+
+@media screen and( max-width: 1343px){
+  .img {
+    margin-left: 3%;
+  }
+}
+
+@media screen and( max-width: 980px){
+  .img {
+    margin-left: 3%;
+    max-width: 575px;
+  }
+
+  .slider_container {
+    text-align: center;
+  }
+
+  .logo-navbar-container{
+    text-align: center;
+  }
+  .nav-title, .fab.fa-instagram {
+    display: block;
+    margin-left: 0;
+  }
+}
+
+@media screen and( max-width: 654px){
+  .nav-title {
+    margin-left: 0;
+  }
+
+  .img {
+    margin-left: 3%;
+  }
+
+  .img {
+    max-width: 275px;
+    max-height: 220px;
+  }
+
+  .slider_container {
+    text-align: center;
+  }
+}

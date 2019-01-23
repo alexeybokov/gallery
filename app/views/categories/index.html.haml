@@ -2,7 +2,7 @@
   .title
     = t('categories.index.categories')
 - if @categories.exists?
-  - @categories.each_slice(5) do |category|
+  - @categories.each_slice(4) do |category|
     %div
       .row
         - category.each do |category|

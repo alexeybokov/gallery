@@ -12,13 +12,15 @@
                 .photo-info
                   .headline= category.title
                   .line
-                  .desc= category.title
+                  .desc
+                    = "Rating:"
+                    = category.range_counter
                   .mask
                 .photo-img
                   - if category.images.first.present?
                     = image_tag category.images.first.picture.thumb.url
                   - else
-                    = image_tag 'background.jpg', style: "width: 250px"
+                    = image_tag 'background.jpg', style: "width: 275px; height: 220px"
 - else
   %p
     = t('categories.index.no_categories')

@@ -14,5 +14,5 @@ class Category < ApplicationRecord
 
   paginates_per 12
 
-  scope :newest, -> { order(created_at: :desc) }
+  scope :newest, -> { order(created_at: :desc2) }
 end

@@ -7,12 +7,12 @@
       .row
         - category.each do |category|
           .col-mid-3
-            .photo.photo-type-line
-              %a.photo-hover{ "data-title" => category.title, :href => category_path(category) }
-                .photo-info
-                  .headline= category.title
-                  .line
-                  .desc
+            .photo2.photo-type-line2
+              %a.photo-hover2{ "data-title" => category.title, :href => category_path(category) }
+                .photo-info2
+                  .headline2= category.title
+                  .line2
+                  .desc2
                     = "Rating:"
                     = category.range_counter
                   .mask

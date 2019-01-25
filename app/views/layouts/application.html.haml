@@ -13,75 +13,93 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
 
   %body
+
     .slider
       .content
         =image_tag('slider1.jpg', class: 'w-100 mySlides')
         =image_tag('slider2.jpg', class: 'w-100 mySlides')
         =image_tag('slider3.jpg', class: 'w-100 mySlides')
         =image_tag('slider4.jpg', class: 'w-100 mySlides')
-    %i.display-left{onclick: "plusDivs(-1)"}
-      =image_tag('left.png', class: 'left')
-    %i.display-right{onclick: "plusDivs(1)"}
-      =image_tag('right.png', class: 'right')
+      %i.display-left{onclick: "plusDivs(-1)"}
+        =image_tag('left.png', class: 'left')
+      %i.display-right{onclick: "plusDivs(1)"}
+        =image_tag('right.png', class: 'right')
 
-    #musthead
-      .logo-navbar-container
-        %i.fab.fa-instagram
-        %i.nav-title
-          = 'PhotoGallery'
+    .logo-navbar-container
+      %i.fab.fa-instagram
+      %i.nav-title
+        = 'PhotoGallery'
 
-      %nav.navbar.navbar-expand-xl
-        %button.navbar-toggler{"aria-controls" => "navbarsExampleDefault", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarsExampleDefault", "data-toggle" => "collapse", :type => "button"}
-          %span.navbar-toggler-icon
-            %i.fas.fa-align-justify
-        #navbarsExampleDefault.collapse.navbar-collapse
-          %ul.navbar-nav.mr-auto
-            %li.nav-item.active
-              = link_to (t('layouts.application.home')), root_path, class: "nav-link"
-              %a.nav-link{:href => "#"}
-                %span.sr-only (current)
-            %li.nav-item.dropdown.active
-              %a#dropdown.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "https://example.com"}
-                = t('layouts.application.top_categories')
-              .dropdown-menu{"aria-labelledby" => "dropdown"}
-                - top_5_categories.each do |category|
-                  %a.dropdown-item{:href => "#{category_path(category)}"}
-                    = category.title
-            %li.nav-item.active
-              = link_to (t('layouts.application.images')), images_path, class: "nav-link"
-            %li.nav-item.active
-              = link_to (t('layouts.application.comments')), comments_path, class:"nav-link"
-            %li.nav-item.dropdown.active
-              %a#dropdown02.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "https://example.com"}
-                = t('layouts.application.account')
-              .dropdown-menu{"aria-labelledby" => "dropdown02"}
-                - if user_signed_in?
-                  = link_to (t('layouts.application.logout')), destroy_user_session_path, class: "dropdown-item alert-danger", method: :delete
-                - else
-                  = link_to (t('layouts.application.login')), new_user_session_path, class: "dropdown-item"
-                = link_to (t('layouts.application.edit_profile')), edit_user_registration_path, class: "dropdown-item alert-info"
-            %li.nav-item.active
-              = link_to (t('layouts.application.categories')), categories_path, class:"nav-link"
-          %ul.nav.navbar-nav.pull-right
-            %li.nav-item.active
-              = link_to(t('layouts.application.upload_images'), '#imageModal', 'data-toggle' => 'modal', class: 'nav-link')
-            %li.nav-item.active
-              = link_to(t('layouts.application.add_category'), '#categoryModal', 'data-toggle' => 'modal', class: 'nav-link')
+    %nav.navbar.navbar-expand-xl
+      %button.navbar-toggler{"aria-controls" => "navbarsExampleDefault", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarsExampleDefault", "data-toggle" => "collapse", :type => "button"}
+        %span.navbar-toggler-icon
+          %i.fas.fa-align-justify
+      #navbarsExampleDefault.collapse.navbar-collapse
+        %ul.navbar-nav.mr-auto
+          %li.nav-item.active
+            = link_to (t('layouts.application.home')), root_path, class: "nav-link"
+            %a.nav-link{:href => "#"}
+              %span.sr-only (current)
+          %li.nav-item.dropdown.active
+            %a#dropdown.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "https://example.com"}
+              = t('layouts.application.top_categories')
+            .dropdown-menu{"aria-labelledby" => "dropdown"}
+              - top_5_categories.each do |category|
+                %a.dropdown-item{:href => "#{category_path(category)}"}
+                  = category.title
+          %li.nav-item.active
+            = link_to (t('layouts.application.images')), images_path, class: "nav-link"
+          %li.nav-item.active
+            = link_to (t('layouts.application.comments')), comments_path, class:"nav-link"
+          %li.nav-item.dropdown.active
+            %a#dropdown02.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "https://example.com"}
+              = t('layouts.application.account')
+            .dropdown-menu{"aria-labelledby" => "dropdown02"}
+              - if user_signed_in?
+                = link_to (t('layouts.application.logout')), destroy_user_session_path, class: "dropdown-item alert-danger", method: :delete
+              - else
+                = link_to (t('layouts.application.login')), new_user_session_path, class: "dropdown-item"
+              = link_to (t('layouts.application.edit_profile')), edit_user_registration_path, class: "dropdown-item alert-info"
+          %li.nav-item.active
+            = link_to (t('layouts.application.categories')), categories_path, class:"nav-link"
+        %ul.nav.navbar-nav.pull-right
+          %li.nav-item.active
+            = link_to(t('layouts.application.upload_images'), '#imageModal', 'data-toggle' => 'modal', class: 'nav-link')
+          %li.nav-item.active
+            = link_to(t('layouts.application.add_category'), '#categoryModal', 'data-toggle' => 'modal', class: 'nav-link')
 
-            %li.nav-item.active
-              %i.fas.fa-globe-americas
-            %li.nav-item.active
-              -if I18n.locale == :ru
-                =link_to('En', { locale: :en }, class: 'nav-link')
-              -else
-                =link_to('Ru', { locale: :ru }, class: 'nav-link')
+          %li.nav-item.active
+            %i.fas.fa-globe-americas
+          %li.nav-item.active
+            -if I18n.locale == :ru
+              =link_to('En', { locale: :en }, class: 'nav-link')
+            -else
+              =link_to('Ru', { locale: :ru }, class: 'nav-link')
 
-      .container-fluid
-        - if flash[:notice]
-          .alert.alert-success= flash[:notice]
-        - if flash[:alert]
-          .alert.alert-danger= flash[:alert]
-        = render 'images/modal'
-        = render 'categories/modal_new'
-        = yield
+    .container-fluid
+      - if flash[:notice]
+        .alert.alert-success= flash[:notice]
+      - if flash[:alert]
+        .alert.alert-danger= flash[:alert]
+      = render 'images/modal'
+      = render 'categories/modal_new'
+      = yield
     -#= render 'layouts/footer'
+
+    -if controller_name == 'dashboard'
+      .images-container
+        - if @images.exists?
+          .row2
+            - @images.each do |image|
+              .col-md-2-expand-xl
+                .photo2.photo-type-line2
+                  .photo-hover2
+                    .photo-info2
+                      .headline2= image.name
+                      .line2
+                      .desc2= image.category.title
+                      .mask2
+                    .photo-img2
+                      = image_tag image.picture.thumb.url, class: 'images_list_dashboard'
+
+    .footer

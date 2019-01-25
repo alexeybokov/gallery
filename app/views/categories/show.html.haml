@@ -8,12 +8,12 @@
         .row
           - image.each do |image|
             .col-mid-3
-              .photo.photo-type-line
-                %a.photo-hover{"data-title" => image.name, :href => image_path(image)}
-                  .photo-info
-                    .headline= image.name
-                    .line
-                    .desc= image.category.title
+              .photo2.photo-type-line2
+                %a.photo-hover2{"data-title" => image.name, :href => image_path(image)}
+                  .photo-info2
+                    .headline2= image.name
+                    .line2
+                    .desc2= image.category.title
                     .mask
                   .photo-img
                     = image_tag image.picture.thumb.url

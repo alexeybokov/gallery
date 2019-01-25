@@ -5,7 +5,7 @@
   - if @images.exists?
     .row
       - @images.each do |image|
-        .col-md-3-expand-xl
+        .col-md-3-expand-xl.column
           .photo.photo-type-line
             %a.photo-hover{:href => image_path(image)}
               .photo-info

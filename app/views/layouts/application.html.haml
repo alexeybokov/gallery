@@ -19,8 +19,10 @@
         =image_tag('slider2.jpg', class: 'w-100 mySlides')
         =image_tag('slider3.jpg', class: 'w-100 mySlides')
         =image_tag('slider4.jpg', class: 'w-100 mySlides')
-        %button.button.display-left{onclick: "plusDivs(-1)"} ❮
-        %button.button.display-right{onclick: "plusDivs(1)"} ❯
+    %i.display-left{onclick: "plusDivs(-1)"}
+      =image_tag('left.png', class: 'left')
+    %i.display-right{onclick: "plusDivs(1)"}
+      =image_tag('right.png', class: 'right')
 
     #musthead
       .logo-navbar-container
@@ -82,7 +84,4 @@
         = render 'images/modal'
         = render 'categories/modal_new'
         = yield
-
-
-
     -#= render 'layouts/footer'

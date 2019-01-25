@@ -1,0 +1,55 @@
+.mySlides {
+  display: none;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.content:first-child {
+  display: block;
+}
+
+.slider {
+  position: absolute;
+  z-index: -2;
+
+  overflow: hidden;
+}
+
+.content {
+  position: relative;
+  overflow: hidden;
+}
+
+.display-right {
+  position: absolute;
+  right: 0;
+  top: 50%;
+}
+
+.display-left {
+  position: absolute;
+  left: 0;
+  top: 50%;
+}
+
+.left {
+  position: relative;
+  top: -50%
+}
+
+.right {
+  position: relative;
+  top: -50%
+}
+
+.display-right img:hover {
+  opacity: 0.75;
+  cursor:pointer;
+  -webkit-transform: scale(1.1);
+}
+
+.display-left img:hover {
+  opacity: 0.75;
+  cursor:pointer;
+  -webkit-transform: scale(1.1);
+}
